@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwStockGrab", "TwStockGrab\TwStockGrab.csproj", "{B8F4F645-5408-4ABB-B6D0-2602911E2DB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwStockGrabBLL", "TwStockGrabBLL\TwStockGrabBLL.csproj", "{A1A51E18-2247-460B-B19C-8D78252FF616}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8F4F645-5408-4ABB-B6D0-2602911E2DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F4F645-5408-4ABB-B6D0-2602911E2DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F4F645-5408-4ABB-B6D0-2602911E2DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F4F645-5408-4ABB-B6D0-2602911E2DB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A51E18-2247-460B-B19C-8D78252FF616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A51E18-2247-460B-B19C-8D78252FF616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A51E18-2247-460B-B19C-8D78252FF616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A51E18-2247-460B-B19C-8D78252FF616}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0974F44D-A764-4B7B-AE62-28E79B14A80B}
+	EndGlobalSection
+EndGlobal

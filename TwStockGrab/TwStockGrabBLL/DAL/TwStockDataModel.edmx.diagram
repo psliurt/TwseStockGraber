@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4e683bcef9714ff2ae08a10153a53047" Name="Diagram1" ZoomLevel="99" >
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfi84u2" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfiamu" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfiauu_daily" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfiauu_monthly" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfiauu_single" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfiauu_stock" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfiauu_yearly" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bft41u" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bwibbu_daily" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.fmnptk" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.fmnptk_stat" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.fmsrfk" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.fmtqik" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_5mins" Width="1.5" PointX="8.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_all" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_deal_stat" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_etf" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_intrust_stat" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_market_stat" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_price_idx_cross" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_price_idx_twcomp" Width="1.5" PointX="14.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_price_idx_twse" Width="1.5" PointX="4.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_return_idx_cross" Width="1.5" PointX="6.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_return_idx_twcomp" Width="1.5" PointX="14.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_return_idx_twse" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_top20" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_index_up_down_stat" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_margin" Width="1.5" PointX="16.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_margin_stat" Width="1.5" PointX="16.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_qfiis_cat" Width="1.5" PointX="12.75" PointY="16.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_qfiis_sort_20" Width="1.5" PointX="16.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.stock_day" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.stock_day_avg" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.stock_first" Width="1.5" PointX="2.75" PointY="18.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.stock_item" Width="1.5" PointX="4.75" PointY="18.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.t86" Width="1.5" PointX="18.75" PointY="5.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt38u" Width="1.5" PointX="18.75" PointY="12.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt43u" Width="1.5" PointX="18.75" PointY="17.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt44u" Width="1.5" PointX="14.75" PointY="19.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt47u" Width="1.5" PointX="20.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt54u" Width="1.5" PointX="20.75" PointY="7.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt84u" Width="1.5" PointX="20.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt92u" Width="1.5" PointX="20.75" PointY="19.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twt93u" Width="1.5" PointX="6.75" PointY="21.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twta1u" Width="1.5" PointX="22.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twtasu" Width="1.5" PointX="8.75" PointY="22.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twtb4u" Width="1.5" PointX="22.75" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twtb4u_stat" Width="1.5" PointX="10.75" PointY="22.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.twtbau2" Width="1.5" PointX="22.75" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrdsum_daily" Width="1.5" PointX="17.375" PointY="22.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfi82u_daily" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfi82u_month" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.bfi82u_week" Width="1.5" PointX="13.75" PointY="23.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.mi_qfiis" Width="1.5" PointX="23.75" PointY="18.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrade_hedge_daily" Width="1.5" PointX="19.375" PointY="23.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_dealtr_hedge_daily" Width="1.5" PointX="0.75" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_margin_bal" Width="1.5" PointX="3.375" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_quote" Width="1.5" PointX="21.375" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_index_summary" Width="1.5" PointX="23.375" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_market_highlight" Width="1.5" PointX="25.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_market_statistics_daily" Width="1.5" PointX="25.375" PointY="6.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_wn1430" Width="1.5" PointX="25.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_wn1430_summary" Width="1.5" PointX="25.375" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_sitctr_daily" Width="1.5" PointX="9.375" PointY="26.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_daily" Width="1.5" PointX="26.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_qfiisect" Width="1.5" PointX="16.375" PointY="26.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_qfii" Width="1.5" PointX="27.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_block_day" Width="1.5" PointX="27.375" PointY="5.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_mkt" Width="1.5" PointX="5.375" PointY="27.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_brk" Width="1.5" PointX="27.375" PointY="10.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_sectr" Width="1.5" PointX="11.375" PointY="27.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_pera" Width="1.5" PointX="13.375" PointY="27.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_shtsell" Width="1.5" PointX="27.375" PointY="22.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_peratio_pera" Width="1.5" PointX="27.375" PointY="26.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_trn_daily" Width="1.5" PointX="28.375" PointY="14.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_vol_rank_daily" Width="1.5" PointX="28.375" PointY="18.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_amt_rank_daily" Width="1.5" PointX="23.375" PointY="28.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_avg_daily" Width="1.5" PointX="29.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_avg_amt_daily" Width="1.5" PointX="0.75" PointY="29.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_rally_daily" Width="1.5" PointX="29.375" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_declined_daily" Width="1.5" PointX="29.375" PointY="8.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.p_filter_stg_describe" Width="1.5" PointX="29.375" PointY="27.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.p_filter_stg" Width="1.5" PointX="29.375" PointY="22.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

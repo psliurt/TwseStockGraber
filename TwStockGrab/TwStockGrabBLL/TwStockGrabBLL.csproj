@@ -1,0 +1,526 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1A51E18-2247-460B-B19C-8D78252FF616}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TwStockGrabBLL</RootNamespace>
+    <AssemblyName>TwStockGrabBLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.8.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.8.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.16\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.16\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAL\bfi82u_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfi82u_month.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfi82u_week.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfi84u2.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfiamu.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfiauu_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfiauu_monthly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfiauu_single.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfiauu_stock.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bfiauu_yearly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bft41u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\bwibbu_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrade_hedge_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrdsum_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_amt_rank_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_avg_amt_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_block_day.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_dealtr_hedge_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_forgtr_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_index_summary.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_margin_bal.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_market_highlight.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_market_statistics_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_mkt.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_pera.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_peratio_pera.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_qfii.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_qfiisect.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_rt_brk.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_rt_declined_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_rt_rally_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_sectr.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_shtsell.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_sitctr_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_stk_avg_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_stk_quote.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_stk_wn1430.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_stk_wn1430_summary.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_trn_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_vol_rank_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fmnptk.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fmnptk_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fmsrfk.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fmtqik.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_5mins.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_all.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_deal_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_etf.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_intrust_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_market_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_price_idx_cross.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_price_idx_twcomp.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_price_idx_twse.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_return_idx_cross.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_return_idx_twcomp.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_return_idx_twse.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_top20.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_index_up_down_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_margin.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_margin_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_qfiis.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_qfiis_cat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\mi_qfiis_sort_20.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\p_filter_stg.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\p_filter_stg_describe.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\stock_day.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\stock_day_avg.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\stock_first.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\stock_item.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\t86.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TwStockDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TwStockDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TwStockDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TwStockDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TwStockDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt38u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt43u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt44u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt47u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt54u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt84u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt92u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twt93u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twta1u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twtasu.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twtb4u.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twtb4u_stat.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\twtbau2.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Filter\AfterMarket\AfterMarketFilter.cs" />
+    <Compile Include="Filter\AfterMarket\FilterFactory.cs" />
+    <Compile Include="Filter\AfterMarket\FilterNo1.cs" />
+    <Compile Include="Filter\AfterMarket\FilterNo2.cs" />
+    <Compile Include="Filter\AfterMarket\ResultData\FilterResultData.cs" />
+    <Compile Include="Filter\FilterParam.cs" />
+    <Compile Include="Filter\FilterParamOperation.cs" />
+    <Compile Include="Filter\FilterTest.cs" />
+    <Compile Include="Kit.cs" />
+    <Compile Include="Logic\Bfi82uGraber.cs" />
+    <Compile Include="Logic\Bfi84u2Graber.cs" />
+    <Compile Include="Logic\BfiamuGraber.cs" />
+    <Compile Include="Logic\BfiauuDailyGraber.cs" />
+    <Compile Include="Logic\BfiauuMonthlyGraber.cs" />
+    <Compile Include="Logic\BfiauuSingleGraber.cs" />
+    <Compile Include="Logic\BfiauuStockDailyGraber.cs" />
+    <Compile Include="Logic\BfiauuYearlyGraber.cs" />
+    <Compile Include="Logic\Bft41uGraber.cs" />
+    <Compile Include="Logic\BwibbuDailyGraber.cs" />
+    <Compile Include="Logic\CabGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itradeHedgeDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itrdsumDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DAmtRankDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DAvgAmtDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DBlockDayGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DDealtrHedgeDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DForgtrDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DIndexSummaryGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarginBalGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarketHighlightGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarketStatisticsDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMktGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DPeraGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DPeratioPeraGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DQfiiGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DQfiisectGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DRtBrkGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DRtDeclinedDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DRtRallyDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DSectrGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DShtsellGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DSitctrDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DStkAvgDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DStkQuoteGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DStkWn1430Graber.cs" />
+    <Compile Include="Logic\DeskGraber\DStkWn1430SummaryGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DTrnDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DVolRankDailyGraber.cs" />
+    <Compile Include="Logic\FmnptkGraber.cs" />
+    <Compile Include="Logic\FmsrfkGraber.cs" />
+    <Compile Include="Logic\FmtqikGraber.cs" />
+    <Compile Include="Logic\Graber.cs" />
+    <Compile Include="Logic\Mi5MinsGraber.cs" />
+    <Compile Include="Logic\MiIndex01To20Graber.cs" />
+    <Compile Include="Logic\MiIndexEtfGraber.cs" />
+    <Compile Include="Logic\MiIndexGraber.cs" />
+    <Compile Include="Logic\MiIndexTop20Graber.cs" />
+    <Compile Include="Logic\MiIndexTradeStatisticGraber.cs" />
+    <Compile Include="Logic\MiMarginGraber.cs" />
+    <Compile Include="Logic\MiQfiisCatGraber.cs" />
+    <Compile Include="Logic\MiQfiisGraber.cs" />
+    <Compile Include="Logic\MiQfiisSort20Graber.cs" />
+    <Compile Include="Logic\PerformanceTest.cs" />
+    <Compile Include="Logic\Query\BasicWebContentParams.cs" />
+    <Compile Include="Logic\Query\DateParams.cs" />
+    <Compile Include="Logic\Query\DateStockTypeParams.cs" />
+    <Compile Include="Logic\Query\StockTypeParams.cs" />
+    <Compile Include="Logic\Rsp\Json\BFI82U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFI84U2_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFIAMU_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFIAUU_D_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFIAUU_M_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFIAUU_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFIAUU_SD_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFIAUU_Y_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BFT41U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\BWIBBU_D_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\CodeFilters_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itradeHedgeDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itrdsumDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DAmtRankDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DAvgAmtDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DBlockDay_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DDealtrHedgeDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DForgtrDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DIndexSummary_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarginBal_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarketHighlight_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarketStatisticsDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMkt_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DPeratioPera_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DPera_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DQfiisect_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DQfii_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DRtBrk_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DRtDeclinedDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DRtRallyDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DSectr_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DShtsell_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DSitctrDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DStkAvgDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DStkQuote_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DStkWn1430Summary_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DStkWn1430_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DTrnDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DVolRankDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\FMNPTK_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\FMSRFK_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\FMTQIK_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_5MINS_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_INDEX_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_INDEX_Top20_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_INDEX_01_20_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_INDEX_ETF_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_MARGN_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_QFIIS_CAT_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_QFIIS_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\MI_QFIIS_SORT_20_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\STOCK_DAY_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\STOCK_DAY_AVG_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\STOCK_FIRST_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\T86_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT38U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT43U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT44U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT47U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT54U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT84U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT92U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWT93U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWTA1U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWTASU_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWTB4U_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\TWTBAU2_Rsp.cs" />
+    <Compile Include="Logic\StockBag.cs" />
+    <Compile Include="Logic\StockDayAvgGraber.cs" />
+    <Compile Include="Logic\StockDayGraber.cs" />
+    <Compile Include="Logic\StockFirstGraber.cs" />
+    <Compile Include="Logic\StockItemGraber.cs" />
+    <Compile Include="Logic\T86Graber.cs" />
+    <Compile Include="Logic\Twt38uGraber.cs" />
+    <Compile Include="Logic\Twt43uGraber.cs" />
+    <Compile Include="Logic\Twt44uGraber.cs" />
+    <Compile Include="Logic\Twt47uGraber.cs" />
+    <Compile Include="Logic\Twt54uGraber.cs" />
+    <Compile Include="Logic\Twt84uGraber.cs" />
+    <Compile Include="Logic\Twt92uGraber.cs" />
+    <Compile Include="Logic\Twt93uGraber.cs" />
+    <Compile Include="Logic\Twta1uGraber.cs" />
+    <Compile Include="Logic\TwtasuGraber.cs" />
+    <Compile Include="Logic\Twtb4uGraber.cs" />
+    <Compile Include="Logic\Twtbau2Graber.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="DAL\TwStockDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TwStockDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DAL\TwStockDataModel.edmx.diagram">
+      <DependentUpon>TwStockDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DAL\TwStockDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TwStockDataModel.Context.cs</LastGenOutput>
+      <DependentUpon>TwStockDataModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DAL\TwStockDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TwStockDataModel.edmx</DependentUpon>
+      <LastGenOutput>TwStockDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
