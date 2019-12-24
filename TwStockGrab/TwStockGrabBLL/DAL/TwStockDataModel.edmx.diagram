@@ -89,6 +89,8 @@
         <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_declined_daily" Width="1.5" PointX="29.375" PointY="8.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.p_filter_stg_describe" Width="1.5" PointX="29.375" PointY="27.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.p_filter_stg" Width="1.5" PointX="29.375" PointY="22.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_margin_sbl" Width="1.5" PointX="7.375" PointY="30.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_mgused_daily" Width="1.5" PointX="30.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
