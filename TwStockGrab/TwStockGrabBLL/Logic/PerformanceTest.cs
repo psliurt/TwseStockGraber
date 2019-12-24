@@ -82,12 +82,11 @@ namespace TwStockGrabBLL.Logic
     /// # 融資融券
     ///   1. 暫停融券賣出預告表 https://www.tpex.org.tw/web/stock/margin_trading/term/term_result.php?l=zh-tw&sd=108/10/01&ed=&stkno=&_=1571411467947
     ///   2. 調整成數 https://www.tpex.org.tw/web/stock/margin_trading/adjust/adjust_result.php?l=zh-tw&stkno=&_=1571411434657
-    ///   3. 標借 https://www.tpex.org.tw/web/stock/margin_trading/lend/lend_result.php?l=zh-tw&sd=108/10/02&ed=108/10/18&stkno=&_=1571411388556
-    ///   4. 融券借券賣出餘額 https://www.tpex.org.tw/web/stock/margin_trading/margin_sbl/margin_sbl_result.php?l=zh-tw&d=108/10/17&_=1571411355345
+    ///   3. 標借 https://www.tpex.org.tw/web/stock/margin_trading/lend/lend_result.php?l=zh-tw&sd=108/10/02&ed=108/10/18&stkno=&_=1571411388556    ///   
     ///   5. 信用交易餘額概況表 https://www.tpex.org.tw/web/stock/margin_trading/marginspot/mgratio_result.php?l=zh-tw&d=108/07/01&_=1571411327806
-    ///   6. 平盤下德榮借券賣出之證券名單 https://www.tpex.org.tw/web/stock/margin_trading/margin_mark/margin_mark_result.php?l=zh-tw&o=json&d=108/10/16&_=1571411302074
+    ///   6. 平盤下得融借券賣出之證券名單 https://www.tpex.org.tw/web/stock/margin_trading/margin_mark/margin_mark_result.php?l=zh-tw&o=json&d=108/10/16&_=1571411302074
     ///   7. 信用交易公告 ## 以後再做
-    ///   8. 融資融券餘額表 https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&o=json&d=108/10/17&_=1571411236323
+    ///   *8. 融資融券餘額表 https://www.tpex.org.tw/web/stock/margin_trading/margin_balance/margin_bal_result.php?l=zh-tw&o=json&d=108/10/17&_=1571411236323
     ///   9. 融資融券使用率報表 https://www.tpex.org.tw/web/stock/margin_trading/margin_used/mgused_result.php?l=zh-tw&t=D&type=Marg&d=108/10/16&_=1571411184691
     ///   10. 融資融券增減排行表 https://www.tpex.org.tw/web/stock/margin_trading/short_sell/margin_rank_result.php?l=zh-tw&t=D&type=MargGain&d=108/10/17&_=1571411135236
     /// # 三大法人

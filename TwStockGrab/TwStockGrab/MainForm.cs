@@ -735,6 +735,15 @@ namespace TwStockGrab
             //    Sleep();
             //} while (d29 <= DateTime.Today);
 
+            DMarginSblGraber g30 = new DMarginSblGraber();
+            DateTime d30 = new DateTime(2012, 10, 2);
+            do
+            {
+                g30.DoJob(d30);
+                d30 = d30.AddDays(1);
+                Sleep();
+            } while (d30 <= DateTime.Today);
+
 
             MessageBox.Show("OK");
             

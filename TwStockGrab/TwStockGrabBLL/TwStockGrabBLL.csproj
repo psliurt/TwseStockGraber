@@ -153,6 +153,9 @@
     <Compile Include="DAL\d_margin_bal.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\d_margin_sbl.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_market_highlight.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
@@ -386,6 +389,7 @@
     <Compile Include="Logic\DeskGraber\DForgtrDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DIndexSummaryGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarginBalGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarginSblGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarketHighlightGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarketStatisticsDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMktGraber.cs" />
@@ -444,6 +448,7 @@
     <Compile Include="Logic\Rsp\Json\Desk\DForgtrDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DIndexSummary_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarginBal_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarginSbl_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarketHighlight_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarketStatisticsDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMkt_Rsp.cs" />
