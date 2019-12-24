@@ -110,5 +110,6 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<p_filter_stg_describe> p_filter_stg_describe { get; set; }
         public virtual DbSet<p_filter_stg> p_filter_stg { get; set; }
         public virtual DbSet<d_margin_sbl> d_margin_sbl { get; set; }
+        public virtual DbSet<d_mgused_daily> d_mgused_daily { get; set; }
     }
 }
