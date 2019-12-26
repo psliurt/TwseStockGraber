@@ -28,11 +28,15 @@ namespace TwStockGrab
         private void MainForm_Load(object sender, EventArgs e)
         {
             FilterParamOperation op = new FilterParamOperation();
-            FilterStrategyCmb.DataSource = op.GetParamList();
-            FilterStrategyCmb.DisplayMember = "StrategyName";
-            FilterStrategyCmb.ValueMember = "StrategyCode";
-            NoneRdo.Checked = true;
-            FilterStrategyCmb.SelectedIndex = 0;
+            List<FilterParam> ds = op.GetParamList();
+            if (ds != null)
+            {
+                FilterStrategyCmb.DataSource = ds;
+                FilterStrategyCmb.DisplayMember = "StrategyName";
+                FilterStrategyCmb.ValueMember = "StrategyCode";
+                NoneRdo.Checked = true;
+                FilterStrategyCmb.SelectedIndex = 0;
+            }
 
 
             //Graber g = new StockItemGraber();
@@ -1064,6 +1068,9 @@ namespace TwStockGrab
             Graber g3 = new T86Graber();
             g3.DoJob(DataDatePicker.Value.Date);
 
+            Graber g4 = new Twt38uGraber();
+            g4.DoJob(DataDatePicker.Value.Date);
+
             MessageBox.Show("OK");
         }
 
@@ -1077,6 +1084,9 @@ namespace TwStockGrab
 
             D3itradeHedgeDailyGraber g3 = new D3itradeHedgeDailyGraber();
             g3.DoJob(DataDatePicker.Value.Date);
+
+            DMarginSblGraber g4 = new DMarginSblGraber();
+            g4.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("OK");
         }
@@ -1203,6 +1213,14 @@ namespace TwStockGrab
             {
                 AfterMarketFilterClassTxt.ReadOnly = true;
             }
+        }
+
+        private void _DMarginSblBtn_Click(object sender, EventArgs e)
+        {
+            DMarginSblGraber g1 = new DMarginSblGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_margin_sbl Complete!");
         }
     }
 }

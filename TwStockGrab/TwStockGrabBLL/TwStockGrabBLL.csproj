@@ -365,6 +365,9 @@
     </Compile>
     <Compile Include="Filter\AfterMarket\AfterMarketFilter.cs" />
     <Compile Include="Filter\AfterMarket\FilterFactory.cs" />
+    <Compile Include="Filter\AfterMarket\FilterLongStep1.cs" />
+    <Compile Include="Filter\AfterMarket\FilterLongStep2.cs" />
+    <Compile Include="Filter\AfterMarket\FilterLongStep3.cs" />
     <Compile Include="Filter\AfterMarket\FilterNo1.cs" />
     <Compile Include="Filter\AfterMarket\FilterNo2.cs" />
     <Compile Include="Filter\AfterMarket\ResultData\FilterResultData.cs" />

@@ -12,5 +12,6 @@ namespace TwStockGrabBLL.Filter.AfterMarket.ResultData
         public string StockNo { get; set; }
         public string StockName { get; set; }
         public string FilterName { get; set; }
+        public string Note { get; set; }
     }
 }

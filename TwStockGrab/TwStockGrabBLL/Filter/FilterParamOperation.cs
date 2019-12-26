@@ -18,6 +18,7 @@ namespace TwStockGrabBLL.Filter
                     create_at = DateTime.Now,
                     update_at = DateTime.Now,
                     stg_code = code,
+                    stg_class_name = paramObj.FilterClassName,
                     stg_name = paramObj.StrategyName,
                     stg_p1 = paramObj.Param1Value,
                     stg_p10 = paramObj.Param10Value,

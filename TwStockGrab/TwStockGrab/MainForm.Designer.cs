@@ -99,6 +99,7 @@
             this.FilterParam1Txt = new System.Windows.Forms.TextBox();
             this.SaveFilterParamBtn = new System.Windows.Forms.Button();
             this.AfterMarketFilterBtn = new System.Windows.Forms.Button();
+            this._DMarginSblBtn = new System.Windows.Forms.Button();
             this.MainTabControl.SuspendLayout();
             this.SingleDayPage.SuspendLayout();
             this.PeriodDescPage.SuspendLayout();
@@ -501,6 +502,7 @@
             // 
             // SingleDayPage
             // 
+            this.SingleDayPage.Controls.Add(this._DMarginSblBtn);
             this.SingleDayPage.Controls.Add(this.DeskSingleDataBtn);
             this.SingleDayPage.Controls.Add(this.MarketSingleDataBtn);
             this.SingleDayPage.Controls.Add(this.DataDatePicker);
@@ -838,6 +840,16 @@
             this.AfterMarketFilterBtn.UseVisualStyleBackColor = true;
             this.AfterMarketFilterBtn.Click += new System.EventHandler(this.AfterMarketFilterBtn_Click);
             // 
+            // _DMarginSblBtn
+            // 
+            this._DMarginSblBtn.Location = new System.Drawing.Point(446, 210);
+            this._DMarginSblBtn.Name = "_DMarginSblBtn";
+            this._DMarginSblBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMarginSblBtn.TabIndex = 41;
+            this._DMarginSblBtn.Text = "融券借券賣出餘額";
+            this._DMarginSblBtn.UseVisualStyleBackColor = true;
+            this._DMarginSblBtn.Click += new System.EventHandler(this._DMarginSblBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -933,6 +945,7 @@
         private System.Windows.Forms.RadioButton UpdateRdo;
         private System.Windows.Forms.RadioButton AddRdo;
         private System.Windows.Forms.TextBox AfterMarketFilterClassTxt;
+        private System.Windows.Forms.Button _DMarginSblBtn;
     }
 }
 
