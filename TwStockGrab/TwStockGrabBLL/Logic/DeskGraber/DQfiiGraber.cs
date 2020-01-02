@@ -16,7 +16,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
     {
         /// <summary>
         /// 首頁 > 上櫃 > 三大法人 > 僑外資及陸資持股比例排行表
-        /// d_qfiisect
+        /// d_qfii
         /// 本資訊自民國96年1月起開始提供 實際上由 2007/4/23開始提供
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/3insti/qfii/qfii.php?l=zh-tw

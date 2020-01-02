@@ -15,7 +15,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
     public class DMarketStatisticsDailyGraber
     {
         /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計
+        /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計(日)
         /// d_market_statistics_daily
         /// 本資訊自民國98年1月起開始提供, 實際上由 2009/01/05開始提供
         /// 網頁位置

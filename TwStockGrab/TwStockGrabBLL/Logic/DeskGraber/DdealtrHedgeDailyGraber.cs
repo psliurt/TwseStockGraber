@@ -12,6 +12,14 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 三大法人 > 自營商買賣超彙總表
+    /// d_dealtr_hedge_daily
+    /// 本資訊自民國103年12月起開始提供 
+    /// 
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/3insti/dealer_trading/dealtr_hedge.php?l=zh-tw
+    /// </summary>
     public class DDealtrHedgeDailyGraber
     {
         public void DoJob(DateTime dataDate)
@@ -91,7 +99,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             
             string rocDate = ParseADDateToRocString(date);
             string paramUnderLine = GetTimeStamp();
-
+            
             //https://www.tpex.org.tw/web/stock/3insti/dealer_trading/dealtr_hedge_result.php?l=zh-tw&t=D&type=sell&d=108/11/07&_=1573306741344
             string url = string.Format("https://www.tpex.org.tw/web/stock/3insti/dealer_trading/dealtr_hedge_result.php?l={0}&t={1}&type={2}&d={3}&_={4}",
                 lang, dataType, t, rocDate, paramUnderLine);

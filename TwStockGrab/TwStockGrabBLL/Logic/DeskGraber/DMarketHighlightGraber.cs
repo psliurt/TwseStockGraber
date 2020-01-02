@@ -16,7 +16,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
     {
         /// <summary>
         /// 首頁 > 上櫃 > 盤後資訊 > 上櫃股票市場現況
-        /// d_index_summary
+        /// d_market_highlight
         /// 本資訊自民國96年01月起開始提供  實際上從 2007/04/23開始有資料
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/aftertrading/market_highlight/highlight.php?l=zh-tw

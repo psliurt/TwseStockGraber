@@ -16,7 +16,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
     {
         /// <summary>
         /// 首頁 > 上櫃 > 歷史熱門資料 > 個股本益比排行
-        /// d_block_day
+        /// d_pera
         /// 本資訊自民國96年1月起開始提供 從 2007/1/2開始提供
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/historical/pe_ratio_top10/pera.php?l=zh-tw

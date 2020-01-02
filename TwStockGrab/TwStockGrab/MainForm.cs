@@ -15,6 +15,7 @@ using TwStockGrabBLL.Logic.DeskGraber;
 using TwStockGrabBLL.Filter;
 using TwStockGrabBLL.Filter.AfterMarket;
 using TwStockGrabBLL.Filter.AfterMarket.ResultData;
+using TwStockGrabBLL.Mode;
 
 namespace TwStockGrab
 {
@@ -758,168 +759,450 @@ namespace TwStockGrab
             } while (d31 <= DateTime.Today);
 
 
-            MessageBox.Show("OK");
-            
+            MessageBox.Show("OK");           
 
         }
 
         private void _miIndexBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiIndexGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //if (SingleDateRdo.Checked)
+            //{
+            //    Graber g1 = new MiIndexGraber();
+            //    g1.DoJob(DataDatePicker.Value.Date);
 
-            Graber g2 = new MiIndexTradeStatisticGraber();
-            g2.DoJob(DataDatePicker.Value.Date);
+            //    Graber g2 = new MiIndexTradeStatisticGraber();
+            //    g2.DoJob(DataDatePicker.Value.Date);
+            //}
+            //else if (PeriodRdo.Checked)
+            //{
+            //    DateTime from = FromDatePicker.Value.Date;
+            //    DateTime to = ToDatePicker.Value.Date;
+
+            //    Graber g1 = new MiIndexGraber();
+            //    Graber g2 = new MiIndexTradeStatisticGraber();
+
+            //    do
+            //    {
+            //        g1.DoJob(from);
+            //        g2.DoJob(from);
+            //        from = from.AddDays(1);
+            //        Sleep();
+
+            //    } while (from <= to);
+            //}
+            //else
+            //{
+            //    DateTime backFrom = FromBackDatePicker.Value.Date;
+            //    DateTime stop = new DateTime(2000, 1, 1);
+
+            //    Graber g1 = new MiIndexGraber();
+            //    Graber g2 = new MiIndexTradeStatisticGraber();
+
+            //    do
+            //    {
+            //        g1.DoJob(backFrom);
+            //        g2.DoJob(backFrom);
+            //        backFrom = backFrom.AddDays(-1);
+            //        Sleep();
+
+            //    } while (backFrom >= stop);
+
+            //}   
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+            List<Graber> gbrList = new List<Graber>();
+            gbrList.Add(new MiIndexGraber());
+            gbrList.Add(new MiIndexTradeStatisticGraber());
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            gbrList);
 
             MessageBox.Show("MI_INDEX Complete!");
         }
 
         private void _fmtqikBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new FmtqikGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new FmtqikGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+            
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new FmtqikGraber());
 
             MessageBox.Show("FMTQIK Complete!");
         }
 
         private void _stockFirstBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new StockFirstGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new StockFirstGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new StockFirstGraber());
 
             MessageBox.Show("STOCK_FIRST Complete!");
         }
 
         private void _miIndex20Btn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiIndexTop20Graber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new MiIndexTop20Graber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new MiIndexTop20Graber());
 
             MessageBox.Show("MI_INDEX20 Complete!");
         }
 
         private void _mi5MinsBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Mi5MinsGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Mi5MinsGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Mi5MinsGraber());
 
             MessageBox.Show("MI_5MINS Complete!");
         }
 
         private void _bfiamuBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BfiamuGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BfiamuGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiamuGraber());
+
             MessageBox.Show("BFIAMU Complete!");
         }
 
         private void _stockDayBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new StockDayGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new StockDayGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new StockDayGraber());
 
             MessageBox.Show("BFIAMU Complete!");
         }
 
         private void _twtasuBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new TwtasuGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new TwtasuGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new TwtasuGraber());
 
             MessageBox.Show("TWTASU Complete!");
         }
 
         private void _stockDayAvgBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new StockDayAvgGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new StockDayAvgGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new StockDayAvgGraber());
+
+
             MessageBox.Show("STOCK_DAY_AVG Complete!");
         }
 
         private void _fmsrfkBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new FmsrfkGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new FmsrfkGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new FmsrfkGraber());
 
             MessageBox.Show("FMSRFK Complete!");
         }
 
         private void _fmnptkBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new FmnptkGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new FmnptkGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new FmnptkGraber());
 
             MessageBox.Show("FMNPTK Complete!");
         }
 
         private void _bft41uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Bft41uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Bft41uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Bft41uGraber());
 
             MessageBox.Show("BFT41U Complete!");
         }
 
         private void _bwibbuDailyBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BwibbuDailyGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BwibbuDailyGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BwibbuDailyGraber());
 
             MessageBox.Show("BWIBBU_d Complete!");
         }
 
         private void _twt84uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt84uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt84uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt84uGraber());
 
             MessageBox.Show("TWT84U Complete!");
         }
 
         private void _twtb4uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twtb4uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twtb4uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twtb4uGraber());
 
             MessageBox.Show("TWTB4U Complete!");
         }
 
         private void _twtbau2Btn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twtbau2Graber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twtbau2Graber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twtbau2Graber());
 
             MessageBox.Show("TWTBAU2 Complete!");
         }
 
         private void _miMargnBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiMarginGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new MiMarginGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new MiMarginGraber());
 
             MessageBox.Show("MI_MARGN Complete!");
         }
 
         private void _bfi84u2Btn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Bfi84u2Graber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Bfi84u2Graber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Bfi84u2Graber());
 
             MessageBox.Show("BFI84U2 Complete!");
         }
 
         private void _twt92uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt92uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt92uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt92uGraber());
 
             MessageBox.Show("TWT92U Complete!");
         }
 
         private void _twt93uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt93uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt93uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt93uGraber());
 
             MessageBox.Show("TWT93U Complete!");
         }
@@ -931,145 +1214,355 @@ namespace TwStockGrab
 
         private void _twta1uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twta1uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twta1uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twta1uGraber());
 
             MessageBox.Show("TWTA1U Complete!");
         }
 
         private void _bfi82uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Bfi82uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Bfi82uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Bfi82uGraber());
 
             MessageBox.Show("BFI82U Complete!");
         }
 
         private void _t86Btn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new T86Graber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new T86Graber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new T86Graber());
 
             MessageBox.Show("T86 Complete!");
         }
 
         private void _twt54uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt54uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt54uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt54uGraber());
 
             MessageBox.Show("TWT54U Complete!");
         }
 
         private void _twt47uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt47uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt47uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt47uGraber());
 
             MessageBox.Show("TWT47U Complete!");
         }
 
         private void _twt44uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt44uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt44uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt44uGraber());
 
             MessageBox.Show("TWT44U Complete!");
         }
 
         private void _twt43uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt43uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt43uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt43uGraber());
 
             MessageBox.Show("TWT43U Complete!");
         }
 
         private void _twt38uBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new Twt38uGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new Twt38uGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new Twt38uGraber());
 
             MessageBox.Show("TWT38U Complete!");
         }
 
         private void _miQfiisBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiQfiisGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new MiQfiisGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new MiQfiisGraber());
 
             MessageBox.Show("MI_QFIIS Complete!");
         }
 
         private void _miQfiisSort20Btn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiQfiisSort20Graber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new MiQfiisSort20Graber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new MiQfiisSort20Graber());
 
             MessageBox.Show("MI_QFIIS_sort_20 Complete!");
         }
 
         private void _miQfiisCatBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiQfiisCatGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new MiQfiisCatGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new MiQfiisCatGraber());
 
             MessageBox.Show("MI_QFIIS_cat Complete!");
         }
 
         private void _bfiauuSingleBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BfiauuSingleGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BfiauuSingleGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiauuSingleGraber());
 
             MessageBox.Show("BFIAUU Complete!");
         }
 
         private void _bfiauuSdBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BfiauuStockDailyGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BfiauuStockDailyGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiauuStockDailyGraber());
 
             MessageBox.Show("BFIAUU_sd Complete!");
         }
 
         private void _bfiauuDailyBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BfiauuDailyGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BfiauuDailyGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiauuDailyGraber());
 
             MessageBox.Show("BFIAUU_d Complete!");
         }
 
         private void _bfiauuMonthlyBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BfiauuMonthlyGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BfiauuMonthlyGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiauuMonthlyGraber());
 
             MessageBox.Show("BFIAUU_m Complete!");
         }
 
         private void _bfiauuYearlyBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new BfiauuYearlyGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new BfiauuYearlyGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
+
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiauuYearlyGraber());
 
             MessageBox.Show("BFIAUU_y Complete!");
         }
 
         private void MarketSingleDataBtn_Click(object sender, EventArgs e)
         {
-            Graber g1 = new MiIndexGraber();
-            g1.DoJob(DataDatePicker.Value.Date);
+            ExecuterType et = GetExecuteType();
+            IModeExecute executer = ModeFactory.GetExecuter(et);
 
-            Graber g2 = new MiMarginGraber();
-            g2.DoJob(DataDatePicker.Value.Date);
+            List<Graber> grbList = new List<Graber>();
+            grbList.Add(new MiIndexGraber());
+            grbList.Add(new MiMarginGraber());
+            grbList.Add(new T86Graber());
+            grbList.Add(new Twt38uGraber());
 
-            Graber g3 = new T86Graber();
-            g3.DoJob(DataDatePicker.Value.Date);
+            executer.Execute(new DateParams
+            {
+                SingleDate = DataDatePicker.Value.Date,
+                FromDate = FromDatePicker.Value.Date,
+                ToDate = ToDatePicker.Value.Date,
+                BackFromDate = FromBackDatePicker.Value.Date
+            },
+            new BfiauuYearlyGraber());
 
-            Graber g4 = new Twt38uGraber();
-            g4.DoJob(DataDatePicker.Value.Date);
+            //Graber g1 = new MiIndexGraber();
+            //g1.DoJob(DataDatePicker.Value.Date);
+
+            //Graber g2 = new MiMarginGraber();
+            //g2.DoJob(DataDatePicker.Value.Date);
+
+            //Graber g3 = new T86Graber();
+            //g3.DoJob(DataDatePicker.Value.Date);
+
+            //Graber g4 = new Twt38uGraber();
+            //g4.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("OK");
         }
@@ -1221,6 +1714,222 @@ namespace TwStockGrab
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_margin_sbl Complete!");
+        }
+
+        private ExecuterType GetExecuteType()
+        {
+            if (SingleDateRdo.Checked)
+            {
+                return ExecuterType.SingleDay;
+            }
+            else if (PeriodRdo.Checked)
+            {
+                return ExecuterType.Period;
+            }
+            else
+            {
+                return ExecuterType.ReverseBack;
+            }
+        }
+
+        private void _DBlockDayBtn_Click(object sender, EventArgs e)
+        {
+            DBlockDayGraber g1 = new DBlockDayGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_block_day Complete!");
+        }
+
+        private void _DStkQuoteBtn_Click(object sender, EventArgs e)
+        {
+            DStkQuoteGraber g1 = new DStkQuoteGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_stk_quote Complete!");
+        }
+
+        private void _DIndexSummaryBtn_Click(object sender, EventArgs e)
+        {
+            DIndexSummaryGraber g1 = new DIndexSummaryGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_index_summary Complete!");
+        }
+
+        private void _DMarketHighlightBtn_Click(object sender, EventArgs e)
+        {
+            DMarketHighlightGraber g1 = new DMarketHighlightGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_market_highlight Complete!");
+        }
+
+        private void _DMarketStatisticsDailyBtn_Click(object sender, EventArgs e)
+        {
+            DMarketStatisticsDailyGraber g1 = new DMarketStatisticsDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_market_statistics_daily Complete!");
+        }
+
+        private void _DStkWin1430Btn_Click(object sender, EventArgs e)
+        {
+            DStkWn1430Graber g1 = new DStkWn1430Graber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_stk_wn1430 Complete!");
+        }
+
+        private void _DShtsellBtn_Click(object sender, EventArgs e)
+        {
+            DShtsellGraber g1 = new DShtsellGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_shtsell Complete!");
+        }
+
+        private void _DRtBrkBtn_Click(object sender, EventArgs e)
+        {
+            DRtBrkGraber g1 = new DRtBrkGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_rt_brk Complete!");
+        }
+
+        private void _DRtRallyDailyBtn_Click(object sender, EventArgs e)
+        {
+            DRtRallyDailyGraber g1 = new DRtRallyDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_rt_rally_daily Complete!");
+        }
+
+        private void _DMktBtn_Click(object sender, EventArgs e)
+        {
+            DMktGraber g1 = new DMktGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_mkt Complete!");
+        }
+
+        private void _DTrnDailyBtn_Click(object sender, EventArgs e)
+        {
+            DTrnDailyGraber g1 = new DTrnDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_trn_daily Complete!");
+        }
+
+        private void _DVolRankDailyBtn_Click(object sender, EventArgs e)
+        {
+            DVolRankDailyGraber g1 = new DVolRankDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_vol_rank_daily Complete!");
+        }
+
+        private void _DAmtRankDailyBtn_Click(object sender, EventArgs e)
+        {
+            DAmtRankDailyGraber g1 = new DAmtRankDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_amt_rank_daily Complete!");
+        }
+
+        private void _DStkAvgDailyBtn_Click(object sender, EventArgs e)
+        {
+            DStkAvgDailyGraber g1 = new DStkAvgDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_stk_avg_daily Complete!");
+        }
+
+        private void _DAvgAmtDailyBtn_Click(object sender, EventArgs e)
+        {
+            DAvgAmtDailyGraber g1 = new DAvgAmtDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_avg_amt_daily Complete!");
+        }
+
+        private void _DRtDeclinedDailyBtn_Click(object sender, EventArgs e)
+        {
+            DRtDeclinedDailyGraber g1 = new DRtDeclinedDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_rt_declined_daily Complete!");
+        }
+
+        private void _DSectrBtn_Click(object sender, EventArgs e)
+        {
+            DSectrGraber g1 = new DSectrGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_sectr Complete!");
+        }
+
+        private void _DPeraBtn_Click(object sender, EventArgs e)
+        {
+            DPeraGraber g1 = new DPeraGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_pera Complete!");
+        }
+
+        private void _D3itrdsumDailyBtn_Click(object sender, EventArgs e)
+        {
+            D3itrdsumDailyGraber g1 = new D3itrdsumDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_3itrdsum_daily Complete!");
+        }
+
+        private void _D3itradeHedgeDailyBtn_Click(object sender, EventArgs e)
+        {
+            D3itradeHedgeDailyGraber g1 = new D3itradeHedgeDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_3itrade_hedge_daily Complete!");
+        }
+
+        private void _DDealtrHedgeDailyBtn_Click(object sender, EventArgs e)
+        {
+            DDealtrHedgeDailyGraber g1 = new DDealtrHedgeDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_dealtr_hedge_daily Complete!");
+        }
+
+        private void _DSitctrDailyBtn_Click(object sender, EventArgs e)
+        {
+            DSitctrDailyGraber g1 = new DSitctrDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_sitctr_daily Complete!");
+        }
+
+        private void _DForgtrDailyBtn_Click(object sender, EventArgs e)
+        {
+            DForgtrDailyGraber g1 = new DForgtrDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_forgtr_daily Complete!");
+        }
+
+        private void _DQfiiBtn_Click(object sender, EventArgs e)
+        {
+            DQfiiGraber g1 = new DQfiiGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_qfii Complete!");
+        }
+
+        private void _DQfiisectBtn_Click(object sender, EventArgs e)
+        {
+            DQfiisectGraber g1 = new DQfiisectGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_qfiisect Complete!");
         }
     }
 }

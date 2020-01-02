@@ -393,6 +393,7 @@
     <Compile Include="Logic\DeskGraber\DBlockDayGraber.cs" />
     <Compile Include="Logic\DeskGraber\DDealtrHedgeDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DForgtrDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DGraber.cs" />
     <Compile Include="Logic\DeskGraber\DIndexSummaryGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarginBalGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarginSblGraber.cs" />
@@ -522,6 +523,11 @@
     <Compile Include="Logic\TwtasuGraber.cs" />
     <Compile Include="Logic\Twtb4uGraber.cs" />
     <Compile Include="Logic\Twtbau2Graber.cs" />
+    <Compile Include="Mode\IModeExecute.cs" />
+    <Compile Include="Mode\ModeFactory.cs" />
+    <Compile Include="Mode\PeriodExecuter.cs" />
+    <Compile Include="Mode\ReverseBackExecuter.cs" />
+    <Compile Include="Mode\SingleDayExecuter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
