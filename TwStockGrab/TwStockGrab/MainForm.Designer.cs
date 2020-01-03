@@ -68,6 +68,31 @@
             this._bfiauuYearlyBtn = new System.Windows.Forms.Button();
             this.MainTabControl = new System.Windows.Forms.TabControl();
             this.SingleDayPage = new System.Windows.Forms.TabPage();
+            this._DQfiisectBtn = new System.Windows.Forms.Button();
+            this._DQfiiBtn = new System.Windows.Forms.Button();
+            this._DForgtrDailyBtn = new System.Windows.Forms.Button();
+            this._DSitctrDailyBtn = new System.Windows.Forms.Button();
+            this._DDealtrHedgeDailyBtn = new System.Windows.Forms.Button();
+            this._D3itradeHedgeDailyBtn = new System.Windows.Forms.Button();
+            this._D3itrdsumDailyBtn = new System.Windows.Forms.Button();
+            this._DPeraBtn = new System.Windows.Forms.Button();
+            this._DSectrBtn = new System.Windows.Forms.Button();
+            this._DRtDeclinedDailyBtn = new System.Windows.Forms.Button();
+            this._DAvgAmtDailyBtn = new System.Windows.Forms.Button();
+            this._DStkAvgDailyBtn = new System.Windows.Forms.Button();
+            this._DAmtRankDailyBtn = new System.Windows.Forms.Button();
+            this._DVolRankDailyBtn = new System.Windows.Forms.Button();
+            this._DTrnDailyBtn = new System.Windows.Forms.Button();
+            this._DMktBtn = new System.Windows.Forms.Button();
+            this._DRtRallyDailyBtn = new System.Windows.Forms.Button();
+            this._DRtBrkBtn = new System.Windows.Forms.Button();
+            this._DShtsellBtn = new System.Windows.Forms.Button();
+            this._DStkWin1430Btn = new System.Windows.Forms.Button();
+            this._DMarketStatisticsDailyBtn = new System.Windows.Forms.Button();
+            this._DMarketHighlightBtn = new System.Windows.Forms.Button();
+            this._DIndexSummaryBtn = new System.Windows.Forms.Button();
+            this._DStkQuoteBtn = new System.Windows.Forms.Button();
+            this._DBlockDayBtn = new System.Windows.Forms.Button();
             this.DateOptionGbx = new System.Windows.Forms.GroupBox();
             this.FromBackDatePicker = new System.Windows.Forms.DateTimePicker();
             this.FromBackRdo = new System.Windows.Forms.RadioButton();
@@ -102,31 +127,9 @@
             this.FilterParam1Txt = new System.Windows.Forms.TextBox();
             this.SaveFilterParamBtn = new System.Windows.Forms.Button();
             this.AfterMarketFilterBtn = new System.Windows.Forms.Button();
-            this._DBlockDayBtn = new System.Windows.Forms.Button();
-            this._DStkQuoteBtn = new System.Windows.Forms.Button();
-            this._DIndexSummaryBtn = new System.Windows.Forms.Button();
-            this._DMarketHighlightBtn = new System.Windows.Forms.Button();
-            this._DMarketStatisticsDailyBtn = new System.Windows.Forms.Button();
-            this._DStkWin1430Btn = new System.Windows.Forms.Button();
-            this._DShtsellBtn = new System.Windows.Forms.Button();
-            this._DRtBrkBtn = new System.Windows.Forms.Button();
-            this._DRtRallyDailyBtn = new System.Windows.Forms.Button();
-            this._DMktBtn = new System.Windows.Forms.Button();
-            this._DTrnDailyBtn = new System.Windows.Forms.Button();
-            this._DVolRankDailyBtn = new System.Windows.Forms.Button();
-            this._DAmtRankDailyBtn = new System.Windows.Forms.Button();
-            this._DStkAvgDailyBtn = new System.Windows.Forms.Button();
-            this._DAvgAmtDailyBtn = new System.Windows.Forms.Button();
-            this._DRtDeclinedDailyBtn = new System.Windows.Forms.Button();
-            this._DSectrBtn = new System.Windows.Forms.Button();
-            this._DPeraBtn = new System.Windows.Forms.Button();
-            this._D3itrdsumDailyBtn = new System.Windows.Forms.Button();
-            this._D3itradeHedgeDailyBtn = new System.Windows.Forms.Button();
-            this._DDealtrHedgeDailyBtn = new System.Windows.Forms.Button();
-            this._DSitctrDailyBtn = new System.Windows.Forms.Button();
-            this._DForgtrDailyBtn = new System.Windows.Forms.Button();
-            this._DQfiiBtn = new System.Windows.Forms.Button();
-            this._DQfiisectBtn = new System.Windows.Forms.Button();
+            this._DoddDailyBtn = new System.Windows.Forms.Button();
+            this._DBlockMthMonthlyBtn = new System.Windows.Forms.Button();
+            this._DBlockYrYearlyBtn = new System.Windows.Forms.Button();
             this.MainTabControl.SuspendLayout();
             this.SingleDayPage.SuspendLayout();
             this.DateOptionGbx.SuspendLayout();
@@ -531,6 +534,9 @@
             // 
             // SingleDayPage
             // 
+            this.SingleDayPage.Controls.Add(this._DBlockYrYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._DBlockMthMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DoddDailyBtn);
             this.SingleDayPage.Controls.Add(this._DQfiisectBtn);
             this.SingleDayPage.Controls.Add(this._DQfiiBtn);
             this.SingleDayPage.Controls.Add(this._DForgtrDailyBtn);
@@ -605,6 +611,256 @@
             this.SingleDayPage.TabIndex = 0;
             this.SingleDayPage.Text = "單獨抓一天資料";
             this.SingleDayPage.UseVisualStyleBackColor = true;
+            // 
+            // _DQfiisectBtn
+            // 
+            this._DQfiisectBtn.Location = new System.Drawing.Point(666, 296);
+            this._DQfiisectBtn.Name = "_DQfiisectBtn";
+            this._DQfiisectBtn.Size = new System.Drawing.Size(214, 23);
+            this._DQfiisectBtn.TabIndex = 67;
+            this._DQfiisectBtn.Text = "各類股僑外資及陸資持股比例表(日)";
+            this._DQfiisectBtn.UseVisualStyleBackColor = true;
+            this._DQfiisectBtn.Click += new System.EventHandler(this._DQfiisectBtn_Click);
+            // 
+            // _DQfiiBtn
+            // 
+            this._DQfiiBtn.Location = new System.Drawing.Point(666, 267);
+            this._DQfiiBtn.Name = "_DQfiiBtn";
+            this._DQfiiBtn.Size = new System.Drawing.Size(214, 23);
+            this._DQfiiBtn.TabIndex = 66;
+            this._DQfiiBtn.Text = "僑外資及陸資持股比例排行表(日)";
+            this._DQfiiBtn.UseVisualStyleBackColor = true;
+            this._DQfiiBtn.Click += new System.EventHandler(this._DQfiiBtn_Click);
+            // 
+            // _DForgtrDailyBtn
+            // 
+            this._DForgtrDailyBtn.Location = new System.Drawing.Point(666, 238);
+            this._DForgtrDailyBtn.Name = "_DForgtrDailyBtn";
+            this._DForgtrDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DForgtrDailyBtn.TabIndex = 65;
+            this._DForgtrDailyBtn.Text = "外資及陸資買賣超彙總表(日)";
+            this._DForgtrDailyBtn.UseVisualStyleBackColor = true;
+            this._DForgtrDailyBtn.Click += new System.EventHandler(this._DForgtrDailyBtn_Click);
+            // 
+            // _DSitctrDailyBtn
+            // 
+            this._DSitctrDailyBtn.Location = new System.Drawing.Point(666, 209);
+            this._DSitctrDailyBtn.Name = "_DSitctrDailyBtn";
+            this._DSitctrDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DSitctrDailyBtn.TabIndex = 64;
+            this._DSitctrDailyBtn.Text = "投信買賣超彙總表(日)";
+            this._DSitctrDailyBtn.UseVisualStyleBackColor = true;
+            this._DSitctrDailyBtn.Click += new System.EventHandler(this._DSitctrDailyBtn_Click);
+            // 
+            // _DDealtrHedgeDailyBtn
+            // 
+            this._DDealtrHedgeDailyBtn.Location = new System.Drawing.Point(666, 180);
+            this._DDealtrHedgeDailyBtn.Name = "_DDealtrHedgeDailyBtn";
+            this._DDealtrHedgeDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DDealtrHedgeDailyBtn.TabIndex = 63;
+            this._DDealtrHedgeDailyBtn.Text = "自營商買賣超彙總表(日)";
+            this._DDealtrHedgeDailyBtn.UseVisualStyleBackColor = true;
+            this._DDealtrHedgeDailyBtn.Click += new System.EventHandler(this._DDealtrHedgeDailyBtn_Click);
+            // 
+            // _D3itradeHedgeDailyBtn
+            // 
+            this._D3itradeHedgeDailyBtn.Location = new System.Drawing.Point(666, 151);
+            this._D3itradeHedgeDailyBtn.Name = "_D3itradeHedgeDailyBtn";
+            this._D3itradeHedgeDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itradeHedgeDailyBtn.TabIndex = 62;
+            this._D3itradeHedgeDailyBtn.Text = "三大法人買賣明細資訊(日)";
+            this._D3itradeHedgeDailyBtn.UseVisualStyleBackColor = true;
+            this._D3itradeHedgeDailyBtn.Click += new System.EventHandler(this._D3itradeHedgeDailyBtn_Click);
+            // 
+            // _D3itrdsumDailyBtn
+            // 
+            this._D3itrdsumDailyBtn.Location = new System.Drawing.Point(666, 122);
+            this._D3itrdsumDailyBtn.Name = "_D3itrdsumDailyBtn";
+            this._D3itrdsumDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itrdsumDailyBtn.TabIndex = 61;
+            this._D3itrdsumDailyBtn.Text = "三大法人買賣金額彙總表(日)";
+            this._D3itrdsumDailyBtn.UseVisualStyleBackColor = true;
+            this._D3itrdsumDailyBtn.Click += new System.EventHandler(this._D3itrdsumDailyBtn_Click);
+            // 
+            // _DPeraBtn
+            // 
+            this._DPeraBtn.Location = new System.Drawing.Point(446, 702);
+            this._DPeraBtn.Name = "_DPeraBtn";
+            this._DPeraBtn.Size = new System.Drawing.Size(214, 23);
+            this._DPeraBtn.TabIndex = 60;
+            this._DPeraBtn.Text = "個股本益比排行";
+            this._DPeraBtn.UseVisualStyleBackColor = true;
+            this._DPeraBtn.Click += new System.EventHandler(this._DPeraBtn_Click);
+            // 
+            // _DSectrBtn
+            // 
+            this._DSectrBtn.Location = new System.Drawing.Point(446, 673);
+            this._DSectrBtn.Name = "_DSectrBtn";
+            this._DSectrBtn.Size = new System.Drawing.Size(214, 23);
+            this._DSectrBtn.TabIndex = 59;
+            this._DSectrBtn.Text = "類股成交價量比重";
+            this._DSectrBtn.UseVisualStyleBackColor = true;
+            this._DSectrBtn.Click += new System.EventHandler(this._DSectrBtn_Click);
+            // 
+            // _DRtDeclinedDailyBtn
+            // 
+            this._DRtDeclinedDailyBtn.Location = new System.Drawing.Point(446, 644);
+            this._DRtDeclinedDailyBtn.Name = "_DRtDeclinedDailyBtn";
+            this._DRtDeclinedDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtDeclinedDailyBtn.TabIndex = 58;
+            this._DRtDeclinedDailyBtn.Text = "個股跌幅排行(日)";
+            this._DRtDeclinedDailyBtn.UseVisualStyleBackColor = true;
+            this._DRtDeclinedDailyBtn.Click += new System.EventHandler(this._DRtDeclinedDailyBtn_Click);
+            // 
+            // _DAvgAmtDailyBtn
+            // 
+            this._DAvgAmtDailyBtn.Location = new System.Drawing.Point(446, 557);
+            this._DAvgAmtDailyBtn.Name = "_DAvgAmtDailyBtn";
+            this._DAvgAmtDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DAvgAmtDailyBtn.TabIndex = 57;
+            this._DAvgAmtDailyBtn.Text = "個股日均值排行(日)";
+            this._DAvgAmtDailyBtn.UseVisualStyleBackColor = true;
+            this._DAvgAmtDailyBtn.Click += new System.EventHandler(this._DAvgAmtDailyBtn_Click);
+            // 
+            // _DStkAvgDailyBtn
+            // 
+            this._DStkAvgDailyBtn.Location = new System.Drawing.Point(446, 528);
+            this._DStkAvgDailyBtn.Name = "_DStkAvgDailyBtn";
+            this._DStkAvgDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DStkAvgDailyBtn.TabIndex = 56;
+            this._DStkAvgDailyBtn.Text = "個股日均量排行(日)";
+            this._DStkAvgDailyBtn.UseVisualStyleBackColor = true;
+            this._DStkAvgDailyBtn.Click += new System.EventHandler(this._DStkAvgDailyBtn_Click);
+            // 
+            // _DAmtRankDailyBtn
+            // 
+            this._DAmtRankDailyBtn.Location = new System.Drawing.Point(446, 499);
+            this._DAmtRankDailyBtn.Name = "_DAmtRankDailyBtn";
+            this._DAmtRankDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DAmtRankDailyBtn.TabIndex = 55;
+            this._DAmtRankDailyBtn.Text = "個股成交值排行(日)";
+            this._DAmtRankDailyBtn.UseVisualStyleBackColor = true;
+            this._DAmtRankDailyBtn.Click += new System.EventHandler(this._DAmtRankDailyBtn_Click);
+            // 
+            // _DVolRankDailyBtn
+            // 
+            this._DVolRankDailyBtn.Location = new System.Drawing.Point(446, 470);
+            this._DVolRankDailyBtn.Name = "_DVolRankDailyBtn";
+            this._DVolRankDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DVolRankDailyBtn.TabIndex = 54;
+            this._DVolRankDailyBtn.Text = "個股成交量排行(日)";
+            this._DVolRankDailyBtn.UseVisualStyleBackColor = true;
+            this._DVolRankDailyBtn.Click += new System.EventHandler(this._DVolRankDailyBtn_Click);
+            // 
+            // _DTrnDailyBtn
+            // 
+            this._DTrnDailyBtn.Location = new System.Drawing.Point(446, 441);
+            this._DTrnDailyBtn.Name = "_DTrnDailyBtn";
+            this._DTrnDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DTrnDailyBtn.TabIndex = 53;
+            this._DTrnDailyBtn.Text = "個股週轉率排行(日)";
+            this._DTrnDailyBtn.UseVisualStyleBackColor = true;
+            this._DTrnDailyBtn.Click += new System.EventHandler(this._DTrnDailyBtn_Click);
+            // 
+            // _DMktBtn
+            // 
+            this._DMktBtn.Location = new System.Drawing.Point(446, 412);
+            this._DMktBtn.Name = "_DMktBtn";
+            this._DMktBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMktBtn.TabIndex = 52;
+            this._DMktBtn.Text = "個股市值排行(日)";
+            this._DMktBtn.UseVisualStyleBackColor = true;
+            this._DMktBtn.Click += new System.EventHandler(this._DMktBtn_Click);
+            // 
+            // _DRtRallyDailyBtn
+            // 
+            this._DRtRallyDailyBtn.Location = new System.Drawing.Point(446, 615);
+            this._DRtRallyDailyBtn.Name = "_DRtRallyDailyBtn";
+            this._DRtRallyDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtRallyDailyBtn.TabIndex = 51;
+            this._DRtRallyDailyBtn.Text = "個股漲幅排行(日)";
+            this._DRtRallyDailyBtn.UseVisualStyleBackColor = true;
+            this._DRtRallyDailyBtn.Click += new System.EventHandler(this._DRtRallyDailyBtn_Click);
+            // 
+            // _DRtBrkBtn
+            // 
+            this._DRtBrkBtn.Location = new System.Drawing.Point(446, 586);
+            this._DRtBrkBtn.Name = "_DRtBrkBtn";
+            this._DRtBrkBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtBrkBtn.TabIndex = 50;
+            this._DRtBrkBtn.Text = "熱門股證券商進出排行";
+            this._DRtBrkBtn.UseVisualStyleBackColor = true;
+            this._DRtBrkBtn.Click += new System.EventHandler(this._DRtBrkBtn_Click);
+            // 
+            // _DShtsellBtn
+            // 
+            this._DShtsellBtn.Location = new System.Drawing.Point(446, 296);
+            this._DShtsellBtn.Name = "_DShtsellBtn";
+            this._DShtsellBtn.Size = new System.Drawing.Size(214, 23);
+            this._DShtsellBtn.TabIndex = 49;
+            this._DShtsellBtn.Text = "當日融券賣出與借券賣出成交量值";
+            this._DShtsellBtn.UseVisualStyleBackColor = true;
+            this._DShtsellBtn.Click += new System.EventHandler(this._DShtsellBtn_Click);
+            // 
+            // _DStkWin1430Btn
+            // 
+            this._DStkWin1430Btn.Location = new System.Drawing.Point(446, 180);
+            this._DStkWin1430Btn.Name = "_DStkWin1430Btn";
+            this._DStkWin1430Btn.Size = new System.Drawing.Size(214, 23);
+            this._DStkWin1430Btn.TabIndex = 48;
+            this._DStkWin1430Btn.Text = "上櫃股票每日收盤行情(不含定價)";
+            this._DStkWin1430Btn.UseVisualStyleBackColor = true;
+            this._DStkWin1430Btn.Click += new System.EventHandler(this._DStkWin1430Btn_Click);
+            // 
+            // _DMarketStatisticsDailyBtn
+            // 
+            this._DMarketStatisticsDailyBtn.Location = new System.Drawing.Point(446, 151);
+            this._DMarketStatisticsDailyBtn.Name = "_DMarketStatisticsDailyBtn";
+            this._DMarketStatisticsDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMarketStatisticsDailyBtn.TabIndex = 47;
+            this._DMarketStatisticsDailyBtn.Text = "上櫃證券成交統計(日)";
+            this._DMarketStatisticsDailyBtn.UseVisualStyleBackColor = true;
+            this._DMarketStatisticsDailyBtn.Click += new System.EventHandler(this._DMarketStatisticsDailyBtn_Click);
+            // 
+            // _DMarketHighlightBtn
+            // 
+            this._DMarketHighlightBtn.Location = new System.Drawing.Point(446, 122);
+            this._DMarketHighlightBtn.Name = "_DMarketHighlightBtn";
+            this._DMarketHighlightBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMarketHighlightBtn.TabIndex = 46;
+            this._DMarketHighlightBtn.Text = "上櫃股票市場現況";
+            this._DMarketHighlightBtn.UseVisualStyleBackColor = true;
+            this._DMarketHighlightBtn.Click += new System.EventHandler(this._DMarketHighlightBtn_Click);
+            // 
+            // _DIndexSummaryBtn
+            // 
+            this._DIndexSummaryBtn.Location = new System.Drawing.Point(446, 93);
+            this._DIndexSummaryBtn.Name = "_DIndexSummaryBtn";
+            this._DIndexSummaryBtn.Size = new System.Drawing.Size(214, 23);
+            this._DIndexSummaryBtn.TabIndex = 45;
+            this._DIndexSummaryBtn.Text = "上櫃股價指數收盤行情";
+            this._DIndexSummaryBtn.UseVisualStyleBackColor = true;
+            this._DIndexSummaryBtn.Click += new System.EventHandler(this._DIndexSummaryBtn_Click);
+            // 
+            // _DStkQuoteBtn
+            // 
+            this._DStkQuoteBtn.Location = new System.Drawing.Point(446, 64);
+            this._DStkQuoteBtn.Name = "_DStkQuoteBtn";
+            this._DStkQuoteBtn.Size = new System.Drawing.Size(214, 23);
+            this._DStkQuoteBtn.TabIndex = 44;
+            this._DStkQuoteBtn.Text = "上櫃股票行情";
+            this._DStkQuoteBtn.UseVisualStyleBackColor = true;
+            this._DStkQuoteBtn.Click += new System.EventHandler(this._DStkQuoteBtn_Click);
+            // 
+            // _DBlockDayBtn
+            // 
+            this._DBlockDayBtn.Location = new System.Drawing.Point(666, 354);
+            this._DBlockDayBtn.Name = "_DBlockDayBtn";
+            this._DBlockDayBtn.Size = new System.Drawing.Size(214, 23);
+            this._DBlockDayBtn.TabIndex = 43;
+            this._DBlockDayBtn.Text = "鉅額交易日成交資訊";
+            this._DBlockDayBtn.UseVisualStyleBackColor = true;
+            this._DBlockDayBtn.Click += new System.EventHandler(this._DBlockDayBtn_Click);
             // 
             // DateOptionGbx
             // 
@@ -929,255 +1185,35 @@
             this.AfterMarketFilterBtn.UseVisualStyleBackColor = true;
             this.AfterMarketFilterBtn.Click += new System.EventHandler(this.AfterMarketFilterBtn_Click);
             // 
-            // _DBlockDayBtn
+            // _DoddDailyBtn
             // 
-            this._DBlockDayBtn.Location = new System.Drawing.Point(666, 354);
-            this._DBlockDayBtn.Name = "_DBlockDayBtn";
-            this._DBlockDayBtn.Size = new System.Drawing.Size(214, 23);
-            this._DBlockDayBtn.TabIndex = 43;
-            this._DBlockDayBtn.Text = "鉅額交易日成交資訊";
-            this._DBlockDayBtn.UseVisualStyleBackColor = true;
-            this._DBlockDayBtn.Click += new System.EventHandler(this._DBlockDayBtn_Click);
+            this._DoddDailyBtn.Location = new System.Drawing.Point(666, 383);
+            this._DoddDailyBtn.Name = "_DoddDailyBtn";
+            this._DoddDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DoddDailyBtn.TabIndex = 68;
+            this._DoddDailyBtn.Text = "鉅額交易日成交量值統計";
+            this._DoddDailyBtn.UseVisualStyleBackColor = true;
+            this._DoddDailyBtn.Click += new System.EventHandler(this._DoddDailyBtn_Click);
             // 
-            // _DStkQuoteBtn
+            // _DBlockMthMonthlyBtn
             // 
-            this._DStkQuoteBtn.Location = new System.Drawing.Point(446, 64);
-            this._DStkQuoteBtn.Name = "_DStkQuoteBtn";
-            this._DStkQuoteBtn.Size = new System.Drawing.Size(214, 23);
-            this._DStkQuoteBtn.TabIndex = 44;
-            this._DStkQuoteBtn.Text = "上櫃股票行情";
-            this._DStkQuoteBtn.UseVisualStyleBackColor = true;
-            this._DStkQuoteBtn.Click += new System.EventHandler(this._DStkQuoteBtn_Click);
+            this._DBlockMthMonthlyBtn.Location = new System.Drawing.Point(666, 412);
+            this._DBlockMthMonthlyBtn.Name = "_DBlockMthMonthlyBtn";
+            this._DBlockMthMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DBlockMthMonthlyBtn.TabIndex = 69;
+            this._DBlockMthMonthlyBtn.Text = "鉅額交易月成交量值統計";
+            this._DBlockMthMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DBlockMthMonthlyBtn.Click += new System.EventHandler(this._DBlockMthMonthlyBtn_Click);
             // 
-            // _DIndexSummaryBtn
+            // _DBlockYrYearlyBtn
             // 
-            this._DIndexSummaryBtn.Location = new System.Drawing.Point(446, 93);
-            this._DIndexSummaryBtn.Name = "_DIndexSummaryBtn";
-            this._DIndexSummaryBtn.Size = new System.Drawing.Size(214, 23);
-            this._DIndexSummaryBtn.TabIndex = 45;
-            this._DIndexSummaryBtn.Text = "上櫃股價指數收盤行情";
-            this._DIndexSummaryBtn.UseVisualStyleBackColor = true;
-            this._DIndexSummaryBtn.Click += new System.EventHandler(this._DIndexSummaryBtn_Click);
-            // 
-            // _DMarketHighlightBtn
-            // 
-            this._DMarketHighlightBtn.Location = new System.Drawing.Point(446, 122);
-            this._DMarketHighlightBtn.Name = "_DMarketHighlightBtn";
-            this._DMarketHighlightBtn.Size = new System.Drawing.Size(214, 23);
-            this._DMarketHighlightBtn.TabIndex = 46;
-            this._DMarketHighlightBtn.Text = "上櫃股票市場現況";
-            this._DMarketHighlightBtn.UseVisualStyleBackColor = true;
-            this._DMarketHighlightBtn.Click += new System.EventHandler(this._DMarketHighlightBtn_Click);
-            // 
-            // _DMarketStatisticsDailyBtn
-            // 
-            this._DMarketStatisticsDailyBtn.Location = new System.Drawing.Point(446, 151);
-            this._DMarketStatisticsDailyBtn.Name = "_DMarketStatisticsDailyBtn";
-            this._DMarketStatisticsDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DMarketStatisticsDailyBtn.TabIndex = 47;
-            this._DMarketStatisticsDailyBtn.Text = "上櫃證券成交統計(日)";
-            this._DMarketStatisticsDailyBtn.UseVisualStyleBackColor = true;
-            this._DMarketStatisticsDailyBtn.Click += new System.EventHandler(this._DMarketStatisticsDailyBtn_Click);
-            // 
-            // _DStkWin1430Btn
-            // 
-            this._DStkWin1430Btn.Location = new System.Drawing.Point(446, 180);
-            this._DStkWin1430Btn.Name = "_DStkWin1430Btn";
-            this._DStkWin1430Btn.Size = new System.Drawing.Size(214, 23);
-            this._DStkWin1430Btn.TabIndex = 48;
-            this._DStkWin1430Btn.Text = "上櫃股票每日收盤行情(不含定價)";
-            this._DStkWin1430Btn.UseVisualStyleBackColor = true;
-            this._DStkWin1430Btn.Click += new System.EventHandler(this._DStkWin1430Btn_Click);
-            // 
-            // _DShtsellBtn
-            // 
-            this._DShtsellBtn.Location = new System.Drawing.Point(446, 296);
-            this._DShtsellBtn.Name = "_DShtsellBtn";
-            this._DShtsellBtn.Size = new System.Drawing.Size(214, 23);
-            this._DShtsellBtn.TabIndex = 49;
-            this._DShtsellBtn.Text = "當日融券賣出與借券賣出成交量值";
-            this._DShtsellBtn.UseVisualStyleBackColor = true;
-            this._DShtsellBtn.Click += new System.EventHandler(this._DShtsellBtn_Click);
-            // 
-            // _DRtBrkBtn
-            // 
-            this._DRtBrkBtn.Location = new System.Drawing.Point(446, 586);
-            this._DRtBrkBtn.Name = "_DRtBrkBtn";
-            this._DRtBrkBtn.Size = new System.Drawing.Size(214, 23);
-            this._DRtBrkBtn.TabIndex = 50;
-            this._DRtBrkBtn.Text = "熱門股證券商進出排行";
-            this._DRtBrkBtn.UseVisualStyleBackColor = true;
-            this._DRtBrkBtn.Click += new System.EventHandler(this._DRtBrkBtn_Click);
-            // 
-            // _DRtRallyDailyBtn
-            // 
-            this._DRtRallyDailyBtn.Location = new System.Drawing.Point(446, 615);
-            this._DRtRallyDailyBtn.Name = "_DRtRallyDailyBtn";
-            this._DRtRallyDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DRtRallyDailyBtn.TabIndex = 51;
-            this._DRtRallyDailyBtn.Text = "個股漲幅排行(日)";
-            this._DRtRallyDailyBtn.UseVisualStyleBackColor = true;
-            this._DRtRallyDailyBtn.Click += new System.EventHandler(this._DRtRallyDailyBtn_Click);
-            // 
-            // _DMktBtn
-            // 
-            this._DMktBtn.Location = new System.Drawing.Point(446, 412);
-            this._DMktBtn.Name = "_DMktBtn";
-            this._DMktBtn.Size = new System.Drawing.Size(214, 23);
-            this._DMktBtn.TabIndex = 52;
-            this._DMktBtn.Text = "個股市值排行(日)";
-            this._DMktBtn.UseVisualStyleBackColor = true;
-            this._DMktBtn.Click += new System.EventHandler(this._DMktBtn_Click);
-            // 
-            // _DTrnDailyBtn
-            // 
-            this._DTrnDailyBtn.Location = new System.Drawing.Point(446, 441);
-            this._DTrnDailyBtn.Name = "_DTrnDailyBtn";
-            this._DTrnDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DTrnDailyBtn.TabIndex = 53;
-            this._DTrnDailyBtn.Text = "個股週轉率排行(日)";
-            this._DTrnDailyBtn.UseVisualStyleBackColor = true;
-            this._DTrnDailyBtn.Click += new System.EventHandler(this._DTrnDailyBtn_Click);
-            // 
-            // _DVolRankDailyBtn
-            // 
-            this._DVolRankDailyBtn.Location = new System.Drawing.Point(446, 470);
-            this._DVolRankDailyBtn.Name = "_DVolRankDailyBtn";
-            this._DVolRankDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DVolRankDailyBtn.TabIndex = 54;
-            this._DVolRankDailyBtn.Text = "個股成交量排行(日)";
-            this._DVolRankDailyBtn.UseVisualStyleBackColor = true;
-            this._DVolRankDailyBtn.Click += new System.EventHandler(this._DVolRankDailyBtn_Click);
-            // 
-            // _DAmtRankDailyBtn
-            // 
-            this._DAmtRankDailyBtn.Location = new System.Drawing.Point(446, 499);
-            this._DAmtRankDailyBtn.Name = "_DAmtRankDailyBtn";
-            this._DAmtRankDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DAmtRankDailyBtn.TabIndex = 55;
-            this._DAmtRankDailyBtn.Text = "個股成交值排行(日)";
-            this._DAmtRankDailyBtn.UseVisualStyleBackColor = true;
-            this._DAmtRankDailyBtn.Click += new System.EventHandler(this._DAmtRankDailyBtn_Click);
-            // 
-            // _DStkAvgDailyBtn
-            // 
-            this._DStkAvgDailyBtn.Location = new System.Drawing.Point(446, 528);
-            this._DStkAvgDailyBtn.Name = "_DStkAvgDailyBtn";
-            this._DStkAvgDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DStkAvgDailyBtn.TabIndex = 56;
-            this._DStkAvgDailyBtn.Text = "個股日均量排行(日)";
-            this._DStkAvgDailyBtn.UseVisualStyleBackColor = true;
-            this._DStkAvgDailyBtn.Click += new System.EventHandler(this._DStkAvgDailyBtn_Click);
-            // 
-            // _DAvgAmtDailyBtn
-            // 
-            this._DAvgAmtDailyBtn.Location = new System.Drawing.Point(446, 557);
-            this._DAvgAmtDailyBtn.Name = "_DAvgAmtDailyBtn";
-            this._DAvgAmtDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DAvgAmtDailyBtn.TabIndex = 57;
-            this._DAvgAmtDailyBtn.Text = "個股日均值排行(日)";
-            this._DAvgAmtDailyBtn.UseVisualStyleBackColor = true;
-            this._DAvgAmtDailyBtn.Click += new System.EventHandler(this._DAvgAmtDailyBtn_Click);
-            // 
-            // _DRtDeclinedDailyBtn
-            // 
-            this._DRtDeclinedDailyBtn.Location = new System.Drawing.Point(446, 644);
-            this._DRtDeclinedDailyBtn.Name = "_DRtDeclinedDailyBtn";
-            this._DRtDeclinedDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DRtDeclinedDailyBtn.TabIndex = 58;
-            this._DRtDeclinedDailyBtn.Text = "個股跌幅排行(日)";
-            this._DRtDeclinedDailyBtn.UseVisualStyleBackColor = true;
-            this._DRtDeclinedDailyBtn.Click += new System.EventHandler(this._DRtDeclinedDailyBtn_Click);
-            // 
-            // _DSectrBtn
-            // 
-            this._DSectrBtn.Location = new System.Drawing.Point(446, 673);
-            this._DSectrBtn.Name = "_DSectrBtn";
-            this._DSectrBtn.Size = new System.Drawing.Size(214, 23);
-            this._DSectrBtn.TabIndex = 59;
-            this._DSectrBtn.Text = "類股成交價量比重";
-            this._DSectrBtn.UseVisualStyleBackColor = true;
-            this._DSectrBtn.Click += new System.EventHandler(this._DSectrBtn_Click);
-            // 
-            // _DPeraBtn
-            // 
-            this._DPeraBtn.Location = new System.Drawing.Point(446, 702);
-            this._DPeraBtn.Name = "_DPeraBtn";
-            this._DPeraBtn.Size = new System.Drawing.Size(214, 23);
-            this._DPeraBtn.TabIndex = 60;
-            this._DPeraBtn.Text = "個股本益比排行";
-            this._DPeraBtn.UseVisualStyleBackColor = true;
-            this._DPeraBtn.Click += new System.EventHandler(this._DPeraBtn_Click);
-            // 
-            // _D3itrdsumDailyBtn
-            // 
-            this._D3itrdsumDailyBtn.Location = new System.Drawing.Point(666, 122);
-            this._D3itrdsumDailyBtn.Name = "_D3itrdsumDailyBtn";
-            this._D3itrdsumDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._D3itrdsumDailyBtn.TabIndex = 61;
-            this._D3itrdsumDailyBtn.Text = "三大法人買賣金額彙總表(日)";
-            this._D3itrdsumDailyBtn.UseVisualStyleBackColor = true;
-            this._D3itrdsumDailyBtn.Click += new System.EventHandler(this._D3itrdsumDailyBtn_Click);
-            // 
-            // _D3itradeHedgeDailyBtn
-            // 
-            this._D3itradeHedgeDailyBtn.Location = new System.Drawing.Point(666, 151);
-            this._D3itradeHedgeDailyBtn.Name = "_D3itradeHedgeDailyBtn";
-            this._D3itradeHedgeDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._D3itradeHedgeDailyBtn.TabIndex = 62;
-            this._D3itradeHedgeDailyBtn.Text = "三大法人買賣明細資訊(日)";
-            this._D3itradeHedgeDailyBtn.UseVisualStyleBackColor = true;
-            this._D3itradeHedgeDailyBtn.Click += new System.EventHandler(this._D3itradeHedgeDailyBtn_Click);
-            // 
-            // _DDealtrHedgeDailyBtn
-            // 
-            this._DDealtrHedgeDailyBtn.Location = new System.Drawing.Point(666, 180);
-            this._DDealtrHedgeDailyBtn.Name = "_DDealtrHedgeDailyBtn";
-            this._DDealtrHedgeDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DDealtrHedgeDailyBtn.TabIndex = 63;
-            this._DDealtrHedgeDailyBtn.Text = "自營商買賣超彙總表(日)";
-            this._DDealtrHedgeDailyBtn.UseVisualStyleBackColor = true;
-            this._DDealtrHedgeDailyBtn.Click += new System.EventHandler(this._DDealtrHedgeDailyBtn_Click);
-            // 
-            // _DSitctrDailyBtn
-            // 
-            this._DSitctrDailyBtn.Location = new System.Drawing.Point(666, 209);
-            this._DSitctrDailyBtn.Name = "_DSitctrDailyBtn";
-            this._DSitctrDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DSitctrDailyBtn.TabIndex = 64;
-            this._DSitctrDailyBtn.Text = "投信買賣超彙總表(日)";
-            this._DSitctrDailyBtn.UseVisualStyleBackColor = true;
-            this._DSitctrDailyBtn.Click += new System.EventHandler(this._DSitctrDailyBtn_Click);
-            // 
-            // _DForgtrDailyBtn
-            // 
-            this._DForgtrDailyBtn.Location = new System.Drawing.Point(666, 238);
-            this._DForgtrDailyBtn.Name = "_DForgtrDailyBtn";
-            this._DForgtrDailyBtn.Size = new System.Drawing.Size(214, 23);
-            this._DForgtrDailyBtn.TabIndex = 65;
-            this._DForgtrDailyBtn.Text = "外資及陸資買賣超彙總表(日)";
-            this._DForgtrDailyBtn.UseVisualStyleBackColor = true;
-            this._DForgtrDailyBtn.Click += new System.EventHandler(this._DForgtrDailyBtn_Click);
-            // 
-            // _DQfiiBtn
-            // 
-            this._DQfiiBtn.Location = new System.Drawing.Point(666, 267);
-            this._DQfiiBtn.Name = "_DQfiiBtn";
-            this._DQfiiBtn.Size = new System.Drawing.Size(214, 23);
-            this._DQfiiBtn.TabIndex = 66;
-            this._DQfiiBtn.Text = "僑外資及陸資持股比例排行表(日)";
-            this._DQfiiBtn.UseVisualStyleBackColor = true;
-            this._DQfiiBtn.Click += new System.EventHandler(this._DQfiiBtn_Click);
-            // 
-            // _DQfiisectBtn
-            // 
-            this._DQfiisectBtn.Location = new System.Drawing.Point(666, 296);
-            this._DQfiisectBtn.Name = "_DQfiisectBtn";
-            this._DQfiisectBtn.Size = new System.Drawing.Size(214, 23);
-            this._DQfiisectBtn.TabIndex = 67;
-            this._DQfiisectBtn.Text = "各類股僑外資及陸資持股比例表(日)";
-            this._DQfiisectBtn.UseVisualStyleBackColor = true;
-            this._DQfiisectBtn.Click += new System.EventHandler(this._DQfiisectBtn_Click);
+            this._DBlockYrYearlyBtn.Location = new System.Drawing.Point(666, 441);
+            this._DBlockYrYearlyBtn.Name = "_DBlockYrYearlyBtn";
+            this._DBlockYrYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DBlockYrYearlyBtn.TabIndex = 70;
+            this._DBlockYrYearlyBtn.Text = "鉅額交易年成交量值統計";
+            this._DBlockYrYearlyBtn.UseVisualStyleBackColor = true;
+            this._DBlockYrYearlyBtn.Click += new System.EventHandler(this._DBlockYrYearlyBtn_Click);
             // 
             // MainForm
             // 
@@ -1303,6 +1339,9 @@
         private System.Windows.Forms.Button _DForgtrDailyBtn;
         private System.Windows.Forms.Button _DQfiiBtn;
         private System.Windows.Forms.Button _DQfiisectBtn;
+        private System.Windows.Forms.Button _DoddDailyBtn;
+        private System.Windows.Forms.Button _DBlockMthMonthlyBtn;
+        private System.Windows.Forms.Button _DBlockYrYearlyBtn;
     }
 }
 

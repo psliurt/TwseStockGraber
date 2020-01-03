@@ -111,5 +111,8 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<p_filter_stg> p_filter_stg { get; set; }
         public virtual DbSet<d_margin_sbl> d_margin_sbl { get; set; }
         public virtual DbSet<d_mgused_daily> d_mgused_daily { get; set; }
+        public virtual DbSet<d_block_mth_monthly> d_block_mth_monthly { get; set; }
+        public virtual DbSet<d_block_yr_yearly> d_block_yr_yearly { get; set; }
+        public virtual DbSet<d_odd_daily> d_odd_daily { get; set; }
     }
 }

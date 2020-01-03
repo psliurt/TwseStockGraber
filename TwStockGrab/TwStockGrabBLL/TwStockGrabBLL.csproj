@@ -141,6 +141,12 @@
     <Compile Include="DAL\d_block_day.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\d_block_mth_monthly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_block_yr_yearly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_dealtr_hedge_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_mkt.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_odd_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_pera.cs">
@@ -391,6 +400,8 @@
     <Compile Include="Logic\DeskGraber\DAmtRankDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DAvgAmtDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DBlockDayGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DBlockMthMonthlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DBlockYrYearlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DDealtrHedgeDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DForgtrDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DGraber.cs" />
@@ -401,6 +412,7 @@
     <Compile Include="Logic\DeskGraber\DMarketStatisticsDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMgUsedDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMktGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DOddDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DPeraGraber.cs" />
     <Compile Include="Logic\DeskGraber\DPeratioPeraGraber.cs" />
     <Compile Include="Logic\DeskGraber\DQfiiGraber.cs" />
@@ -452,6 +464,8 @@
     <Compile Include="Logic\Rsp\Json\Desk\DAmtRankDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DAvgAmtDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DBlockDay_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DBlockMthMonthly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DBlockYrYearly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DDealtrHedgeDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DForgtrDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DIndexSummary_Rsp.cs" />
@@ -461,6 +475,7 @@
     <Compile Include="Logic\Rsp\Json\Desk\DMarketStatisticsDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMgUsedDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMkt_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DOddDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DPeratioPera_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DPera_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DQfiisect_Rsp.cs" />

@@ -97,10 +97,7 @@ namespace TwStockGrabBLL.Logic
     ///   5. 外資及陸資買賣超彙總表(週月年) https://www.tpex.org.tw/web/stock/3insti/qfii_trading/forgtr_result.php?l=zh-tw&t=D&type=buy&d=108/10/17&_=1571410712340
     ///   6. 外資及陸資投資持股統計 XX    
     /// # 鉅額交易    
-    ///   2. 個股單一證券鉅額交易日成交資訊 https://www.tpex.org.tw/web/stock/block_trade/daily_trade_infor/block_day_result.php?l=zh-tw&d=2018&stkno=&_=1571410305730
-    ///   3. 鉅額交易日成交量值統計 https://www.tpex.org.tw/web/stock/block_trade/daily_trade_sum/odd_result.php?l=zh-tw&d=108/08/01&_=1571410188854
-    ///   4. 鉅額交易月成交量值統計 https://www.tpex.org.tw/web/stock/block_trade/monthly_trade_sum/block_mth_result.php?l=zh-tw&d=2018&_=1571410131656
-    ///   5. 鉅額交易年成交量值統計 https://www.tpex.org.tw/web/stock/block_trade/yearly_trade_sum/block_yr_result.php?l=zh-tw&d=2018&_=1571409979651
+    ///   2. 個股單一證券鉅額交易日成交資訊 https://www.tpex.org.tw/web/stock/block_trade/daily_trade_infor/block_day_result.php?l=zh-tw&d=2018&stkno=&_=1571410305730    
     ///   
     ///
     #endregion

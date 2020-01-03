@@ -301,6 +301,38 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="d_block_mth_monthly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="trade_type" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="deal_cnt" Type="int" />
+          <Property Name="deal_stock_cnt" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_money" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_money_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_block_yr_yearly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="trade_type" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="deal_cnt" Type="int" />
+          <Property Name="deal_stock_cnt" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_money" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_money_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="d_dealtr_hedge_daily">
           <Key>
             <PropertyRef Name="Uid" />
@@ -478,6 +510,22 @@
           <Property Name="issue_stock_count" Type="bigint" />
           <Property Name="close_price" Type="decimal" Precision="20" Scale="3" />
           <Property Name="market_value" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_odd_daily">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="trade_type" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="deal_cnt" Type="int" />
+          <Property Name="deal_stock_cnt" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_money" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_money_percent" Type="decimal" Precision="20" Scale="3" />
           <Property Name="title" Type="varchar" MaxLength="256" />
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
@@ -1637,6 +1685,8 @@
           <EntitySet Name="d_amt_rank_daily" EntityType="Self.d_amt_rank_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_avg_amt_daily" EntityType="Self.d_avg_amt_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_block_day" EntityType="Self.d_block_day" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_block_mth_monthly" EntityType="Self.d_block_mth_monthly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_block_yr_yearly" EntityType="Self.d_block_yr_yearly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_dealtr_hedge_daily" EntityType="Self.d_dealtr_hedge_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_forgtr_daily" EntityType="Self.d_forgtr_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_index_summary" EntityType="Self.d_index_summary" Schema="tw_stock_history_warehouse" store:Type="Tables" />
@@ -1646,6 +1696,7 @@
           <EntitySet Name="d_market_statistics_daily" EntityType="Self.d_market_statistics_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_mgused_daily" EntityType="Self.d_mgused_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_mkt" EntityType="Self.d_mkt" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_odd_daily" EntityType="Self.d_odd_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_pera" EntityType="Self.d_pera" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_peratio_pera" EntityType="Self.d_peratio_pera" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_qfii" EntityType="Self.d_qfii" Schema="tw_stock_history_warehouse" store:Type="Tables" />
@@ -1798,6 +1849,9 @@
           <EntitySet Name="p_filter_stg" EntityType="TwStockDataNSModel.p_filter_stg" />
           <EntitySet Name="d_margin_sbl" EntityType="TwStockDataNSModel.d_margin_sbl" />
           <EntitySet Name="d_mgused_daily" EntityType="TwStockDataNSModel.d_mgused_daily" />
+          <EntitySet Name="d_block_mth_monthly" EntityType="TwStockDataNSModel.d_block_mth_monthly" />
+          <EntitySet Name="d_block_yr_yearly" EntityType="TwStockDataNSModel.d_block_yr_yearly" />
+          <EntitySet Name="d_odd_daily" EntityType="TwStockDataNSModel.d_odd_daily" />
         </EntityContainer>
         <EntityType Name="bfi84u2">
           <Key>
@@ -3409,6 +3463,54 @@
           <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="used_percent" Type="Decimal" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_block_mth_monthly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="trade_type" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="deal_cnt" Type="Int32" />
+          <Property Name="deal_stock_cnt" Type="Decimal" />
+          <Property Name="deal_percent" Type="Decimal" />
+          <Property Name="deal_money" Type="Decimal" />
+          <Property Name="deal_money_percent" Type="Decimal" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_block_yr_yearly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="trade_type" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="deal_cnt" Type="Int32" />
+          <Property Name="deal_stock_cnt" Type="Decimal" />
+          <Property Name="deal_percent" Type="Decimal" />
+          <Property Name="deal_money" Type="Decimal" />
+          <Property Name="deal_money_percent" Type="Decimal" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_odd_daily">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="trade_type" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="deal_cnt" Type="Int32" />
+          <Property Name="deal_stock_cnt" Type="Decimal" />
+          <Property Name="deal_percent" Type="Decimal" />
+          <Property Name="deal_money" Type="Decimal" />
+          <Property Name="deal_money_percent" Type="Decimal" />
           <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="create_at" Type="DateTime" Nullable="false" />
           <Property Name="update_at" Type="DateTime" Nullable="false" />
@@ -5114,6 +5216,57 @@
                 <ScalarProperty Name="stock_name" ColumnName="stock_name" />
                 <ScalarProperty Name="stock_no" ColumnName="stock_no" />
                 <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_block_mth_monthly">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_block_mth_monthly">
+              <MappingFragment StoreEntitySet="d_block_mth_monthly">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="deal_money_percent" ColumnName="deal_money_percent" />
+                <ScalarProperty Name="deal_money" ColumnName="deal_money" />
+                <ScalarProperty Name="deal_percent" ColumnName="deal_percent" />
+                <ScalarProperty Name="deal_stock_cnt" ColumnName="deal_stock_cnt" />
+                <ScalarProperty Name="deal_cnt" ColumnName="deal_cnt" />
+                <ScalarProperty Name="trade_type" ColumnName="trade_type" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_block_yr_yearly">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_block_yr_yearly">
+              <MappingFragment StoreEntitySet="d_block_yr_yearly">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="deal_money_percent" ColumnName="deal_money_percent" />
+                <ScalarProperty Name="deal_money" ColumnName="deal_money" />
+                <ScalarProperty Name="deal_percent" ColumnName="deal_percent" />
+                <ScalarProperty Name="deal_stock_cnt" ColumnName="deal_stock_cnt" />
+                <ScalarProperty Name="deal_cnt" ColumnName="deal_cnt" />
+                <ScalarProperty Name="trade_type" ColumnName="trade_type" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_odd_daily">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_odd_daily">
+              <MappingFragment StoreEntitySet="d_odd_daily">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="deal_money_percent" ColumnName="deal_money_percent" />
+                <ScalarProperty Name="deal_money" ColumnName="deal_money" />
+                <ScalarProperty Name="deal_percent" ColumnName="deal_percent" />
+                <ScalarProperty Name="deal_stock_cnt" ColumnName="deal_stock_cnt" />
+                <ScalarProperty Name="deal_cnt" ColumnName="deal_cnt" />
+                <ScalarProperty Name="trade_type" ColumnName="trade_type" />
                 <ScalarProperty Name="data_date" ColumnName="data_date" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
               </MappingFragment>

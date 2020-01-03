@@ -749,14 +749,41 @@ namespace TwStockGrab
             //    Sleep();
             //} while (d30 <= DateTime.Today);
 
-            DMgUsedDailyGraber g31 = new DMgUsedDailyGraber();
-            DateTime d31 = new DateTime(2007, 4, 23);
+            //DMgUsedDailyGraber g31 = new DMgUsedDailyGraber();
+            //DateTime d31 = new DateTime(2007, 4, 23);
+            //do
+            //{
+            //    g31.DoJob(d31);
+            //    d31 = d31.AddDays(1);
+            //    Sleep();
+            //} while (d31 <= DateTime.Today);
+
+            //DOddDailyGraber g32 = new DOddDailyGraber();
+            //DateTime d32 = new DateTime(2007, 4, 1);
+            //do
+            //{
+            //    g32.DoJob(d32);
+            //    d32 = d32.AddMonths(1);
+            //    Sleep();
+            //} while (d32 <= DateTime.Today);
+
+            //DBlockMthMonthlyGraber g33 = new DBlockMthMonthlyGraber();
+            //DateTime d33 = new DateTime(2007, 1, 1);
+            //do
+            //{
+            //    g33.DoJob(d33);
+            //    d33 = d33.AddYears(1);
+            //    Sleep();
+            //} while (d33 <= DateTime.Today);
+
+            DBlockYrYearlyGraber g34 = new DBlockYrYearlyGraber();
+            DateTime d34 = new DateTime(2007, 1, 1);
             do
             {
-                g31.DoJob(d31);
-                d31 = d31.AddDays(1);
+                g34.DoJob(d34);
+                d34 = d34.AddYears(1);
                 Sleep();
-            } while (d31 <= DateTime.Today);
+            } while (d34 <= DateTime.Today);
 
 
             MessageBox.Show("OK");           
@@ -1930,6 +1957,30 @@ namespace TwStockGrab
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_qfiisect Complete!");
+        }
+
+        private void _DoddDailyBtn_Click(object sender, EventArgs e)
+        {
+            DOddDailyGraber g1 = new DOddDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_odd_daily Complete!");
+        }
+
+        private void _DBlockMthMonthlyBtn_Click(object sender, EventArgs e)
+        {
+            DBlockMthMonthlyGraber g1 = new DBlockMthMonthlyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_block_mth_monthly Complete!");
+        }
+
+        private void _DBlockYrYearlyBtn_Click(object sender, EventArgs e)
+        {
+            DBlockYrYearlyGraber g1 = new DBlockYrYearlyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_block_yr_yearly Complete!");
         }
     }
 }

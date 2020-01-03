@@ -91,6 +91,9 @@
         <EntityTypeShape EntityType="TwStockDataNSModel.p_filter_stg" Width="1.5" PointX="29.375" PointY="22.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_margin_sbl" Width="1.5" PointX="7.375" PointY="30.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_mgused_daily" Width="1.5" PointX="30.375" PointY="12.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_block_mth_monthly" Width="1.5" PointX="15.375" PointY="30.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_block_yr_yearly" Width="1.5" PointX="30.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_odd_daily" Width="1.5" PointX="25.375" PointY="30.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
