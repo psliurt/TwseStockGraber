@@ -62,33 +62,36 @@ namespace TwStockGrabBLL.Logic
                     t86 obj =
                         tmpDataList.Where(x => x.stock_no == stockNo).FirstOrDefault();
 
-                    tmpAddList.Add(new t86
+                    if (obj == null)
                     {
-                        data_date = dataDate,
-                        select_type = selectType,
-                        stock_no = stockNo,
-                        stock_name = data.ElementAt(1).Trim(),
-                        foreign_buy_in = ToLongQ(data.ElementAt(2)),
-                        foreign_sell_out = ToLongQ(data.ElementAt(3)),
-                        foreign_diff = ToLongQ(data.ElementAt(4)),
-                        foreign_dealer_buy_in = ToLongQ(data.ElementAt(5)),
-                        foreign_dealer_sell_out = ToLongQ(data.ElementAt(6)),
-                        foreign_dealer_diff = ToLongQ(data.ElementAt(7)),
-                        trust_buy_in = ToLongQ(data.ElementAt(8)),
-                        trust_sell_out = ToLongQ(data.ElementAt(9)),
-                        trust_diff = ToLongQ(data.ElementAt(10)),
-                        dealer_diff = ToLongQ(data.ElementAt(11)),
-                        dealer_self_buy_in = ToLongQ(data.ElementAt(12)),
-                        dealer_self_sell_out = ToLongQ(data.ElementAt(13)),
-                        dealer_self_diff = ToLongQ(data.ElementAt(14)),
-                        dealer_risk_buy_in = ToLongQ(data.ElementAt(15)),
-                        dealer_risk_sell_out = ToLongQ(data.ElementAt(16)),
-                        dealer_risk_diff = ToLongQ(data.ElementAt(17)),
-                        capital3_total_diff = ToLongQ(data.ElementAt(18)),
-                        create_at = DateTime.Now,
-                        update_at = DateTime.Now,
-                        title = string.Format("{0}", rsp.title)
-                    });
+                        tmpAddList.Add(new t86
+                        {
+                            data_date = dataDate,
+                            select_type = selectType,
+                            stock_no = stockNo,
+                            stock_name = data.ElementAt(1).Trim(),
+                            foreign_buy_in = ToLongQ(data.ElementAt(2)),
+                            foreign_sell_out = ToLongQ(data.ElementAt(3)),
+                            foreign_diff = ToLongQ(data.ElementAt(4)),
+                            foreign_dealer_buy_in = ToLongQ(data.ElementAt(5)),
+                            foreign_dealer_sell_out = ToLongQ(data.ElementAt(6)),
+                            foreign_dealer_diff = ToLongQ(data.ElementAt(7)),
+                            trust_buy_in = ToLongQ(data.ElementAt(8)),
+                            trust_sell_out = ToLongQ(data.ElementAt(9)),
+                            trust_diff = ToLongQ(data.ElementAt(10)),
+                            dealer_diff = ToLongQ(data.ElementAt(11)),
+                            dealer_self_buy_in = ToLongQ(data.ElementAt(12)),
+                            dealer_self_sell_out = ToLongQ(data.ElementAt(13)),
+                            dealer_self_diff = ToLongQ(data.ElementAt(14)),
+                            dealer_risk_buy_in = ToLongQ(data.ElementAt(15)),
+                            dealer_risk_sell_out = ToLongQ(data.ElementAt(16)),
+                            dealer_risk_diff = ToLongQ(data.ElementAt(17)),
+                            capital3_total_diff = ToLongQ(data.ElementAt(18)),
+                            create_at = DateTime.Now,
+                            update_at = DateTime.Now,
+                            title = string.Format("{0}", rsp.title)
+                        });
+                    }                    
                 }
 
             }

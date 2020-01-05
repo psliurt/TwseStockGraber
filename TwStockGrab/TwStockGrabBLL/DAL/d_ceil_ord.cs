@@ -12,15 +12,18 @@ namespace TwStockGrabBLL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class d_mgused_daily
+    public partial class d_ceil_ord
     {
         public decimal Uid { get; set; }
         public System.DateTime data_date { get; set; }
-        public string mg_type { get; set; }
-        public int rank_order { get; set; }
         public string stock_no { get; set; }
         public string stock_name { get; set; }
-        public Nullable<decimal> used_percent { get; set; }
+        public Nullable<decimal> close_price { get; set; }
+        public Nullable<decimal> up_down_price { get; set; }
+        public Nullable<long> deal_cnt { get; set; }
+        public Nullable<long> ceil_floor_deal_cnt { get; set; }
+        public Nullable<long> ceil_floor_ask_cnt { get; set; }
+        public Nullable<long> ceil_floor_no_deal_cnt { get; set; }
         public string title { get; set; }
         public System.DateTime create_at { get; set; }
         public System.DateTime update_at { get; set; }

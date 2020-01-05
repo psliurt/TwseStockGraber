@@ -12,16 +12,14 @@ namespace TwStockGrabBLL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class d_mgused_daily
+    public partial class c_holiday
     {
         public decimal Uid { get; set; }
-        public System.DateTime data_date { get; set; }
-        public string mg_type { get; set; }
-        public int rank_order { get; set; }
-        public string stock_no { get; set; }
-        public string stock_name { get; set; }
-        public Nullable<decimal> used_percent { get; set; }
-        public string title { get; set; }
+        public System.DateTime holiday_date { get; set; }
+        public string holiday_name { get; set; }
+        public bool is_holiday { get; set; }
+        public string holiday_category { get; set; }
+        public string holiday_desc { get; set; }
         public System.DateTime create_at { get; set; }
         public System.DateTime update_at { get; set; }
     }

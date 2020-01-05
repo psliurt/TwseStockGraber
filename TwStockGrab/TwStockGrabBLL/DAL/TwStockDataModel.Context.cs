@@ -110,9 +110,17 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<p_filter_stg_describe> p_filter_stg_describe { get; set; }
         public virtual DbSet<p_filter_stg> p_filter_stg { get; set; }
         public virtual DbSet<d_margin_sbl> d_margin_sbl { get; set; }
-        public virtual DbSet<d_mgused_daily> d_mgused_daily { get; set; }
         public virtual DbSet<d_block_mth_monthly> d_block_mth_monthly { get; set; }
         public virtual DbSet<d_block_yr_yearly> d_block_yr_yearly { get; set; }
         public virtual DbSet<d_odd_daily> d_odd_daily { get; set; }
+        public virtual DbSet<d_lend> d_lend { get; set; }
+        public virtual DbSet<d_mgratio> d_mgratio { get; set; }
+        public virtual DbSet<d_margin_rank_daily> d_margin_rank_daily { get; set; }
+        public virtual DbSet<d_margin_rank_monthly> d_margin_rank_monthly { get; set; }
+        public virtual DbSet<d_margin_rank_weekly> d_margin_rank_weekly { get; set; }
+        public virtual DbSet<d_mgused_daily> d_mgused_daily { get; set; }
+        public virtual DbSet<d_mgused_weekly> d_mgused_weekly { get; set; }
+        public virtual DbSet<d_ceil_ord> d_ceil_ord { get; set; }
+        public virtual DbSet<c_holiday> c_holiday { get; set; }
     }
 }

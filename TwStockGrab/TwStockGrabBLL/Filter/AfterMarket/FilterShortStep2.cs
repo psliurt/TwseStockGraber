@@ -8,9 +8,9 @@ using TwStockGrabBLL.Filter.AfterMarket.ResultData;
 
 namespace TwStockGrabBLL.Filter.AfterMarket
 {
-    public class FilterLongStep3 : AfterMarketFilter
+    public class FilterShortStep2 : AfterMarketFilter
     {
-        public FilterLongStep3(p_filter_stg stg) : base(stg)
+        public FilterShortStep2(p_filter_stg stg) : base(stg)
         {
 
         }
@@ -54,7 +54,6 @@ namespace TwStockGrabBLL.Filter.AfterMarket
             bool condition1 = false;
             bool condition2 = false;
             bool condition3 = false;
-            bool condition4 = false;
 
             foreach (var stock in marketStockList)
             {
@@ -64,41 +63,15 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     var marketStockCapitalData = marketForeignCapitalList.Where(x => x.stock_no == stock.Key).OrderBy(x => x.data_date).ToList();
                     var marketStockLendData = marketLendList.Where(x => x.stock_no == stock.Key).OrderBy(x => x.data_date).ToList();
 
-                    //判斷融資連續三天都是小於基準的第一天
+                    //判斷融資連續三天都是大於基準的第一天
                     if (marketStockMarginData.Count() == day)
                     {
                         mi_margin firstDayStandard = marketStockMarginData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
-                        for (int i = 1; i < day; i++)
-                        {
-                            mi_margin eachDayData = marketStockMarginData.ElementAt(i);
-                            if (eachDayData.finance_today_balance < firstDayStandard.finance_today_balance)
-                            {
-                                allDayLessThenFirst = true;
-                            }
-                            else
-                            {
-                                allDayLessThenFirst = false;
-                                break;
-                            }
-                        }
-
-                        condition1 = allDayLessThenFirst;
-                    }
-                    else
-                    {
-                        condition1 = false;
-                    }
-
-                    //判斷外資買超連續三天都是大於基準的第一天
-                    if (marketStockCapitalData.Count() == day)
-                    {
-                        twt38u firstDayStandard = marketStockCapitalData.ElementAt(0);
                         bool allDayMoreThenFirst = false;
                         for (int i = 1; i < day; i++)
                         {
-                            twt38u eachDayData = marketStockCapitalData.ElementAt(i);
-                            if (eachDayData.total_cnt_diff > firstDayStandard.total_cnt_diff)
+                            mi_margin eachDayData = marketStockMarginData.ElementAt(i);
+                            if (eachDayData.finance_today_balance > firstDayStandard.finance_today_balance)
                             {
                                 allDayMoreThenFirst = true;
                             }
@@ -109,7 +82,33 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                             }
                         }
 
-                        condition2 = allDayMoreThenFirst;
+                        condition1 = allDayMoreThenFirst;
+                    }
+                    else
+                    {
+                        condition1 = false;
+                    }
+
+                    //判斷外資賣超連續三天都是小於基準的第一天
+                    if (marketStockCapitalData.Count() == day)
+                    {
+                        twt38u firstDayStandard = marketStockCapitalData.ElementAt(0);
+                        bool allDayLessThenFirst = false;
+                        for (int i = 1; i < day; i++)
+                        {
+                            twt38u eachDayData = marketStockCapitalData.ElementAt(i);
+                            if (eachDayData.total_cnt_diff < firstDayStandard.total_cnt_diff)
+                            {
+                                allDayLessThenFirst = true;
+                            }
+                            else
+                            {
+                                allDayLessThenFirst = false;
+                                break;
+                            }
+                        }
+
+                        condition2 = allDayLessThenFirst;
                     }
                     else
                     {
@@ -119,39 +118,12 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     if (marketStockLendData.Count() == day)
                     {
                         twt93u firstDayStandard = marketStockLendData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
-
-                        for (int i = 1; i < day; i++)
-                        {
-                            twt93u eachDayData = marketStockLendData.ElementAt(i);
-                            if (eachDayData.lend_balance < firstDayStandard.lend_balance)
-                            {
-                                allDayLessThenFirst = true;
-                            }
-                            else
-                            {
-                                allDayLessThenFirst = false;
-                                break;
-                            }
-
-                        }
-
-                        condition3 = allDayLessThenFirst;
-                    }
-                    else
-                    {
-                        condition3 = false;
-                    }
-
-                    if (marketStockLendData.Count() == day)
-                    {
-                        twt93u firstDayStandard = marketStockLendData.ElementAt(0);
                         bool allDayMoreThenFirst = false;
 
                         for (int i = 1; i < day; i++)
                         {
                             twt93u eachDayData = marketStockLendData.ElementAt(i);
-                            if (eachDayData.margin_today_balance > firstDayStandard.margin_today_balance)
+                            if (eachDayData.lend_balance > firstDayStandard.lend_balance)
                             {
                                 allDayMoreThenFirst = true;
                             }
@@ -163,14 +135,14 @@ namespace TwStockGrabBLL.Filter.AfterMarket
 
                         }
 
-                        condition4 = allDayMoreThenFirst;
+                        condition3 = allDayMoreThenFirst;
                     }
                     else
                     {
-                        condition4 = false;
+                        condition3 = false;
                     }
 
-                    if (condition1 && condition2 && condition3 && condition4)
+                    if (condition1 && condition2 && condition3)
                     {
                         filteredList.Add(new FilterResultData
                         {
@@ -187,7 +159,6 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                 condition1 = false;
                 condition2 = false;
                 condition3 = false;
-                condition4 = false;
             }
 
 
@@ -202,36 +173,11 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     if (deskStockMarginData.Count() == day)
                     {
                         d_margin_bal firstDayStandard = deskStockMarginData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
-                        for (int i = 1; i < day; i++)
-                        {
-                            d_margin_bal eachDayData = deskStockMarginData.ElementAt(i);
-                            if (eachDayData.lend_balance < firstDayStandard.lend_balance)
-                            {
-                                allDayLessThenFirst = true;
-                            }
-                            else
-                            {
-                                allDayLessThenFirst = false;
-                                break;
-                            }
-                        }
-
-                        condition1 = allDayLessThenFirst;
-                    }
-                    else
-                    {
-                        condition1 = false;
-                    }
-
-                    if (deskStockCapitalData.Count() == day)
-                    {
-                        d_3itrade_hedge_daily firstDayStandard = deskStockCapitalData.ElementAt(0);
                         bool allDayMoreThenFirst = false;
                         for (int i = 1; i < day; i++)
                         {
-                            d_3itrade_hedge_daily eachDayData = deskStockCapitalData.ElementAt(i);
-                            if (eachDayData.foreign_all_diff > firstDayStandard.foreign_all_diff)
+                            d_margin_bal eachDayData = deskStockMarginData.ElementAt(i);
+                            if (eachDayData.lend_balance > firstDayStandard.lend_balance)
                             {
                                 allDayMoreThenFirst = true;
                             }
@@ -242,7 +188,32 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                             }
                         }
 
-                        condition2 = allDayMoreThenFirst;
+                        condition1 = allDayMoreThenFirst;
+                    }
+                    else
+                    {
+                        condition1 = false;
+                    }
+
+                    if (deskStockCapitalData.Count() == day)
+                    {
+                        d_3itrade_hedge_daily firstDayStandard = deskStockCapitalData.ElementAt(0);
+                        bool allDayLessThenFirst = false;
+                        for (int i = 1; i < day; i++)
+                        {
+                            d_3itrade_hedge_daily eachDayData = deskStockCapitalData.ElementAt(i);
+                            if (eachDayData.foreign_all_diff < firstDayStandard.foreign_all_diff)
+                            {
+                                allDayLessThenFirst = true;
+                            }
+                            else
+                            {
+                                allDayLessThenFirst = false;
+                                break;
+                            }
+                        }
+
+                        condition2 = allDayLessThenFirst;
                     }
                     else
                     {
@@ -252,56 +223,31 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     if (deskStockLendData.Count() == day)
                     {
                         d_margin_sbl firstDayStandard = deskStockLendData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
+                        bool allDayMoreThenFirst = false;
                         for (int i = 1; i < day; i++)
                         {
                             d_margin_sbl eachDayData = deskStockLendData.ElementAt(i);
-                            if (eachDayData.lend_today_balance < firstDayStandard.lend_today_balance)
+                            if (eachDayData.lend_today_balance > firstDayStandard.lend_today_balance)
                             {
-                                allDayLessThenFirst = true;
+                                allDayMoreThenFirst = true;
                             }
                             else
                             {
-                                allDayLessThenFirst = false;
+                                allDayMoreThenFirst = false;
                                 break;
                             }
                         }
 
-                        condition3 = allDayLessThenFirst;
+                        condition3 = allDayMoreThenFirst;
                     }
                     else
                     {
                         condition3 = false;
                     }
 
-                    if (deskStockLendData.Count() == day)
-                    {
-                        d_margin_sbl firstDayStandard = deskStockLendData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
-                        for (int i = 1; i < day; i++)
-                        {
-                            d_margin_sbl eachDayData = deskStockLendData.ElementAt(i);
-                            if (eachDayData.margin_today_balance > firstDayStandard.margin_today_balance)
-                            {
-                                allDayLessThenFirst = true;
-                            }
-                            else
-                            {
-                                allDayLessThenFirst = false;
-                                break;
-                            }
-                        }
-
-                        condition4 = allDayLessThenFirst;
-                    }
-                    else
-                    {
-                        condition4 = false;
-                    }
 
 
-
-                    if (condition1 && condition2 & condition3 && condition4)
+                    if (condition1 && condition2 & condition3)
                     {
                         filteredList.Add(new FilterResultData
                         {
@@ -317,7 +263,6 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                 condition1 = false;
                 condition2 = false;
                 condition3 = false;
-                condition4 = false;
             }
 
             //融資資料表

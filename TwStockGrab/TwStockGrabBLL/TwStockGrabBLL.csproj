@@ -126,6 +126,9 @@
     <Compile Include="DAL\bwibbu_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\c_holiday.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_3itrade_hedge_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
@@ -147,6 +150,9 @@
     <Compile Include="DAL\d_block_yr_yearly.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\d_ceil_ord.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_dealtr_hedge_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
@@ -156,7 +162,19 @@
     <Compile Include="DAL\d_index_summary.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\d_lend.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_margin_bal.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_margin_rank_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_margin_rank_monthly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_margin_rank_weekly.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_margin_sbl.cs">
@@ -168,7 +186,13 @@
     <Compile Include="DAL\d_market_statistics_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\d_mgratio.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_mgused_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_mgused_weekly.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_mkt.cs">
@@ -379,6 +403,9 @@
     <Compile Include="Filter\AfterMarket\FilterLongStep3.cs" />
     <Compile Include="Filter\AfterMarket\FilterNo1.cs" />
     <Compile Include="Filter\AfterMarket\FilterNo2.cs" />
+    <Compile Include="Filter\AfterMarket\FilterShortStep1.cs" />
+    <Compile Include="Filter\AfterMarket\FilterShortStep2.cs" />
+    <Compile Include="Filter\AfterMarket\FilterShortStep3.cs" />
     <Compile Include="Filter\AfterMarket\ResultData\FilterResultData.cs" />
     <Compile Include="Filter\FilterParam.cs" />
     <Compile Include="Filter\FilterParamOperation.cs" />
@@ -402,15 +429,22 @@
     <Compile Include="Logic\DeskGraber\DBlockDayGraber.cs" />
     <Compile Include="Logic\DeskGraber\DBlockMthMonthlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DBlockYrYearlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DCeilOrdGraber.cs" />
     <Compile Include="Logic\DeskGraber\DDealtrHedgeDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DForgtrDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DGraber.cs" />
     <Compile Include="Logic\DeskGraber\DIndexSummaryGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DLendGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarginBalGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarginRankDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarginRankMonthlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMarginRankWeeklyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarginSblGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarketHighlightGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMarketStatisticsDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMgratioGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMgUsedDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DMgUsedWeeklyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DMktGraber.cs" />
     <Compile Include="Logic\DeskGraber\DOddDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DPeraGraber.cs" />
@@ -433,6 +467,7 @@
     <Compile Include="Logic\FmsrfkGraber.cs" />
     <Compile Include="Logic\FmtqikGraber.cs" />
     <Compile Include="Logic\Graber.cs" />
+    <Compile Include="Logic\HolidayDataFetcher.cs" />
     <Compile Include="Logic\Mi5MinsGraber.cs" />
     <Compile Include="Logic\MiIndex01To20Graber.cs" />
     <Compile Include="Logic\MiIndexEtfGraber.cs" />
@@ -466,14 +501,21 @@
     <Compile Include="Logic\Rsp\Json\Desk\DBlockDay_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DBlockMthMonthly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DBlockYrYearly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DCeilOrd_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DDealtrHedgeDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DForgtrDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DIndexSummary_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DLend_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarginBal_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarginRankDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarginRankMonthly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMarginRankWeekly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarginSbl_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarketHighlight_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarketStatisticsDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMgratio_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMgUsedDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DMgUsedWeekly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMkt_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DOddDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DPeratioPera_Rsp.cs" />
@@ -495,6 +537,7 @@
     <Compile Include="Logic\Rsp\Json\FMNPTK_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\FMSRFK_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\FMTQIK_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\HolidayData_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\MI_5MINS_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\MI_INDEX_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\MI_INDEX_Top20_Rsp.cs" />

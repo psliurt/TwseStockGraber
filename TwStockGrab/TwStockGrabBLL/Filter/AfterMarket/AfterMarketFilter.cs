@@ -27,15 +27,37 @@ namespace TwStockGrabBLL.Filter.AfterMarket
         protected DateTime GetFilterDate()
         {
             DateTime current = DateTime.Now;
-
+            DateTime dataDate = current;
             if (current.Hour >= 17)
             {
-                return DateTime.Today;
+                dataDate = DateTime.Today;
             }
             else
             {
-                return DateTime.Today.AddDays(-1);
+                dataDate = DateTime.Today.AddDays(-1);
             }
+
+            DateTime twoWeekAgo = current.AddDays(-15);
+
+            
+            List<c_holiday> holidayList = null;
+            using (TwStockDataContext context = new TwStockDataContext())
+            {
+                 holidayList = context.Set<c_holiday>().AsNoTracking().Where(x => x.is_holiday == true && x.holiday_date <= dataDate && x.holiday_date >= twoWeekAgo).OrderByDescending(x=>x.holiday_date).ToList();
+            }
+
+            for (int i = 0; i < 13; i++)
+            {
+                c_holiday isRealHoliday = holidayList.Where(x => x.holiday_date == dataDate).FirstOrDefault();
+                if (isRealHoliday == null)
+                {
+                    return dataDate;
+                }
+
+                dataDate = dataDate.AddDays(-1);
+            }
+
+            return dataDate;
         }
     }
 }

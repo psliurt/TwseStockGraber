@@ -207,6 +207,19 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="c_holiday">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="holiday_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="holiday_name" Type="varchar" MaxLength="32" />
+          <Property Name="is_holiday" Type="bit" Nullable="false" />
+          <Property Name="holiday_category" Type="varchar" MaxLength="64" />
+          <Property Name="holiday_desc" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="d_3itrade_hedge_daily">
           <Key>
             <PropertyRef Name="Uid" />
@@ -333,6 +346,24 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="d_ceil_ord">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="close_price" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="up_down_price" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="deal_cnt" Type="bigint" />
+          <Property Name="ceil_floor_deal_cnt" Type="bigint" />
+          <Property Name="ceil_floor_ask_cnt" Type="bigint" />
+          <Property Name="ceil_floor_no_deal_cnt" Type="bigint" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="d_dealtr_hedge_daily">
           <Key>
             <PropertyRef Name="Uid" />
@@ -392,6 +423,25 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="d_lend">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="stock_agent" Type="varchar" MaxLength="64" />
+          <Property Name="lend_cnt" Type="int" />
+          <Property Name="lend_max_price" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="lend_success_cnt" Type="int" />
+          <Property Name="lend_floor" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="lend_ceil" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="lend_fail_cnt" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="d_margin_bal">
           <Key>
             <PropertyRef Name="Uid" />
@@ -418,6 +468,57 @@
           <Property Name="borrow_limit" Type="decimal" Precision="20" Scale="3" />
           <Property Name="offset" Type="int" />
           <Property Name="note" Type="varchar" MaxLength="128" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_margin_rank_daily">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="rank_order" Type="int" Nullable="false" />
+          <Property Name="mg_type" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="yesterday_balance" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="today_balance" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="total_used" Type="bigint" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_margin_rank_monthly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="rank_order" Type="int" Nullable="false" />
+          <Property Name="mg_type" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="yesterday_balance" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="today_balance" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="total_used" Type="bigint" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_margin_rank_weekly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="rank_order" Type="int" Nullable="false" />
+          <Property Name="mg_type" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="yesterday_balance" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="today_balance" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="total_used" Type="bigint" />
           <Property Name="title" Type="varchar" MaxLength="256" />
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
@@ -484,12 +585,47 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="d_mgratio">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="rank_order" Type="int" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="margin_avg_money" Type="bigint" />
+          <Property Name="margin_market_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="lend_avg_money" Type="bigint" />
+          <Property Name="lend_market_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="avg_money" Type="bigint" />
+          <Property Name="market_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="d_mgused_daily">
           <Key>
             <PropertyRef Name="Uid" />
           </Key>
           <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="mg_type" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="rank_order" Type="int" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="used_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_mgused_weekly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="mg_type" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="rank_order" Type="int" Nullable="false" />
           <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="stock_name" Type="varchar" MaxLength="64" />
@@ -1680,6 +1816,7 @@
           <EntitySet Name="bfiauu_yearly" EntityType="Self.bfiauu_yearly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="bft41u" EntityType="Self.bft41u" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="bwibbu_daily" EntityType="Self.bwibbu_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="c_holiday" EntityType="Self.c_holiday" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_3itrade_hedge_daily" EntityType="Self.d_3itrade_hedge_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_3itrdsum_daily" EntityType="Self.d_3itrdsum_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_amt_rank_daily" EntityType="Self.d_amt_rank_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
@@ -1687,14 +1824,21 @@
           <EntitySet Name="d_block_day" EntityType="Self.d_block_day" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_block_mth_monthly" EntityType="Self.d_block_mth_monthly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_block_yr_yearly" EntityType="Self.d_block_yr_yearly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_ceil_ord" EntityType="Self.d_ceil_ord" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_dealtr_hedge_daily" EntityType="Self.d_dealtr_hedge_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_forgtr_daily" EntityType="Self.d_forgtr_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_index_summary" EntityType="Self.d_index_summary" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_lend" EntityType="Self.d_lend" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_margin_bal" EntityType="Self.d_margin_bal" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_margin_rank_daily" EntityType="Self.d_margin_rank_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_margin_rank_monthly" EntityType="Self.d_margin_rank_monthly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_margin_rank_weekly" EntityType="Self.d_margin_rank_weekly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_margin_sbl" EntityType="Self.d_margin_sbl" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_market_highlight" EntityType="Self.d_market_highlight" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_market_statistics_daily" EntityType="Self.d_market_statistics_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_mgratio" EntityType="Self.d_mgratio" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_mgused_daily" EntityType="Self.d_mgused_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_mgused_weekly" EntityType="Self.d_mgused_weekly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_mkt" EntityType="Self.d_mkt" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_odd_daily" EntityType="Self.d_odd_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_pera" EntityType="Self.d_pera" Schema="tw_stock_history_warehouse" store:Type="Tables" />
@@ -1848,10 +1992,18 @@
           <EntitySet Name="p_filter_stg_describe" EntityType="TwStockDataNSModel.p_filter_stg_describe" />
           <EntitySet Name="p_filter_stg" EntityType="TwStockDataNSModel.p_filter_stg" />
           <EntitySet Name="d_margin_sbl" EntityType="TwStockDataNSModel.d_margin_sbl" />
-          <EntitySet Name="d_mgused_daily" EntityType="TwStockDataNSModel.d_mgused_daily" />
           <EntitySet Name="d_block_mth_monthly" EntityType="TwStockDataNSModel.d_block_mth_monthly" />
           <EntitySet Name="d_block_yr_yearly" EntityType="TwStockDataNSModel.d_block_yr_yearly" />
           <EntitySet Name="d_odd_daily" EntityType="TwStockDataNSModel.d_odd_daily" />
+          <EntitySet Name="d_lend" EntityType="TwStockDataNSModel.d_lend" />
+          <EntitySet Name="d_mgratio" EntityType="TwStockDataNSModel.d_mgratio" />
+          <EntitySet Name="d_margin_rank_daily" EntityType="TwStockDataNSModel.d_margin_rank_daily" />
+          <EntitySet Name="d_margin_rank_monthly" EntityType="TwStockDataNSModel.d_margin_rank_monthly" />
+          <EntitySet Name="d_margin_rank_weekly" EntityType="TwStockDataNSModel.d_margin_rank_weekly" />
+          <EntitySet Name="d_mgused_daily" EntityType="TwStockDataNSModel.d_mgused_daily" />
+          <EntitySet Name="d_mgused_weekly" EntityType="TwStockDataNSModel.d_mgused_weekly" />
+          <EntitySet Name="d_ceil_ord" EntityType="TwStockDataNSModel.d_ceil_ord" />
+          <EntitySet Name="c_holiday" EntityType="TwStockDataNSModel.c_holiday" />
         </EntityContainer>
         <EntityType Name="bfi84u2">
           <Key>
@@ -3453,20 +3605,6 @@
           <Property Name="create_at" Type="DateTime" Nullable="false" />
           <Property Name="update_at" Type="DateTime" Nullable="false" />
         </EntityType>
-        <EntityType Name="d_mgused_daily">
-          <Key>
-            <PropertyRef Name="Uid" />
-          </Key>
-          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="data_date" Type="DateTime" Nullable="false" />
-          <Property Name="rank_order" Type="Int32" Nullable="false" />
-          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="used_percent" Type="Decimal" />
-          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="create_at" Type="DateTime" Nullable="false" />
-          <Property Name="update_at" Type="DateTime" Nullable="false" />
-        </EntityType>
         <EntityType Name="d_block_mth_monthly">
           <Key>
             <PropertyRef Name="Uid" />
@@ -3512,6 +3650,156 @@
           <Property Name="deal_money" Type="Decimal" />
           <Property Name="deal_money_percent" Type="Decimal" />
           <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_lend">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="stock_agent" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="lend_cnt" Type="Int32" />
+          <Property Name="lend_max_price" Type="Decimal" />
+          <Property Name="lend_success_cnt" Type="Int32" />
+          <Property Name="lend_floor" Type="Decimal" />
+          <Property Name="lend_ceil" Type="Decimal" />
+          <Property Name="lend_fail_cnt" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_mgratio">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="rank_order" Type="Int32" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="margin_avg_money" Type="Int64" />
+          <Property Name="margin_market_percent" Type="Decimal" />
+          <Property Name="lend_avg_money" Type="Int64" />
+          <Property Name="lend_market_percent" Type="Decimal" />
+          <Property Name="avg_money" Type="Int64" />
+          <Property Name="market_percent" Type="Decimal" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_margin_rank_daily">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="rank_order" Type="Int32" Nullable="false" />
+          <Property Name="mg_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="yesterday_balance" Type="Decimal" />
+          <Property Name="today_balance" Type="Decimal" />
+          <Property Name="total_used" Type="Int64" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_margin_rank_monthly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="rank_order" Type="Int32" Nullable="false" />
+          <Property Name="mg_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="yesterday_balance" Type="Decimal" />
+          <Property Name="today_balance" Type="Decimal" />
+          <Property Name="total_used" Type="Int64" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_margin_rank_weekly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="rank_order" Type="Int32" Nullable="false" />
+          <Property Name="mg_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="yesterday_balance" Type="Decimal" />
+          <Property Name="today_balance" Type="Decimal" />
+          <Property Name="total_used" Type="Int64" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_mgused_daily">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="mg_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="rank_order" Type="Int32" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="used_percent" Type="Decimal" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_mgused_weekly">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="mg_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="rank_order" Type="Int32" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="used_percent" Type="Decimal" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_ceil_ord">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="close_price" Type="Decimal" />
+          <Property Name="up_down_price" Type="Decimal" />
+          <Property Name="deal_cnt" Type="Int64" />
+          <Property Name="ceil_floor_deal_cnt" Type="Int64" />
+          <Property Name="ceil_floor_ask_cnt" Type="Int64" />
+          <Property Name="ceil_floor_no_deal_cnt" Type="Int64" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="c_holiday">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="holiday_date" Type="DateTime" Nullable="false" />
+          <Property Name="holiday_name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="is_holiday" Type="Boolean" Nullable="false" />
+          <Property Name="holiday_category" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="holiday_desc" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="create_at" Type="DateTime" Nullable="false" />
           <Property Name="update_at" Type="DateTime" Nullable="false" />
         </EntityType>
@@ -5206,21 +5494,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="d_mgused_daily">
-            <EntityTypeMapping TypeName="TwStockDataNSModel.d_mgused_daily">
-              <MappingFragment StoreEntitySet="d_mgused_daily">
-                <ScalarProperty Name="update_at" ColumnName="update_at" />
-                <ScalarProperty Name="create_at" ColumnName="create_at" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="used_percent" ColumnName="used_percent" />
-                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
-                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
-                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
-                <ScalarProperty Name="data_date" ColumnName="data_date" />
-                <ScalarProperty Name="Uid" ColumnName="Uid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="d_block_mth_monthly">
             <EntityTypeMapping TypeName="TwStockDataNSModel.d_block_mth_monthly">
               <MappingFragment StoreEntitySet="d_block_mth_monthly">
@@ -5268,6 +5541,165 @@
                 <ScalarProperty Name="deal_cnt" ColumnName="deal_cnt" />
                 <ScalarProperty Name="trade_type" ColumnName="trade_type" />
                 <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_lend">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_lend">
+              <MappingFragment StoreEntitySet="d_lend">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="lend_fail_cnt" ColumnName="lend_fail_cnt" />
+                <ScalarProperty Name="lend_ceil" ColumnName="lend_ceil" />
+                <ScalarProperty Name="lend_floor" ColumnName="lend_floor" />
+                <ScalarProperty Name="lend_success_cnt" ColumnName="lend_success_cnt" />
+                <ScalarProperty Name="lend_max_price" ColumnName="lend_max_price" />
+                <ScalarProperty Name="lend_cnt" ColumnName="lend_cnt" />
+                <ScalarProperty Name="stock_agent" ColumnName="stock_agent" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_mgratio">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_mgratio">
+              <MappingFragment StoreEntitySet="d_mgratio">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="market_percent" ColumnName="market_percent" />
+                <ScalarProperty Name="avg_money" ColumnName="avg_money" />
+                <ScalarProperty Name="lend_market_percent" ColumnName="lend_market_percent" />
+                <ScalarProperty Name="lend_avg_money" ColumnName="lend_avg_money" />
+                <ScalarProperty Name="margin_market_percent" ColumnName="margin_market_percent" />
+                <ScalarProperty Name="margin_avg_money" ColumnName="margin_avg_money" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_margin_rank_daily">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_margin_rank_daily">
+              <MappingFragment StoreEntitySet="d_margin_rank_daily">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="total_used" ColumnName="total_used" />
+                <ScalarProperty Name="today_balance" ColumnName="today_balance" />
+                <ScalarProperty Name="yesterday_balance" ColumnName="yesterday_balance" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="mg_type" ColumnName="mg_type" />
+                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_margin_rank_monthly">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_margin_rank_monthly">
+              <MappingFragment StoreEntitySet="d_margin_rank_monthly">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="total_used" ColumnName="total_used" />
+                <ScalarProperty Name="today_balance" ColumnName="today_balance" />
+                <ScalarProperty Name="yesterday_balance" ColumnName="yesterday_balance" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="mg_type" ColumnName="mg_type" />
+                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_margin_rank_weekly">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_margin_rank_weekly">
+              <MappingFragment StoreEntitySet="d_margin_rank_weekly">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="total_used" ColumnName="total_used" />
+                <ScalarProperty Name="today_balance" ColumnName="today_balance" />
+                <ScalarProperty Name="yesterday_balance" ColumnName="yesterday_balance" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="mg_type" ColumnName="mg_type" />
+                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_mgused_daily">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_mgused_daily">
+              <MappingFragment StoreEntitySet="d_mgused_daily">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="used_percent" ColumnName="used_percent" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="mg_type" ColumnName="mg_type" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_mgused_weekly">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_mgused_weekly">
+              <MappingFragment StoreEntitySet="d_mgused_weekly">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="used_percent" ColumnName="used_percent" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="rank_order" ColumnName="rank_order" />
+                <ScalarProperty Name="mg_type" ColumnName="mg_type" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_ceil_ord">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_ceil_ord">
+              <MappingFragment StoreEntitySet="d_ceil_ord">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="ceil_floor_no_deal_cnt" ColumnName="ceil_floor_no_deal_cnt" />
+                <ScalarProperty Name="ceil_floor_ask_cnt" ColumnName="ceil_floor_ask_cnt" />
+                <ScalarProperty Name="ceil_floor_deal_cnt" ColumnName="ceil_floor_deal_cnt" />
+                <ScalarProperty Name="deal_cnt" ColumnName="deal_cnt" />
+                <ScalarProperty Name="up_down_price" ColumnName="up_down_price" />
+                <ScalarProperty Name="close_price" ColumnName="close_price" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="c_holiday">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.c_holiday">
+              <MappingFragment StoreEntitySet="c_holiday">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="holiday_desc" ColumnName="holiday_desc" />
+                <ScalarProperty Name="holiday_category" ColumnName="holiday_category" />
+                <ScalarProperty Name="is_holiday" ColumnName="is_holiday" />
+                <ScalarProperty Name="holiday_name" ColumnName="holiday_name" />
+                <ScalarProperty Name="holiday_date" ColumnName="holiday_date" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
               </MappingFragment>
             </EntityTypeMapping>

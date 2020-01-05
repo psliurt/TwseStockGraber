@@ -12,7 +12,7 @@ namespace TwStockGrabBLL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class d_mgused_daily
+    public partial class d_mgused_weekly
     {
         public decimal Uid { get; set; }
         public System.DateTime data_date { get; set; }

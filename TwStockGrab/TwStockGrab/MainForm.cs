@@ -776,15 +776,81 @@ namespace TwStockGrab
             //    Sleep();
             //} while (d33 <= DateTime.Today);
 
-            DBlockYrYearlyGraber g34 = new DBlockYrYearlyGraber();
-            DateTime d34 = new DateTime(2007, 1, 1);
+            //DBlockYrYearlyGraber g34 = new DBlockYrYearlyGraber();
+            //DateTime d34 = new DateTime(2007, 1, 1);
+            //do
+            //{
+            //    g34.DoJob(d34);
+            //    d34 = d34.AddYears(1);
+            //    Sleep();
+            //} while (d34 <= DateTime.Today);
+
+            //DLendGraber g35 = new DLendGraber();
+            //DateTime d35 = new DateTime(2007, 1, 1);
+            //do
+            //{
+            //    g35.DoJob(d35);
+            //    d35 = d35.AddMonths(1);
+            //    Sleep();
+            //} while (d35 <= DateTime.Today);
+
+            //DMgratioGraber g36 = new DMgratioGraber();
+            //DateTime d36 = new DateTime(2007, 1, 1);
+            //do
+            //{
+            //    g36.DoJob(d36);
+            //    d36 = d36.AddMonths(1);
+            //    Sleep();
+            //} while (d36 <= DateTime.Today);
+
+            //DMarginRankDailyGraber g37 = new DMarginRankDailyGraber();
+            //DateTime d37 = new DateTime(2007, 4, 23);
+            //do
+            //{
+            //    g37.DoJob(d37);
+            //    d37 = d37.AddDays(1);
+            //    Sleep();
+            //} while (d37 <= DateTime.Today);
+
+            //DMarginRankWeeklyGraber g38 = new DMarginRankWeeklyGraber();
+            //DateTime d38 = new DateTime(2007, 4, 28);
+            //DateTime thisWeekLast = new DateTime(2020, 1, 4);
+            //do
+            //{
+            //    g38.DoJob(d38);
+            //    d38 = d38.AddDays(7);
+            //    Sleep();
+            //} while (d38 <= thisWeekLast);
+
+            //DMarginRankMonthlyGraber g39 = new DMarginRankMonthlyGraber();
+            //DateTime d39 = new DateTime(2007, 4, 1);
+            //DateTime thisMonthFirst = new DateTime(2020, 1, 1);
+            //do
+            //{
+            //    g39.DoJob(d39);
+            //    d39 = d39.AddMonths(1);
+            //    Sleep();
+            //} while (d39 < thisMonthFirst);
+
+            //DMgUsedWeeklyGraber g40 = new DMgUsedWeeklyGraber();
+            //DateTime d40 = new DateTime(2007, 4, 28);
+            //DateTime thisWeekStart = new DateTime(2019, 12, 30);
+            //do
+            //{
+            //    g40.DoJob(d40);
+            //    d40 = d40.AddDays(7);
+            //    Sleep();
+            //} while (d40 < thisWeekStart);
+
+            DCeilOrdGraber g41 = new DCeilOrdGraber();
+            DateTime d41 = new DateTime(2007, 4, 23);
+            
             do
             {
-                g34.DoJob(d34);
-                d34 = d34.AddYears(1);
+                g41.DoJob(d41);
+                d41 = d41.AddDays(1);
                 Sleep();
-            } while (d34 <= DateTime.Today);
-
+            } while (d41 <= DateTime.Today);
 
             MessageBox.Show("OK");           
 
@@ -1577,7 +1643,7 @@ namespace TwStockGrab
                 ToDate = ToDatePicker.Value.Date,
                 BackFromDate = FromBackDatePicker.Value.Date
             },
-            new BfiauuYearlyGraber());
+            grbList);
 
             //Graber g1 = new MiIndexGraber();
             //g1.DoJob(DataDatePicker.Value.Date);
@@ -1981,6 +2047,36 @@ namespace TwStockGrab
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_block_yr_yearly Complete!");
+        }
+
+        private void _DMarginRankDailyBtn_Click(object sender, EventArgs e)
+        {
+            DMarginRankDailyGraber g1 = new DMarginRankDailyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_margin_rank_daily Complete!");
+        }
+
+        private void _DMarginRankWeeklyBtn_Click(object sender, EventArgs e)
+        {
+            DMarginRankWeeklyGraber g1 = new DMarginRankWeeklyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_margin_rank_weekly Complete!");
+        }
+
+        private void _DMarginRankMonthlyBtn_Click(object sender, EventArgs e)
+        {
+            DMarginRankMonthlyGraber g1 = new DMarginRankMonthlyGraber();
+            g1.DoJob(DataDatePicker.Value.Date);
+
+            MessageBox.Show("d_margin_rank_monthly Complete!");
+        }
+
+        private void HolidayDataBtn_Click(object sender, EventArgs e)
+        {
+            HolidayDataFetcher fetcher = new HolidayDataFetcher();
+            fetcher.Fetch();
         }
     }
 }

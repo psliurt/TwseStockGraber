@@ -12,44 +12,48 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
-    public class DMgUsedDailyGraber
+    public class DMarginRankDailyGraber
     {
         /// <summary>
-        /// 首頁 > 上櫃 > 融資融券 > 融資融券使用率報表
-        /// d_mgused_daily
-        /// 本資訊自民國96年1月起開始提供 實際由2007/4/23開始提供
+        /// 首頁 > 上櫃 > 融資融券 > 融資融券增減排行表
+        /// d_margin_rank_daily
+        /// 本資訊自民國96年1月起開始提供 2007/04/23實際有資料
         /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/margin_trading/margin_used/mgused.php?l=zh-tw
+        /// https://www.tpex.org.tw/web/stock/margin_trading/short_sell/margin_rank.php?l=zh-tw
         /// </summary>
         public void DoJob(DateTime dataDate)
         {
-            List<string> sideList = new List<string>();
-            sideList.Add("Marg"); //融資
-            sideList.Add("Shrt"); //融券
+            List<string> marginTypeList = new List<string>();
+            marginTypeList.Add("MargGain"); //融資增加
+            marginTypeList.Add("MargLose"); //融資減少
+            marginTypeList.Add("ShrtGain"); //融券增加
+            marginTypeList.Add("ShrtLose"); //融券減少
 
-            foreach (var side in sideList)
+            foreach (var marginType in marginTypeList)
             {
-                string responseContent = GetWebContent(dataDate, side);
-                DMgUsedDaily_Rsp rsp = JsonConvert.DeserializeObject<DMgUsedDaily_Rsp>(responseContent);
+                string responseContent = GetWebContent(dataDate, marginType);
+                DMarginRankDaily_Rsp rsp = JsonConvert.DeserializeObject<DMarginRankDaily_Rsp>(responseContent);
                 if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
                 {
                     Sleep();
                 }
                 else
                 {
-                    SaveToDatabase(rsp, dataDate, side);
+                    SaveToDatabase(rsp, dataDate, marginType);
                     Sleep();
                 }
-            }            
+            }
+
         }
 
-        private void SaveToDatabase(DMgUsedDaily_Rsp rsp, DateTime dataDate, string marginType)
+        private void SaveToDatabase(DMarginRankDaily_Rsp rsp, DateTime dataDate, string marginType)
         {
-            List<d_mgused_daily> tmpAddList = new List<d_mgused_daily>();
-            List<d_mgused_daily> tmpDataList = null;
+            List<d_margin_rank_daily> tmpAddList = new List<d_margin_rank_daily>();
+            List<d_margin_rank_daily> tmpDataList = null;
+
             using (TwStockDataContext context = new TwStockDataContext())
             {
-                tmpDataList = context.Set<d_mgused_daily>().AsNoTracking().Where(x => x.data_date == dataDate && x.mg_type == marginType).ToList();
+                tmpDataList = context.Set<d_margin_rank_daily>().AsNoTracking().Where(x => x.data_date == dataDate && x.mg_type == marginType).ToList();
             }
 
             foreach (var data in rsp.aaData)
@@ -57,43 +61,45 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                 int rankOrder = ToInt(data.ElementAt(0).Trim());
                 string stockNo = data.ElementAt(1).Trim();
 
-                d_mgused_daily existItem = tmpDataList.Where(x => x.stock_no == stockNo && x.mg_type == marginType && x.data_date == dataDate && x.rank_order == rankOrder).FirstOrDefault();
+                d_margin_rank_daily existItem = tmpDataList.Where(x => x.stock_no == stockNo && x.data_date == dataDate && x.rank_order == rankOrder).FirstOrDefault();
                 if (existItem == null)
                 {
-                    tmpAddList.Add(new d_mgused_daily
+
+                    tmpAddList.Add(new d_margin_rank_daily
                     {
                         data_date = dataDate,
-                        mg_type = marginType,
                         rank_order = rankOrder,
                         stock_no = stockNo,
                         stock_name = data.ElementAt(2).Trim(),
-                        used_percent = ToDecimalQ(data.ElementAt(3).Trim()),
+                        yesterday_balance = ToDecimalQ(data.ElementAt(3).Trim()),
+                        today_balance = ToDecimalQ(data.ElementAt(4).Trim()),
+                        total_used = ToLongQ(data.ElementAt(5).Trim()),
+                        mg_type = marginType,                        
                         title = rsp.reportTitle.Trim(),
                         create_at = DateTime.Now,
                         update_at = DateTime.Now
                     });
+
                 }
             }
 
             using (TwStockDataContext context = new TwStockDataContext())
             {
-                context.d_mgused_daily.AddRange(tmpAddList);
+                context.d_margin_rank_daily.AddRange(tmpAddList);
 
                 context.SaveChanges();
             }
         }
 
-        private string GetWebContent(DateTime date, string sideType)
+        private string GetWebContent(DateTime date, string marginType)
         {
             string lang = "zh-tw";
-            string freq = "D";
-
+            string dataType = "D"; //daily
             string rocDate = ParseADDateToRocString(date);
             string paramUnderLine = GetTimeStamp();
-
-            //https://www.tpex.org.tw/web/stock/margin_trading/margin_used/mgused_result.php?l=zh-tw&t=D&type=Shrt&d=108/12/20&_=1577164318712
-            string url = string.Format("https://www.tpex.org.tw/web/stock/margin_trading/margin_used/mgused_result.php?l={0}&t={1}&type={2}&d={3}&_={4}",
-                lang, freq, sideType, rocDate, paramUnderLine);
+            //https://www.tpex.org.tw/web/stock/margin_trading/short_sell/margin_rank_result.php?l=zh-tw&t=D&type=MargGain&d=109/01/02&_=1578129214429
+            string url = string.Format("https://www.tpex.org.tw/web/stock/margin_trading/short_sell/margin_rank_result.php?l={0}&t={1}&type={2}&d={3}&_={4}",
+                lang, dataType, marginType, rocDate, paramUnderLine);
 
             return GetHttpResponse(url);
         }
@@ -157,6 +163,32 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                 day.ToString().PadLeft(2, '0'));
         }
 
+        /// <summary>
+        /// 把格式為 yyy/MM/dd 或是 yy/MM/dd 的民國年字串轉為DateTime物件
+        /// </summary>
+        /// <param name="rocString">yyy/MM/dd或yy/MM/dd民國年日期字串</param>
+        /// <returns></returns>
+        protected DateTime? GetDateFromRocStringQ(string rocString)
+        {
+            if (string.IsNullOrEmpty(rocString))
+            {
+                return null;
+            }
+
+            string[] dateParts = rocString.Split('/');
+
+            if (dateParts.Length != 3)
+            {
+                return null;
+            }
+
+            int year = 1911 + Convert.ToInt32(dateParts[0]);
+            int month = Convert.ToInt32(dateParts[1]);
+            int day = Convert.ToInt32(dateParts[2]);
+
+            return new DateTime(year, month, day);
+        }
+
         private int? ToIntQ(string data)
         {
             if (string.IsNullOrEmpty(data))
@@ -165,9 +197,23 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             }
 
             data = data.Replace(",", "");
-            data = data.Replace("(", "");
-            data = data.Replace(")", "");
             return Convert.ToInt32(data);
+        }
+
+        private short TransBuySellType(string t)
+        {
+            if (t.Trim().ToLower() == "sell")
+            {
+                return -1;
+            }
+
+            if (t.Trim().ToLower() == "buy")
+            {
+                return 1;
+            }
+
+            return 0;
+
         }
 
         private int ToInt(string data)
@@ -186,6 +232,11 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             if (string.IsNullOrEmpty(data))
             { return null; }
 
+            if (data == "---")
+            {
+                return null;
+            }
+
             if (data == "--")
             {
                 return null;
@@ -196,9 +247,46 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                 return null;
             }
 
-            string noCommaString = data.Replace(",", "");
+            if (data.Trim() == "除權息")
+            {
+                return null;
+            }
 
-            return Convert.ToDecimal(noCommaString);
+            if (data.Trim() == "除息")
+            {
+                return null;
+            }
+
+            if (data.Trim() == "除權")
+            {
+                return null;
+            }
+
+            string noPercentSymbolSring = data.Replace("%", "");
+
+            string noCommaString = noPercentSymbolSring.Replace(",", "");
+
+            decimal d = 0;
+            if (decimal.TryParse(noCommaString, out d))
+            {
+                return d;
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
+        protected long? ToLongQ(string data)
+        {
+            if (string.IsNullOrEmpty(data))
+            {
+                return null;
+            }
+            data = data.Replace(",", "");
+            return Convert.ToInt64(data);
         }
     }
 }

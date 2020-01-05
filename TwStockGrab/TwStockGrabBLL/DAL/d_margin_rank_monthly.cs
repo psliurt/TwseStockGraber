@@ -12,15 +12,17 @@ namespace TwStockGrabBLL.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class d_mgused_daily
+    public partial class d_margin_rank_monthly
     {
         public decimal Uid { get; set; }
         public System.DateTime data_date { get; set; }
-        public string mg_type { get; set; }
         public int rank_order { get; set; }
+        public string mg_type { get; set; }
         public string stock_no { get; set; }
         public string stock_name { get; set; }
-        public Nullable<decimal> used_percent { get; set; }
+        public Nullable<decimal> yesterday_balance { get; set; }
+        public Nullable<decimal> today_balance { get; set; }
+        public Nullable<long> total_used { get; set; }
         public string title { get; set; }
         public System.DateTime create_at { get; set; }
         public System.DateTime update_at { get; set; }
