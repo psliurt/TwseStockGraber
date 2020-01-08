@@ -55,6 +55,7 @@ namespace TwStockGrabBLL.Filter.AfterMarket
             bool condition2 = false;
             bool condition3 = false;
 
+            //上市股票判斷
             foreach (var stock in marketStockList)
             {
                 if (stock.Key.Length == 4)
@@ -67,48 +68,54 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     if (marketStockMarginData.Count() == day)
                     {
                         mi_margin firstDayStandard = marketStockMarginData.ElementAt(0);
-                        bool allDayMoreThenFirst = false;
-                        for (int i = 1; i < day; i++)
+                        if (firstDayStandard.finance_today_balance > 0) //第一天的融資必須大於0
                         {
-                            mi_margin eachDayData = marketStockMarginData.ElementAt(i);
-                            if (eachDayData.finance_today_balance > firstDayStandard.finance_today_balance)
+                            bool allDayMoreThenFirst = false;
+                            for (int i = 1; i < day; i++)
                             {
-                                allDayMoreThenFirst = true;
+                                mi_margin eachDayData = marketStockMarginData.ElementAt(i);
+                                if (eachDayData.finance_today_balance > firstDayStandard.finance_today_balance)
+                                {
+                                    allDayMoreThenFirst = true;
+                                }
+                                else
+                                {
+                                    allDayMoreThenFirst = false;
+                                    break;
+                                }
                             }
-                            else
-                            {
-                                allDayMoreThenFirst = false;
-                                break;
-                            }
-                        }
 
-                        condition1 = allDayMoreThenFirst;
+                            condition1 = allDayMoreThenFirst;
+                        }
+                        else
+                        {
+                            condition1 = false;
+                        }
                     }
                     else
                     {
                         condition1 = false;
                     }
 
-                    //判斷外資賣超連續三天都是小於基準的第一天
+                    //判斷外資賣超連續三天，每一天都比前一天賣得更多
                     if (marketStockCapitalData.Count() == day)
                     {
                         twt38u firstDayStandard = marketStockCapitalData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
-                        for (int i = 1; i < day; i++)
-                        {
-                            twt38u eachDayData = marketStockCapitalData.ElementAt(i);
-                            if (eachDayData.total_cnt_diff < firstDayStandard.total_cnt_diff)
-                            {
-                                allDayLessThenFirst = true;
-                            }
-                            else
-                            {
-                                allDayLessThenFirst = false;
-                                break;
-                            }
-                        }
+                        twt38u secondDay = marketStockCapitalData.ElementAt(1);
+                        twt38u thirdDay = marketStockCapitalData.ElementAt(2);
+                        twt38u fourthDay = marketStockCapitalData.ElementAt(3);
 
-                        condition2 = allDayLessThenFirst;
+                        if (fourthDay.total_cnt_diff < thirdDay.total_cnt_diff &&
+                            thirdDay.total_cnt_diff < secondDay.total_cnt_diff &&
+                            secondDay.total_cnt_diff < firstDayStandard.total_cnt_diff &&
+                            firstDayStandard.total_cnt_diff < 0)
+                        {
+                            condition2 = true;
+                        }
+                        else
+                        {
+                            condition2 = false;
+                        }
                     }
                     else
                     {
@@ -161,7 +168,7 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                 condition3 = false;
             }
 
-
+            //上櫃股票判斷
             foreach (var stock in deskStockList)
             {
                 if (stock.Key.Length == 4)
@@ -173,22 +180,29 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     if (deskStockMarginData.Count() == day)
                     {
                         d_margin_bal firstDayStandard = deskStockMarginData.ElementAt(0);
-                        bool allDayMoreThenFirst = false;
-                        for (int i = 1; i < day; i++)
+                        if (firstDayStandard.lend_balance > 0)
                         {
-                            d_margin_bal eachDayData = deskStockMarginData.ElementAt(i);
-                            if (eachDayData.lend_balance > firstDayStandard.lend_balance)
+                            bool allDayMoreThenFirst = false;
+                            for (int i = 1; i < day; i++)
                             {
-                                allDayMoreThenFirst = true;
+                                d_margin_bal eachDayData = deskStockMarginData.ElementAt(i);
+                                if (eachDayData.lend_balance > firstDayStandard.lend_balance)
+                                {
+                                    allDayMoreThenFirst = true;
+                                }
+                                else
+                                {
+                                    allDayMoreThenFirst = false;
+                                    break;
+                                }
                             }
-                            else
-                            {
-                                allDayMoreThenFirst = false;
-                                break;
-                            }
-                        }
 
-                        condition1 = allDayMoreThenFirst;
+                            condition1 = allDayMoreThenFirst;
+                        }
+                        else
+                        {
+                            condition1 = false;
+                        }
                     }
                     else
                     {
@@ -198,22 +212,21 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     if (deskStockCapitalData.Count() == day)
                     {
                         d_3itrade_hedge_daily firstDayStandard = deskStockCapitalData.ElementAt(0);
-                        bool allDayLessThenFirst = false;
-                        for (int i = 1; i < day; i++)
-                        {
-                            d_3itrade_hedge_daily eachDayData = deskStockCapitalData.ElementAt(i);
-                            if (eachDayData.foreign_all_diff < firstDayStandard.foreign_all_diff)
-                            {
-                                allDayLessThenFirst = true;
-                            }
-                            else
-                            {
-                                allDayLessThenFirst = false;
-                                break;
-                            }
-                        }
+                        d_3itrade_hedge_daily secondDay = deskStockCapitalData.ElementAt(1);
+                        d_3itrade_hedge_daily thirdDay = deskStockCapitalData.ElementAt(2);
+                        d_3itrade_hedge_daily fourthDay = deskStockCapitalData.ElementAt(3);
 
-                        condition2 = allDayLessThenFirst;
+                        if (fourthDay.foreign_all_diff < thirdDay.foreign_all_diff &&
+                            thirdDay.foreign_all_diff < secondDay.foreign_all_diff &&
+                            secondDay.foreign_all_diff < firstDayStandard.foreign_all_diff &&
+                            firstDayStandard.foreign_all_diff < 0)
+                        {
+                            condition2 = true;
+                        }
+                        else
+                        {
+                            condition2 = false;
+                        }
                     }
                     else
                     {

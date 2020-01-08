@@ -373,7 +373,7 @@ CREATE TABLE `d_3itrade_hedge_daily` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=18583 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='三大法人日交易明細資訊';
+) ENGINE=InnoDB AUTO_INCREMENT=20257 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='三大法人日交易明細資訊';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -415,7 +415,49 @@ CREATE TABLE `d_amt_rank_daily` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2643 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT=' 個股成交值排行';
+) ENGINE=InnoDB AUTO_INCREMENT=2643 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股成交值排行';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_amt_rank_monthly`
+--
+
+DROP TABLE IF EXISTS `d_amt_rank_monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_amt_rank_monthly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_value` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=7571 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股成交值排行(月)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_amt_rank_yearly`
+--
+
+DROP TABLE IF EXISTS `d_amt_rank_yearly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_amt_rank_yearly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_value` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9440 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股成交值排行(年)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -675,7 +717,7 @@ CREATE TABLE `d_margin_bal` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=24213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='上櫃股票融資融券餘額';
+) ENGINE=InnoDB AUTO_INCREMENT=26446 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='上櫃股票融資融券餘額';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -779,7 +821,7 @@ CREATE TABLE `d_margin_sbl` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12584 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='融券借券賣出餘額';
+) ENGINE=InnoDB AUTO_INCREMENT=14856 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='融券借券賣出餘額';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1092,6 +1134,48 @@ CREATE TABLE `d_rt_declined_daily` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `d_rt_declined_monthly`
+--
+
+DROP TABLE IF EXISTS `d_rt_declined_monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_rt_declined_monthly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `down_percent` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=50955 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股跌幅排行(月)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_rt_declined_weekly`
+--
+
+DROP TABLE IF EXISTS `d_rt_declined_weekly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_rt_declined_weekly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `down_percent` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股跌幅排行(周)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `d_rt_rally_daily`
 --
 
@@ -1112,6 +1196,48 @@ CREATE TABLE `d_rt_rally_daily` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=814 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股漲幅排行';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_rt_rally_monthly`
+--
+
+DROP TABLE IF EXISTS `d_rt_rally_monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_rt_rally_monthly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `up_percent` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=45603 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股漲幅排行(周)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_rt_rally_weekly`
+--
+
+DROP TABLE IF EXISTS `d_rt_rally_weekly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_rt_rally_weekly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `up_percent` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=13595 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股漲幅排行(周)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1205,6 +1331,48 @@ CREATE TABLE `d_stk_avg_daily` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `d_stk_avg_monthly`
+--
+
+DROP TABLE IF EXISTS `d_stk_avg_monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_stk_avg_monthly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `avg_count` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6455 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股日均量排行(月)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_stk_avg_yearly`
+--
+
+DROP TABLE IF EXISTS `d_stk_avg_yearly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_stk_avg_yearly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `avg_count` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9437 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股日均量排行(月)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `d_stk_quote`
 --
 
@@ -1235,7 +1403,7 @@ CREATE TABLE `d_stk_quote` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=101478 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='上櫃股票行情';
+) ENGINE=InnoDB AUTO_INCREMENT=118210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='上櫃股票行情';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1318,6 +1486,52 @@ CREATE TABLE `d_trn_daily` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `d_trn_monthly`
+--
+
+DROP TABLE IF EXISTS `d_trn_monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_trn_monthly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_stock_count` bigint(20) DEFAULT NULL,
+  `issue_stock_count` bigint(20) DEFAULT NULL,
+  `turnover_rate` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=99774 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股週轉率排行(月)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_trn_yearly`
+--
+
+DROP TABLE IF EXISTS `d_trn_yearly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_trn_yearly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_stock_count` bigint(20) DEFAULT NULL,
+  `issue_stock_count` bigint(20) DEFAULT NULL,
+  `turnover_rate` decimal(20,3) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9440 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股週轉率排行(年)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `d_vol_rank_daily`
 --
 
@@ -1336,6 +1550,69 @@ CREATE TABLE `d_vol_rank_daily` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`Uid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3172 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT=' 個股成交量排行(日)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_vol_rank_monthly`
+--
+
+DROP TABLE IF EXISTS `d_vol_rank_monthly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_vol_rank_monthly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_sheet_count` bigint(20) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=99774 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股成交量排行(月)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_vol_rank_weekly`
+--
+
+DROP TABLE IF EXISTS `d_vol_rank_weekly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_vol_rank_weekly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_sheet_count` bigint(20) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=189651 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股成交量排行(周)';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `d_vol_rank_yearly`
+--
+
+DROP TABLE IF EXISTS `d_vol_rank_yearly`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `d_vol_rank_yearly` (
+  `Uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `data_date` datetime NOT NULL,
+  `rank_order` int(11) NOT NULL,
+  `stock_no` varchar(16) NOT NULL,
+  `stock_name` varchar(64) DEFAULT NULL,
+  `deal_sheet_count` bigint(20) DEFAULT NULL,
+  `title` varchar(256) DEFAULT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  PRIMARY KEY (`Uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=9440 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='個股成交量排行(年)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1527,7 +1804,7 @@ CREATE TABLE `mi_index_all` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`select_type`,`stock_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=281320 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=331873 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1551,7 +1828,7 @@ CREATE TABLE `mi_index_deal_stat` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`deal_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-委託及成交統計資訊-成交統計';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-委託及成交統計資訊-成交統計';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1609,7 +1886,7 @@ CREATE TABLE `mi_index_intrust_stat` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`intrust_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-委託及成交統計資訊-委託統計';
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-委託及成交統計資訊-委託統計';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1631,7 +1908,7 @@ CREATE TABLE `mi_index_market_stat` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`deal_stat_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-大盤統計資訊';
+) ENGINE=InnoDB AUTO_INCREMENT=301 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-大盤統計資訊';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1653,7 +1930,7 @@ CREATE TABLE `mi_index_price_idx_cross` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`index_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-價格指數-跨市場';
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-價格指數-跨市場';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1675,7 +1952,7 @@ CREATE TABLE `mi_index_price_idx_twcomp` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`index_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-價格指數-臺灣指數公司';
+) ENGINE=InnoDB AUTO_INCREMENT=409 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-價格指數-臺灣指數公司';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1697,7 +1974,7 @@ CREATE TABLE `mi_index_price_idx_twse` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`index_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=884 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-價格指數-台灣證券交易所';
+) ENGINE=InnoDB AUTO_INCREMENT=1040 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-價格指數-台灣證券交易所';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1719,7 +1996,7 @@ CREATE TABLE `mi_index_return_idx_cross` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`index_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-報酬指數-跨市場';
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-報酬指數-跨市場';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1741,7 +2018,7 @@ CREATE TABLE `mi_index_return_idx_twcomp` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`index_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=408 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-報酬指數-臺灣指數公司';
+) ENGINE=InnoDB AUTO_INCREMENT=483 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-報酬指數-臺灣指數公司';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1763,7 +2040,7 @@ CREATE TABLE `mi_index_return_idx_twse` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`index_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=731 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-報酬指數-台灣證券交易所';
+) ENGINE=InnoDB AUTO_INCREMENT=860 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-收盤指數資訊-報酬指數-台灣證券交易所';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1794,7 +2071,7 @@ CREATE TABLE `mi_index_top20` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`day_order`,`stock_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日成交量前二十名證券';
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日成交量前二十名證券';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1817,7 +2094,7 @@ CREATE TABLE `mi_index_up_down_stat` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`class_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-大盤統計資訊-漲跌證券數合計';
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='每日收盤行情-大盤統計資訊-漲跌證券數合計';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1852,7 +2129,7 @@ CREATE TABLE `mi_margin` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`select_type`,`stock_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=16967 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='融資融券餘額-彙總';
+) ENGINE=InnoDB AUTO_INCREMENT=20147 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='融資融券餘額-彙總';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1876,7 +2153,7 @@ CREATE TABLE `mi_margin_stat` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`stat_item`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='融資融券餘額-信用交易統計';
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='融資融券餘額-信用交易統計';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1907,7 +2184,7 @@ CREATE TABLE `mi_qfiis` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`select_type`,`stock_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資投資持股統計';
+) ENGINE=InnoDB AUTO_INCREMENT=1100 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資投資持股統計';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1930,7 +2207,7 @@ CREATE TABLE `mi_qfiis_cat` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`industry_cat`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資投資類股彙總持股比率表';
+) ENGINE=InnoDB AUTO_INCREMENT=3713 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資投資類股彙總持股比率表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1957,7 +2234,7 @@ CREATE TABLE `mi_qfiis_sort_20` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`order`,`stock_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資持股比率前二十名彙總表';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資持股比率前二十名彙總表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1985,7 +2262,7 @@ CREATE TABLE `p_filter_stg` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='盤後選股策略設定檔';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='盤後選股策略設定檔';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2003,7 +2280,7 @@ CREATE TABLE `p_filter_stg_describe` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='盤後選股策略設定檔文字說明';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='盤後選股策略設定檔文字說明';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2142,7 +2419,7 @@ CREATE TABLE `t86` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`select_type`,`stock_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=180291 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=211632 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2172,7 +2449,7 @@ CREATE TABLE `twt38u` (
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`),
   KEY `IX_QRY` (`data_date`,`stock_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=11548 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資買賣超彙總表';
+) ENGINE=InnoDB AUTO_INCREMENT=14878 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='外資及陸資買賣超彙總表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2470,7 +2747,7 @@ CREATE TABLE `twtasu` (
   `create_at` datetime NOT NULL,
   `update_at` datetime NOT NULL,
   PRIMARY KEY (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1076 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='當日融券賣出與借券賣出成交量值';
+) ENGINE=InnoDB AUTO_INCREMENT=2159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='當日融券賣出與借券賣出成交量值';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2554,4 +2831,4 @@ CREATE TABLE `twtbau2` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-05 23:07:11
+-- Dump completed on 2020-01-09  0:20:42

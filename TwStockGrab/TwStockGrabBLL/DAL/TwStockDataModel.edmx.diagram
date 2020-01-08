@@ -102,6 +102,19 @@
         <EntityTypeShape EntityType="TwStockDataNSModel.d_mgused_weekly" Width="1.5" PointX="31.375" PointY="8.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_ceil_ord" Width="1.5" PointX="9.375" PointY="31.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.c_holiday" Width="1.5" PointX="11.375" PointY="31.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_trn_monthly" Width="1.5" PointX="17.375" PointY="31.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_trn_yearly" Width="1.5" PointX="19.375" PointY="31.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_vol_rank_monthly" Width="1.5" PointX="31.375" PointY="20.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_vol_rank_weekly" Width="1.5" PointX="31.375" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_vol_rank_yearly" Width="1.5" PointX="31.375" PointY="28.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_amt_rank_monthly" Width="1.5" PointX="32.375" PointY="12.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_amt_rank_yearly" Width="1.5" PointX="32.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_avg_monthly" Width="1.5" PointX="21.375" PointY="32.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_avg_yearly" Width="1.5" PointX="31.375" PointY="32.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_declined_monthly" Width="1.5" PointX="33.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_declined_weekly" Width="1.5" PointX="0.75" PointY="33.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_rally_monthly" Width="1.5" PointX="33.75" PointY="4.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_rally_weekly" Width="1.5" PointX="33.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

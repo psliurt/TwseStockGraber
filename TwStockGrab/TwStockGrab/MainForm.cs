@@ -842,15 +842,148 @@ namespace TwStockGrab
             //    Sleep();
             //} while (d40 < thisWeekStart);
 
-            DCeilOrdGraber g41 = new DCeilOrdGraber();
-            DateTime d41 = new DateTime(2007, 4, 23);
-            
+            //DCeilOrdGraber g41 = new DCeilOrdGraber();
+            //DateTime d41 = new DateTime(2007, 4, 23);
+
+            //do
+            //{
+            //    g41.DoJob(d41);
+            //    d41 = d41.AddDays(1);
+            //    Sleep();
+            //} while (d41 <= DateTime.Today);
+
+            //DTrnMonthlyGraber g42 = new DTrnMonthlyGraber();
+            //DateTime d42 = new DateTime(2007, 4, 1);
+
+            //do
+            //{
+            //    g42.DoJob(d42);
+            //    d42 = d42.AddMonths(1);
+            //    Sleep();
+            //} while (d42 <= DateTime.Today);
+
+            //DTrnYearlyGraber g43 = new DTrnYearlyGraber();
+            //DateTime d43 = new DateTime(2007, 1, 1);
+
+
+            //do
+            //{
+            //    g43.DoJob(d43);
+            //    d43 = d43.AddYears(1);
+            //    Sleep();
+            //} while (d43 <= DateTime.Today);
+
+            //DVolRankWeeklyGraber g44 = new DVolRankWeeklyGraber();
+            //DateTime d44 = new DateTime(2007, 4, 23);
+
+            //do
+            //{
+            //    g44.DoJob(d44);
+            //    d44 = d44.AddDays(7);
+            //    Sleep();
+            //} while (d44 <= DateTime.Today);
+
+            //DVolRankMonthlyGraber g45 = new DVolRankMonthlyGraber();
+            //DateTime d45 = new DateTime(2007, 4, 1);
+
+            //do
+            //{
+            //    g45.DoJob(d45);
+            //    d45 = d45.AddMonths(1);
+            //    Sleep();
+            //} while (d45 <= DateTime.Today);
+
+            //DVolRankYearlyGraber g46 = new DVolRankYearlyGraber();
+            //DateTime d46 = new DateTime(2007, 1, 1);
+
+            //do
+            //{
+            //    g46.DoJob(d46);
+            //    d46 = d46.AddYears(1);
+            //    Sleep();
+            //} while (d46 <= DateTime.Today);
+
+            //DAmtRankMonthlyGraber g47 = new DAmtRankMonthlyGraber();
+            //DateTime d47 = new DateTime(2007, 1, 1);
+
+            //do
+            //{
+            //    g47.DoJob(d47);
+            //    d47 = d47.AddMonths(1);
+            //    Sleep();
+            //} while (d47 <= DateTime.Today);
+
+            //DAmtRankYearlyGraber g48 = new DAmtRankYearlyGraber();
+            //DateTime d48 = new DateTime(2007, 1, 1);
+
+            //do
+            //{
+            //    g48.DoJob(d48);
+            //    d48 = d48.AddYears(1);
+            //    Sleep();
+            //} while (d48 <= DateTime.Today);
+
+            //DStkAvgYearlyGraber g49 = new DStkAvgYearlyGraber();
+            //DateTime d49 = new DateTime(2007, 1, 1);
+
+            //do
+            //{
+            //    g49.DoJob(d49);
+            //    d49 = d49.AddYears(1);
+            //    Sleep();
+            //} while (d49 <= DateTime.Today);
+
+            //DStkAvgMonthlyGraber g50 = new DStkAvgMonthlyGraber();
+            //DateTime d50 = new DateTime(2007, 1, 1);
+
+            //do
+            //{
+            //    g50.DoJob(d50);
+            //    d50 = d50.AddMonths(1);
+            //    Sleep();
+            //} while (d50 <= DateTime.Today);
+
+            DRtRallyMonthlyGraber g51 = new DRtRallyMonthlyGraber();
+            DateTime d51 = new DateTime(2007, 1, 1);
+
             do
             {
-                g41.DoJob(d41);
-                d41 = d41.AddDays(1);
+                g51.DoJob(d51);
+                d51 = d51.AddMonths(1);
                 Sleep();
-            } while (d41 <= DateTime.Today);
+            } while (d51 <= DateTime.Today);
+
+            DRtDeclinedMonthlyGraber g52 = new DRtDeclinedMonthlyGraber();
+            DateTime d52 = new DateTime(2007, 1, 1);
+
+            do
+            {
+                g52.DoJob(d52);
+                d52 = d52.AddMonths(1);
+                Sleep();
+            } while (d52 <= DateTime.Today);
+
+            DRtRallyWeeklyGraber g53 = new DRtRallyWeeklyGraber();
+            DateTime d53 = new DateTime(2007, 4, 23);
+
+            do
+            {
+                g53.DoJob(d53);
+                d53 = d53.AddDays(7);
+                Sleep();
+            } while (d53 <= DateTime.Today);
+
+            DRtDeclinedWeeklyGraber g54 = new DRtDeclinedWeeklyGraber();
+            DateTime d54 = new DateTime(2007, 4, 23);
+
+            do
+            {
+                g54.DoJob(d54);
+                d54 = d54.AddDays(7);
+                Sleep();
+            } while (d54 <= DateTime.Today);
+
+
 
             MessageBox.Show("OK");           
 
@@ -1635,6 +1768,12 @@ namespace TwStockGrab
             grbList.Add(new MiMarginGraber());
             grbList.Add(new T86Graber());
             grbList.Add(new Twt38uGraber());
+            grbList.Add(new MiQfiisCatGraber());
+            grbList.Add(new MiQfiisGraber());
+            grbList.Add(new MiQfiisSort20Graber());
+            grbList.Add(new MiIndexTradeStatisticGraber());
+            grbList.Add(new MiIndexTop20Graber());
+            grbList.Add(new TwtasuGraber());
 
             executer.Execute(new DateParams
             {
@@ -1643,19 +1782,7 @@ namespace TwStockGrab
                 ToDate = ToDatePicker.Value.Date,
                 BackFromDate = FromBackDatePicker.Value.Date
             },
-            grbList);
-
-            //Graber g1 = new MiIndexGraber();
-            //g1.DoJob(DataDatePicker.Value.Date);
-
-            //Graber g2 = new MiMarginGraber();
-            //g2.DoJob(DataDatePicker.Value.Date);
-
-            //Graber g3 = new T86Graber();
-            //g3.DoJob(DataDatePicker.Value.Date);
-
-            //Graber g4 = new Twt38uGraber();
-            //g4.DoJob(DataDatePicker.Value.Date);
+            grbList);            
 
             MessageBox.Show("OK");
         }
@@ -2077,6 +2204,36 @@ namespace TwStockGrab
         {
             HolidayDataFetcher fetcher = new HolidayDataFetcher();
             fetcher.Fetch();
+        }
+
+        private void ExportFilterResultBtn_Click(object sender, EventArgs e)
+        {
+            List<FilterResultData> resultDataList = (List<FilterResultData>)AfterMarketFilterDataGV.DataSource;
+            if (Directory.Exists("./FilterResult") == false)
+            {
+                Directory.CreateDirectory("./FilterResult");
+            }
+
+            if (resultDataList.Any() == false)
+            {
+                MessageBox.Show("沒有資料，不須匯出");
+                return;
+            }
+
+            string fileNameAndPath = string.Format("./FilterResult/{0}.txt", DateTime.Today.ToString("yyyy_MM_dd"));
+            using (StreamWriter sw = new StreamWriter(fileNameAndPath, true))
+            {
+                sw.WriteLine("--------------------------------------------");
+                sw.WriteLine("* 選股策略名稱:{0}", FilterStrategyNameTxt.Text);                
+                sw.WriteLine("    Note:{0}", FilterStrategyNoteTxt.Text);
+                sw.WriteLine("--------------------------------------------");
+                foreach (var item in resultDataList)
+                {
+                    sw.WriteLine("{0}  {1}", item.StockNo, item.StockName);
+                }
+                sw.WriteLine("                                            ");
+            }
+            MessageBox.Show("資料匯出完成!");
         }
     }
 }

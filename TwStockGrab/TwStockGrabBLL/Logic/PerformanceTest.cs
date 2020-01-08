@@ -70,9 +70,6 @@ namespace TwStockGrabBLL.Logic
     /// # 盤中指數及熱門資料    
     ///   1. 個股成交金額排行 https://www.tpex.org.tw/web/stock/most_active/active_dollar_vol/rt_amt_result.php?l=zh-tw&_=1571412431372    
     /// # 歷史熱門資料    
-    ///   2. 個股週轉率排行(月年) https://www.tpex.org.tw/web/stock/aftertrading/daily_turnover/trn_result.php?l=zh-tw&t=D&d=108/10/01&_=1571412291433
-    ///   3. 個股成交量排行(週月年) https://www.tpex.org.tw/web/stock/aftertrading/trading_volume/vol_rank_result.php?l=zh-tw&t=D&d=108/10/02&_=1571412256081
-    ///   4. 個股成交值排行(月年) https://www.tpex.org.tw/web/stock/aftertrading/trading_amount/amt_rank_result.php?l=zh-tw&t=D&d=108/10/02&_=1571412223664
     ///   5. 個股日均量排行(月年) https://www.tpex.org.tw/web/stock/aftertrading/trading_volumes_avg/stk_avg_result.php?l=zh-tw&t=D&d=108/10/01&_=1571411860245
     ///   6. 個股日均值排行(月年) https://www.tpex.org.tw/web/stock/aftertrading/trading_val_avg/avg_amt_result.php?l=zh-tw&t=D&d=108/10/02&_=1571411833362    
     ///   8. 個股漲幅排行(周月) https://www.tpex.org.tw/web/stock/historical/active_advanced/rt_rally_result.php?l=zh-tw&t=D&d=108/10/01&_=1571411784118

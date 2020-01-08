@@ -122,5 +122,18 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<d_mgused_weekly> d_mgused_weekly { get; set; }
         public virtual DbSet<d_ceil_ord> d_ceil_ord { get; set; }
         public virtual DbSet<c_holiday> c_holiday { get; set; }
+        public virtual DbSet<d_trn_monthly> d_trn_monthly { get; set; }
+        public virtual DbSet<d_trn_yearly> d_trn_yearly { get; set; }
+        public virtual DbSet<d_vol_rank_monthly> d_vol_rank_monthly { get; set; }
+        public virtual DbSet<d_vol_rank_weekly> d_vol_rank_weekly { get; set; }
+        public virtual DbSet<d_vol_rank_yearly> d_vol_rank_yearly { get; set; }
+        public virtual DbSet<d_amt_rank_monthly> d_amt_rank_monthly { get; set; }
+        public virtual DbSet<d_amt_rank_yearly> d_amt_rank_yearly { get; set; }
+        public virtual DbSet<d_stk_avg_monthly> d_stk_avg_monthly { get; set; }
+        public virtual DbSet<d_stk_avg_yearly> d_stk_avg_yearly { get; set; }
+        public virtual DbSet<d_rt_declined_monthly> d_rt_declined_monthly { get; set; }
+        public virtual DbSet<d_rt_declined_weekly> d_rt_declined_weekly { get; set; }
+        public virtual DbSet<d_rt_rally_monthly> d_rt_rally_monthly { get; set; }
+        public virtual DbSet<d_rt_rally_weekly> d_rt_rally_weekly { get; set; }
     }
 }

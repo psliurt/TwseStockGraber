@@ -100,6 +100,7 @@
             this._DStkQuoteBtn = new System.Windows.Forms.Button();
             this._DBlockDayBtn = new System.Windows.Forms.Button();
             this.DateOptionGbx = new System.Windows.Forms.GroupBox();
+            this.HolidayDataBtn = new System.Windows.Forms.Button();
             this.FromBackDatePicker = new System.Windows.Forms.DateTimePicker();
             this.FromBackRdo = new System.Windows.Forms.RadioButton();
             this.PeriodRdo = new System.Windows.Forms.RadioButton();
@@ -133,7 +134,7 @@
             this.FilterParam1Txt = new System.Windows.Forms.TextBox();
             this.SaveFilterParamBtn = new System.Windows.Forms.Button();
             this.AfterMarketFilterBtn = new System.Windows.Forms.Button();
-            this.HolidayDataBtn = new System.Windows.Forms.Button();
+            this.ExportFilterResultBtn = new System.Windows.Forms.Button();
             this.MainTabControl.SuspendLayout();
             this.SingleDayPage.SuspendLayout();
             this.DateOptionGbx.SuspendLayout();
@@ -946,6 +947,17 @@
             this.DateOptionGbx.TabStop = false;
             this.DateOptionGbx.Text = "日期選擇";
             // 
+            // HolidayDataBtn
+            // 
+            this.HolidayDataBtn.Location = new System.Drawing.Point(866, 15);
+            this.HolidayDataBtn.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.HolidayDataBtn.Name = "HolidayDataBtn";
+            this.HolidayDataBtn.Size = new System.Drawing.Size(214, 23);
+            this.HolidayDataBtn.TabIndex = 74;
+            this.HolidayDataBtn.Text = "取得假日資料表";
+            this.HolidayDataBtn.UseVisualStyleBackColor = true;
+            this.HolidayDataBtn.Click += new System.EventHandler(this.HolidayDataBtn_Click);
+            // 
             // FromBackDatePicker
             // 
             this.FromBackDatePicker.Location = new System.Drawing.Point(717, 16);
@@ -1042,6 +1054,7 @@
             // 
             // AfterMarketFilterPage
             // 
+            this.AfterMarketFilterPage.Controls.Add(this.ExportFilterResultBtn);
             this.AfterMarketFilterPage.Controls.Add(this.OperationGrb);
             this.AfterMarketFilterPage.Controls.Add(this.AfterMarketFilterClassTxt);
             this.AfterMarketFilterPage.Controls.Add(this.AfterMarketFilterDataGV);
@@ -1127,10 +1140,10 @@
             this.AfterMarketFilterDataGV.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.AfterMarketFilterDataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AfterMarketFilterDataGV.Location = new System.Drawing.Point(4, 312);
+            this.AfterMarketFilterDataGV.Location = new System.Drawing.Point(4, 341);
             this.AfterMarketFilterDataGV.Name = "AfterMarketFilterDataGV";
             this.AfterMarketFilterDataGV.RowTemplate.Height = 24;
-            this.AfterMarketFilterDataGV.Size = new System.Drawing.Size(654, 596);
+            this.AfterMarketFilterDataGV.Size = new System.Drawing.Size(654, 567);
             this.AfterMarketFilterDataGV.TabIndex = 21;
             // 
             // FilterStrategyCmb
@@ -1255,16 +1268,15 @@
             this.AfterMarketFilterBtn.UseVisualStyleBackColor = true;
             this.AfterMarketFilterBtn.Click += new System.EventHandler(this.AfterMarketFilterBtn_Click);
             // 
-            // HolidayDataBtn
+            // ExportFilterResultBtn
             // 
-            this.HolidayDataBtn.Location = new System.Drawing.Point(866, 15);
-            this.HolidayDataBtn.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.HolidayDataBtn.Name = "HolidayDataBtn";
-            this.HolidayDataBtn.Size = new System.Drawing.Size(214, 23);
-            this.HolidayDataBtn.TabIndex = 74;
-            this.HolidayDataBtn.Text = "取得假日資料表";
-            this.HolidayDataBtn.UseVisualStyleBackColor = true;
-            this.HolidayDataBtn.Click += new System.EventHandler(this.HolidayDataBtn_Click);
+            this.ExportFilterResultBtn.Location = new System.Drawing.Point(4, 312);
+            this.ExportFilterResultBtn.Name = "ExportFilterResultBtn";
+            this.ExportFilterResultBtn.Size = new System.Drawing.Size(214, 23);
+            this.ExportFilterResultBtn.TabIndex = 24;
+            this.ExportFilterResultBtn.Text = "匯出選股資料";
+            this.ExportFilterResultBtn.UseVisualStyleBackColor = true;
+            this.ExportFilterResultBtn.Click += new System.EventHandler(this.ExportFilterResultBtn_Click);
             // 
             // MainForm
             // 
@@ -1397,6 +1409,7 @@
         private System.Windows.Forms.Button _DMarginRankWeeklyBtn;
         private System.Windows.Forms.Button _DMarginRankMonthlyBtn;
         private System.Windows.Forms.Button HolidayDataBtn;
+        private System.Windows.Forms.Button ExportFilterResultBtn;
     }
 }
 
