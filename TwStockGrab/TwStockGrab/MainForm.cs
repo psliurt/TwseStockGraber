@@ -1767,6 +1767,7 @@ namespace TwStockGrab
             grbList.Add(new MiIndexGraber());
             grbList.Add(new MiMarginGraber());
             grbList.Add(new T86Graber());
+            grbList.Add(new Twt93uGraber());
             grbList.Add(new Twt38uGraber());
             grbList.Add(new MiQfiisCatGraber());
             grbList.Add(new MiQfiisGraber());
