@@ -132,7 +132,25 @@
     <Compile Include="DAL\d_3itrade_hedge_daily.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\d_3itrade_hedge_monthly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrade_hedge_weekly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrade_hedge_yearly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\d_3itrdsum_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrdsum_monthly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrdsum_weekly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_3itrdsum_yearly.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_amt_rank_daily.cs">
@@ -163,6 +181,15 @@
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_forgtr_daily.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_forgtr_monthly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_forgtr_weekly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_forgtr_yearly.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_index_summary.cs">
@@ -286,6 +313,9 @@
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\d_vol_rank_yearly.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\d_wkq.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\fmnptk.cs">
@@ -462,7 +492,13 @@
     <Compile Include="Logic\BwibbuDailyGraber.cs" />
     <Compile Include="Logic\CabGraber.cs" />
     <Compile Include="Logic\DeskGraber\D3itradeHedgeDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itradeHedgeMonthlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itradeHedgeWeeklyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itradeHedgeYearlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\D3itrdsumDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itrdsumMonthlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itrdsumWeeklyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\D3itrdsumYearlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DAmtRankDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DAmtRankMonthlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DAmtRankYearlyGraber.cs" />
@@ -473,6 +509,9 @@
     <Compile Include="Logic\DeskGraber\DCeilOrdGraber.cs" />
     <Compile Include="Logic\DeskGraber\DDealtrHedgeDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DForgtrDailyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DForgtrMonthlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DForgtrWeeklyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DForgtrYearlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DGraber.cs" />
     <Compile Include="Logic\DeskGraber\DIndexSummaryGraber.cs" />
     <Compile Include="Logic\DeskGraber\DLendGraber.cs" />
@@ -515,6 +554,7 @@
     <Compile Include="Logic\DeskGraber\DVolRankMonthlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DVolRankWeeklyGraber.cs" />
     <Compile Include="Logic\DeskGraber\DVolRankYearlyGraber.cs" />
+    <Compile Include="Logic\DeskGraber\DWkqGraber.cs" />
     <Compile Include="Logic\FmnptkGraber.cs" />
     <Compile Include="Logic\FmsrfkGraber.cs" />
     <Compile Include="Logic\FmtqikGraber.cs" />
@@ -547,7 +587,13 @@
     <Compile Include="Logic\Rsp\Json\BWIBBU_D_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\CodeFilters_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\D3itradeHedgeDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itradeHedgeMonthly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itradeHedgeWeekly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itradeHedgeYearly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\D3itrdsumDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itrdsumMonthly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itrdsumWeekly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\D3itrdsumYearly.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DAmtRankDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DAmtRankMonthly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DAmtRankYearly_Rsp.cs" />
@@ -558,6 +604,9 @@
     <Compile Include="Logic\Rsp\Json\Desk\DCeilOrd_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DDealtrHedgeDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DForgtrDaily_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DForgtrMonthly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DForgtrWeekly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DForgtrYearly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DIndexSummary_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DLend_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DMarginBal_Rsp.cs" />
@@ -599,6 +648,7 @@
     <Compile Include="Logic\Rsp\Json\Desk\DVolRankMonthly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DVolRankWeekly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DVolRankYearly_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DWkq_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\FMNPTK_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\FMSRFK_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\FMTQIK_Rsp.cs" />

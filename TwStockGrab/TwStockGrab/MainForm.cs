@@ -943,45 +943,144 @@ namespace TwStockGrab
             //    Sleep();
             //} while (d50 <= DateTime.Today);
 
-            DRtRallyMonthlyGraber g51 = new DRtRallyMonthlyGraber();
-            DateTime d51 = new DateTime(2007, 1, 1);
+            //DRtRallyMonthlyGraber g51 = new DRtRallyMonthlyGraber();
+            //DateTime d51 = new DateTime(2007, 1, 1);
 
+            //do
+            //{
+            //    g51.DoJob(d51);
+            //    d51 = d51.AddMonths(1);
+            //    Sleep();
+            //} while (d51 <= DateTime.Today);
+
+            //DRtDeclinedMonthlyGraber g52 = new DRtDeclinedMonthlyGraber();
+            //DateTime d52 = new DateTime(2007, 1, 1);
+
+            //do
+            //{
+            //    g52.DoJob(d52);
+            //    d52 = d52.AddMonths(1);
+            //    Sleep();
+            //} while (d52 <= DateTime.Today);
+
+            //DRtRallyWeeklyGraber g53 = new DRtRallyWeeklyGraber();
+            //DateTime d53 = new DateTime(2007, 4, 23);
+
+            //do
+            //{
+            //    g53.DoJob(d53);
+            //    d53 = d53.AddDays(7);
+            //    Sleep();
+            //} while (d53 <= DateTime.Today);
+
+            //DRtDeclinedWeeklyGraber g54 = new DRtDeclinedWeeklyGraber();
+            //DateTime d54 = new DateTime(2007, 4, 23);
+
+            //do
+            //{
+            //    g54.DoJob(d54);
+            //    d54 = d54.AddDays(7);
+            //    Sleep();
+            //} while (d54 <= DateTime.Today);
+
+            //DWkqGraber g55 = new DWkqGraber();
+            //DateTime d55 = new DateTime(2007, 4, 23);
+
+            //do
+            //{
+            //    g55.DoJob(d55);
+            //    d55 = d55.AddDays(7);
+            //    Sleep();
+            //} while (d55 <= DateTime.Today);
+
+            //D3itrdsumWeeklyGraber g56 = new D3itrdsumWeeklyGraber();
+            //DateTime d56 = new DateTime(2017, 1, 2);
+
+            //do
+            //{
+            //    g56.DoJob(d56);
+            //    d56 = d56.AddDays(7);
+            //    Sleep();
+            //} while (d56 <= DateTime.Today);
+
+            //D3itrdsumMonthlyGraber g57 = new D3itrdsumMonthlyGraber();
+            //DateTime d57 = new DateTime(2017, 1, 1);
+
+            //do
+            //{
+            //    g57.DoJob(d57);
+            //    d57 = d57.AddMonths(1);
+            //    Sleep();
+            //} while (d57 <= DateTime.Today);
+
+            //D3itrdsumYearlyGraber g58 = new D3itrdsumYearlyGraber();
+            //DateTime d58 = new DateTime(2017, 1, 1);
+
+            //do
+            //{
+            //    g58.DoJob(d58);
+            //    d58 = d58.AddYears(1);
+            //    Sleep();
+            //} while (d58 <= DateTime.Today);
+
+
+            //D3itradeHedgeWeeklyGraber g59 = new D3itradeHedgeWeeklyGraber();
+            //DateTime d59 = new DateTime(2014, 12, 1);
+            //do
+            //{
+            //    g59.DoJob(d59);
+            //    d59 = d59.AddDays(7);
+            //    Sleep();
+            //} while (d59 <= DateTime.Today);
+
+
+            //D3itradeHedgeMonthlyGraber g60 = new D3itradeHedgeMonthlyGraber();
+            //DateTime d60 = new DateTime(2014, 12, 1);
+            //do
+            //{
+            //    g60.DoJob(d60);
+            //    d60 = d60.AddMonths(1);
+            //    Sleep();
+            //} while (d60 <= DateTime.Today);
+
+            //D3itradeHedgeYearlyGraber g61 = new D3itradeHedgeYearlyGraber();
+            //DateTime d61 = new DateTime(2015, 1, 1);
+
+            //do
+            //{
+            //    g61.DoJob(d61);
+            //    d61 = d61.AddYears(1);
+            //    Sleep();
+            //} while (d61 <= DateTime.Today);
+
+            DForgtrWeeklyGraber g62 = new DForgtrWeeklyGraber();
+            DateTime d62 = new DateTime(2014, 1, 6);
             do
             {
-                g51.DoJob(d51);
-                d51 = d51.AddMonths(1);
+                g62.DoJob(d62);
+                d62 = d62.AddDays(7);
                 Sleep();
-            } while (d51 <= DateTime.Today);
+            } while (d62 <= DateTime.Today);
 
-            DRtDeclinedMonthlyGraber g52 = new DRtDeclinedMonthlyGraber();
-            DateTime d52 = new DateTime(2007, 1, 1);
 
+            DForgtrMonthlyGraber g63 = new DForgtrMonthlyGraber();
+            DateTime d63 = new DateTime(2007, 4, 1);
             do
             {
-                g52.DoJob(d52);
-                d52 = d52.AddMonths(1);
+                g63.DoJob(d63);
+                d63 = d63.AddMonths(1);
                 Sleep();
-            } while (d52 <= DateTime.Today);
+            } while (d63 <= DateTime.Today);
 
-            DRtRallyWeeklyGraber g53 = new DRtRallyWeeklyGraber();
-            DateTime d53 = new DateTime(2007, 4, 23);
 
+            DForgtrYearlyGraber g64 = new DForgtrYearlyGraber();
+            DateTime d64 = new DateTime(2007, 1, 1);
             do
             {
-                g53.DoJob(d53);
-                d53 = d53.AddDays(7);
+                g64.DoJob(d64);
+                d64 = d64.AddYears(1);
                 Sleep();
-            } while (d53 <= DateTime.Today);
-
-            DRtDeclinedWeeklyGraber g54 = new DRtDeclinedWeeklyGraber();
-            DateTime d54 = new DateTime(2007, 4, 23);
-
-            do
-            {
-                g54.DoJob(d54);
-                d54 = d54.AddDays(7);
-                Sleep();
-            } while (d54 <= DateTime.Today);
+            } while (d64 <= DateTime.Today);
 
 
 

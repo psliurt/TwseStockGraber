@@ -68,25 +68,16 @@ namespace TwStockGrabBLL.Logic
     ///   17. 各券商總公司當日營業金額統計表 https://www.tpex.org.tw/web/stock/aftertrading/daily_brk2/brk2_result.php?l=zh-tw&d=108/10/02&_=1571412522051
     ///   18. 等價系統成交分價表 https://www.tpex.org.tw/web/stock/aftertrading/prvol/prvol_result.php?l=zh-tw&d=108/10/02&c=02&_=1571412501826
     /// # 盤中指數及熱門資料    
-    ///   1. 個股成交金額排行 https://www.tpex.org.tw/web/stock/most_active/active_dollar_vol/rt_amt_result.php?l=zh-tw&_=1571412431372    
-    /// # 歷史熱門資料    
-    ///   5. 個股日均量排行(月年) https://www.tpex.org.tw/web/stock/aftertrading/trading_volumes_avg/stk_avg_result.php?l=zh-tw&t=D&d=108/10/01&_=1571411860245
-    ///   6. 個股日均值排行(月年) https://www.tpex.org.tw/web/stock/aftertrading/trading_val_avg/avg_amt_result.php?l=zh-tw&t=D&d=108/10/02&_=1571411833362    
-    ///   8. 個股漲幅排行(周月) https://www.tpex.org.tw/web/stock/historical/active_advanced/rt_rally_result.php?l=zh-tw&t=D&d=108/10/01&_=1571411784118
-    ///   9. 個股跌幅排行(週月) https://www.tpex.org.tw/web/stock/historical/active_declined/rt_declined_result.php?l=zh-tw&t=D&d=108/10/01&_=1571411751942        
-    ///   12. 證券行情周報表 https://www.tpex.org.tw/web/stock/historical/weekly_report/wkq_result.php?o=json&l=zh-tw&d=108/10/01&_=1571411506459
+    ///   1. 個股成交金額排行 https://www.tpex.org.tw/web/stock/most_active/active_dollar_vol/rt_amt_result.php?l=zh-tw&_=1571412431372      
     /// # 融資融券
     ///   1. 暫停融券賣出預告表 https://www.tpex.org.tw/web/stock/margin_trading/term/term_result.php?l=zh-tw&sd=108/10/01&ed=&stkno=&_=1571411467947
     ///   2. 調整成數 https://www.tpex.org.tw/web/stock/margin_trading/adjust/adjust_result.php?l=zh-tw&stkno=&_=1571411434657        
     ///   6. 平盤下得融借券賣出之證券名單 https://www.tpex.org.tw/web/stock/margin_trading/margin_mark/margin_mark_result.php?l=zh-tw&o=json&d=108/10/16&_=1571411302074
     ///   7. 信用交易公告 ## 以後再做    
     
-    /// # 三大法人
-    ///   1. 三大法人買賣金額彙總表(週月年) https://www.tpex.org.tw/web/stock/3insti/3insti_summary/3itrdsum_result.php?l=zh-tw&t=D&p=1&d=108/10/17&_=1571411011672
-    ///   2. 三大法人買賣明細資訊(週月年) https://www.tpex.org.tw/web/stock/3insti/daily_trade/3itrade_hedge_result.php?l=zh-tw&se=EW&t=D&d=108/10/16&_=1571410931472
+    /// # 三大法人        
     ///   3. 自營商買賣超彙總表(週月年) https://www.tpex.org.tw/web/stock/3insti/dealer_trading/dealtr_hedge_result.php?l=zh-tw&t=D&type=buy&d=108/10/17&_=1571410863156
-    ///   4. 投信買賣超彙總表(週月年) https://www.tpex.org.tw/web/stock/3insti/sitc_trading/sitctr_result.php?l=zh-tw&t=D&type=buy&d=108/10/17&_=1571410813188
-    ///   5. 外資及陸資買賣超彙總表(週月年) https://www.tpex.org.tw/web/stock/3insti/qfii_trading/forgtr_result.php?l=zh-tw&t=D&type=buy&d=108/10/17&_=1571410712340
+    ///   4. 投信買賣超彙總表(週月年) https://www.tpex.org.tw/web/stock/3insti/sitc_trading/sitctr_result.php?l=zh-tw&t=D&type=buy&d=108/10/17&_=1571410813188    
     ///   6. 外資及陸資投資持股統計 XX    
     /// # 鉅額交易    
     ///   2. 個股單一證券鉅額交易日成交資訊 https://www.tpex.org.tw/web/stock/block_trade/daily_trade_infor/block_day_result.php?l=zh-tw&d=2018&stkno=&_=1571410305730    

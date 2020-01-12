@@ -115,6 +115,16 @@
         <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_declined_weekly" Width="1.5" PointX="0.75" PointY="33.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_rally_monthly" Width="1.5" PointX="33.75" PointY="4.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_rt_rally_weekly" Width="1.5" PointX="33.75" PointY="8.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_wkq" Width="1.5" PointX="33.375" PointY="20.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrdsum_monthly" Width="1.5" PointX="33.375" PointY="26.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrdsum_weekly" Width="1.5" PointX="33.375" PointY="30.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrdsum_yearly" Width="1.5" PointX="34.375" PointY="12.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrade_hedge_monthly" Width="1.5" PointX="13.375" PointY="34.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrade_hedge_weekly" Width="1.5" PointX="23.375" PointY="34.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrade_hedge_yearly" Width="1.5" PointX="33.375" PointY="34.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_monthly" Width="1.5" PointX="3.375" PointY="35.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_weekly" Width="1.5" PointX="15.375" PointY="35.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_yearly" Width="1.5" PointX="35.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

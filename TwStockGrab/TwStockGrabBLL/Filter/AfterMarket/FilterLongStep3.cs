@@ -133,7 +133,6 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                                 allDayLessThenFirst = false;
                                 break;
                             }
-
                         }
 
                         condition3 = allDayLessThenFirst;
@@ -304,8 +303,6 @@ namespace TwStockGrabBLL.Filter.AfterMarket
                     {
                         condition4 = false;
                     }
-
-
 
                     if (condition1 && condition2 & condition3 && condition4)
                     {

@@ -135,5 +135,15 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<d_rt_declined_weekly> d_rt_declined_weekly { get; set; }
         public virtual DbSet<d_rt_rally_monthly> d_rt_rally_monthly { get; set; }
         public virtual DbSet<d_rt_rally_weekly> d_rt_rally_weekly { get; set; }
+        public virtual DbSet<d_wkq> d_wkq { get; set; }
+        public virtual DbSet<d_3itrdsum_monthly> d_3itrdsum_monthly { get; set; }
+        public virtual DbSet<d_3itrdsum_weekly> d_3itrdsum_weekly { get; set; }
+        public virtual DbSet<d_3itrdsum_yearly> d_3itrdsum_yearly { get; set; }
+        public virtual DbSet<d_3itrade_hedge_monthly> d_3itrade_hedge_monthly { get; set; }
+        public virtual DbSet<d_3itrade_hedge_weekly> d_3itrade_hedge_weekly { get; set; }
+        public virtual DbSet<d_3itrade_hedge_yearly> d_3itrade_hedge_yearly { get; set; }
+        public virtual DbSet<d_forgtr_monthly> d_forgtr_monthly { get; set; }
+        public virtual DbSet<d_forgtr_weekly> d_forgtr_weekly { get; set; }
+        public virtual DbSet<d_forgtr_yearly> d_forgtr_yearly { get; set; }
     }
 }
