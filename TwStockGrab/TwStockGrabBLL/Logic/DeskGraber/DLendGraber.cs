@@ -12,7 +12,7 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
-    public class DLendGraber
+    public class DLendGraber : DGraber
     {
         /// <summary>
         /// 首頁 > 上櫃 > 融資融券 > 標借
@@ -21,7 +21,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/margin_trading/lend/lend.php?l=zh-tw
         /// </summary>
-        public void DoJob(DateTime dataDate)
+        public override void DoJob(DateTime dataDate)
         {
 
             string responseContent = GetWebContent(dataDate);
@@ -49,7 +49,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
 
             foreach (var data in rsp.aaData)
             {
-                DateTime lendDate = GetDateFromRocStringQ(data.ElementAt(0).Trim()).Value.Date;
+                DateTime lendDate = GetDateFromRocSlashStringQ(data.ElementAt(0).Trim()).Value.Date;
                 string stockNo = data.ElementAt(1).Trim();
 
                 d_lend existItem = tmpDataList.Where(x => x.stock_no == stockNo && x.data_date == lendDate).FirstOrDefault();
@@ -100,190 +100,6 @@ namespace TwStockGrabBLL.Logic.DeskGraber
 
             return GetHttpResponse(url);
         }
-
-        /// <summary>
-        /// 送出http GET 請求
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        protected string GetHttpResponse(string url)
-        {
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            Stream inputResponseStream = null;
-            string responseContent = "";
-
-            inputResponseStream = response.GetResponseStream();
-            using (StreamReader sr = new StreamReader(inputResponseStream))
-            {
-                responseContent = sr.ReadToEnd();
-            }
-
-            return responseContent;
-        }
-
-        /// <summary>
-        /// 取得時間戳記
-        /// </summary>
-        /// <returns></returns>
-        private string GetTimeStamp()
-        {
-            return DateTime.Now.Ticks.ToString();
-        }
-        /// <summary>
-        /// 休息一段時間避免被上櫃的網站ban
-        /// </summary>
-        private void Sleep()
-        {
-            Random r = new Random();
-            int rnd = 0;
-            do
-            {
-                rnd = r.Next(8000);
-            } while (rnd < 3500);
-            Thread.Sleep(rnd);
-        }
-
-        private string ParseADDateToRocString(DateTime date)
-        {
-            int year = date.Year;
-            int month = date.Month;
-            int day = date.Day;
-            return string.Format("{0}/{1}/{2}",
-                (year - 1911).ToString(),
-                month.ToString().PadLeft(2, '0'),
-                day.ToString().PadLeft(2, '0'));
-        }
-
-        /// <summary>
-        /// 把格式為 yyy/MM/dd 或是 yy/MM/dd 的民國年字串轉為DateTime物件
-        /// </summary>
-        /// <param name="rocString">yyy/MM/dd或yy/MM/dd民國年日期字串</param>
-        /// <returns></returns>
-        protected DateTime? GetDateFromRocStringQ(string rocString)
-        {
-            if (string.IsNullOrEmpty(rocString))
-            {
-                return null;
-            }
-
-            string[] dateParts = rocString.Split('/');
-
-            if (dateParts.Length != 3)
-            {
-                return null;
-            }
-
-            int year = 1911 + Convert.ToInt32(dateParts[0]);
-            int month = Convert.ToInt32(dateParts[1]);
-            int day = Convert.ToInt32(dateParts[2]);
-
-            return new DateTime(year, month, day);
-        }
-
-        private int? ToIntQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return null;
-            }
-
-            data = data.Replace(",", "");
-            return Convert.ToInt32(data);
-        }
-
-        private short TransBuySellType(string t)
-        {
-            if (t.Trim().ToLower() == "sell")
-            {
-                return -1;
-            }
-
-            if (t.Trim().ToLower() == "buy")
-            {
-                return 1;
-            }
-
-            return 0;
-
-        }
-
-        private int ToInt(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return 0;
-            }
-
-            data = data.Replace(",", "").Trim();
-            return Convert.ToInt32(data);
-        }
-
-        private decimal? ToDecimalQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            { return null; }
-
-            if (data == "---")
-            {
-                return null;
-            }
-
-            if (data == "--")
-            {
-                return null;
-            }
-
-            if (data == "-")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除權息")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除息")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除權")
-            {
-                return null;
-            }
-
-            string noCommaString = data.Replace(",", "");
-
-            decimal d = 0;
-            if (decimal.TryParse(noCommaString, out d))
-            {
-                return d;
-            }
-            else
-            {
-                return null;
-            }
-
-
-        }
-
-        private void ParseFloorAndCeil(string srcData, ref decimal floor, ref decimal ceil)
-        {
-            if (string.IsNullOrEmpty(srcData))
-            {
-                return;
-            }
-
-            string[] dataParts = srcData.Split('~');
-            floor = decimal.Parse(dataParts[0].Trim());
-            ceil = decimal.Parse(dataParts[1].Trim());
-        }
+        
     }
 }

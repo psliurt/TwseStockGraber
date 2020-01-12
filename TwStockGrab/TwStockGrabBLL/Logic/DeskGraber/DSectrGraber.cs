@@ -12,7 +12,7 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
-    public class DSectrGraber
+    public class DSectrGraber : DGraber
     {
         /// <summary>
         /// 首頁 > 上櫃 > 歷史熱門資料 > 類股成交價量比重
@@ -21,20 +21,20 @@ namespace TwStockGrabBLL.Logic.DeskGraber
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/historical/trading_vol_ratio/sectr.php?l=zh-tw
         /// </summary>
-        public void DoJob(DateTime dataDate)
+        public override void DoJob(DateTime dataDate)
         {
             
-                string responseContent = GetWebContent(dataDate);
-                DSectr_Rsp rsp = JsonConvert.DeserializeObject<DSectr_Rsp>(responseContent);
-                if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate);
-                    Sleep();
-                }
+            string responseContent = GetWebContent(dataDate);
+            DSectr_Rsp rsp = JsonConvert.DeserializeObject<DSectr_Rsp>(responseContent);
+            if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
+            {
+                Sleep();
+            }
+            else
+            {
+                SaveToDatabase(rsp, dataDate);
+                Sleep();
+            }
             
         }
 
@@ -93,161 +93,6 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             return GetHttpResponse(url);
         }
 
-        /// <summary>
-        /// 送出http GET 請求
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        protected string GetHttpResponse(string url)
-        {
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            Stream inputResponseStream = null;
-            string responseContent = "";
-
-            inputResponseStream = response.GetResponseStream();
-            using (StreamReader sr = new StreamReader(inputResponseStream))
-            {
-                responseContent = sr.ReadToEnd();
-            }
-
-            return responseContent;
-        }
-
-        /// <summary>
-        /// 取得時間戳記
-        /// </summary>
-        /// <returns></returns>
-        private string GetTimeStamp()
-        {
-            return DateTime.Now.Ticks.ToString();
-        }
-        /// <summary>
-        /// 休息一段時間避免被上櫃的網站ban
-        /// </summary>
-        private void Sleep()
-        {
-            Random r = new Random();
-            int rnd = 0;
-            do
-            {
-                rnd = r.Next(8000);
-            } while (rnd < 3500);
-            Thread.Sleep(rnd);
-        }
-
-        private string ParseADDateToRocString(DateTime date)
-        {
-            int year = date.Year;
-            int month = date.Month;
-            int day = date.Day;
-            return string.Format("{0}/{1}/{2}",
-                (year - 1911).ToString(),
-                month.ToString().PadLeft(2, '0'),
-                day.ToString().PadLeft(2, '0'));
-        }
-
-        private int? ToIntQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return null;
-            }
-
-            data = data.Replace(",", "");
-            return Convert.ToInt32(data);
-        }
-
-        private short TransBuySellType(string t)
-        {
-            if (t.Trim().ToLower() == "sell")
-            {
-                return -1;
-            }
-
-            if (t.Trim().ToLower() == "buy")
-            {
-                return 1;
-            }
-
-            return 0;
-
-        }
-
-        private int ToInt(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return 0;
-            }
-
-            data = data.Replace(",", "").Trim();
-            return Convert.ToInt32(data);
-        }
-
-        private decimal? ToDecimalQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            { return null; }
-
-            if (data == "---")
-            {
-                return null;
-            }
-
-            if (data == "--")
-            {
-                return null;
-            }
-
-            if (data == "-")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除權息")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除息")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除權")
-            {
-                return null;
-            }
-
-            string noCommaString = data.Replace(",", "");
-
-            decimal d = 0;
-            if (decimal.TryParse(noCommaString, out d))
-            {
-                return d;
-            }
-            else
-            {
-                return null;
-            }
-
-
-        }
-
-        protected long? ToLongQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return null;
-            }
-            data = data.Replace(",", "");
-            return Convert.ToInt64(data);
-        }
+        
     }
 }

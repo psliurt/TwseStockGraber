@@ -25,12 +25,15 @@ namespace TwStockGrabBLL.Mode
 
         public void Execute(DateParams dtParam, DGraber gbr)
         {
-            
+            gbr.DoJob(dtParam.SingleDate.Value.Date);
         }
 
         public void Execute(DateParams dtParam, List<DGraber> gbrList)
         {
-            
+            foreach (var gbr in gbrList)
+            {
+                gbr.DoJob(dtParam.SingleDate.Value.Date);
+            }
         }
     }
 }

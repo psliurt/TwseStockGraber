@@ -12,7 +12,7 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
-    public class DMarketStatisticsDailyGraber
+    public class DMarketStatisticsDailyGraber : DGraber
     {
         /// <summary>
         /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計(日)
@@ -21,7 +21,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/aftertrading/market_statistics/statistics.php?l=zh-tw
         /// </summary>
-        public void DoJob(DateTime dataDate)
+        public override void DoJob(DateTime dataDate)
         {
             string responseContent = GetWebContent(dataDate);
             DMarketStatisticsDaily_Rsp rsp = JsonConvert.DeserializeObject<DMarketStatisticsDaily_Rsp>(responseContent);
@@ -90,99 +90,6 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             return GetHttpResponse(url);
         }
 
-        /// <summary>
-        /// 送出http GET 請求
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        protected string GetHttpResponse(string url)
-        {
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            Stream inputResponseStream = null;
-            string responseContent = "";
-
-            inputResponseStream = response.GetResponseStream();
-            using (StreamReader sr = new StreamReader(inputResponseStream))
-            {
-                responseContent = sr.ReadToEnd();
-            }
-
-            return responseContent;
-        }
-
-        /// <summary>
-        /// 取得時間戳記
-        /// </summary>
-        /// <returns></returns>
-        private string GetTimeStamp()
-        {
-            return DateTime.Now.Ticks.ToString();
-        }
-        /// <summary>
-        /// 休息一段時間避免被上櫃的網站ban
-        /// </summary>
-        private void Sleep()
-        {
-            Random r = new Random();
-            int rnd = 0;
-            do
-            {
-                rnd = r.Next(8000);
-            } while (rnd < 4000);
-            Thread.Sleep(rnd);
-        }
-
-        private string ParseADDateToRocString(DateTime date)
-        {
-            int year = date.Year;
-            int month = date.Month;
-            int day = date.Day;
-            return string.Format("{0}/{1}/{2}",
-                (year - 1911).ToString(),
-                month.ToString().PadLeft(2, '0'),
-                day.ToString().PadLeft(2, '0'));
-        }
-
-        private decimal? ToDecimalQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            { return null; }
-
-            if (data == "---")
-            {
-                return null;
-            }
-
-            if (data == "--")
-            {
-                return null;
-            }
-
-            if (data == "-")
-            {
-                return null;
-            }
-
-            string noCommaString = data.Replace(",", "");
-
-            return Convert.ToDecimal(noCommaString);
-        }
-
-        private int? ToIntQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return null;
-            }
-
-            data = data.Replace(",", "");
-            return Convert.ToInt32(data);
-        }
+        
     }
 }

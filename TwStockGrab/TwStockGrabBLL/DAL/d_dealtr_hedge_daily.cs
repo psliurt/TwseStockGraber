@@ -18,7 +18,7 @@ namespace TwStockGrabBLL.DAL
         public System.DateTime data_date { get; set; }
         public string stock_no { get; set; }
         public string stock_name { get; set; }
-        public sbyte buy_sell { get; set; }
+        public short buy_sell { get; set; }
         public Nullable<int> day_order { get; set; }
         public Nullable<int> self_buy_in { get; set; }
         public Nullable<int> self_sell_out { get; set; }

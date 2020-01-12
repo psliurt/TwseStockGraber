@@ -12,8 +12,14 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
-    public class DWkqGraber
+    public class DWkqGraber : DGraber
     {
+        public DWkqGraber() : base()
+        {
+            this._graberClassName = typeof(DWkqGraber).Name;
+            this._graberFrequency = 7;
+        }
+
         /// <summary>
         /// 首頁 > 上櫃 > 歷史熱門資料 > 證券行情週報表
         /// d_wkq
@@ -21,9 +27,15 @@ namespace TwStockGrabBLL.Logic.DeskGraber
         /// 網頁位置
         /// https://www.tpex.org.tw/web/stock/historical/weekly_report/wkq.php?l=zh-tw
         /// </summary>
-        public void DoJob(DateTime dataDate)
+        public override void DoJob(DateTime dataDate)
         {
             DateTime weekFirstDay = GetWeekMondayDate(dataDate);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(weekFirstDay, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(weekFirstDay);
             DWkq_Rsp rsp = JsonConvert.DeserializeObject<DWkq_Rsp>(responseContent);
@@ -34,6 +46,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             else
             {
                 SaveToDatabase(rsp, weekFirstDay);
+                WriteEndRecord(record);
                 Sleep();
             }
 
@@ -124,166 +137,6 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             return GetHttpResponse(url);
         }
 
-        /// <summary>
-        /// 送出http GET 請求
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        protected string GetHttpResponse(string url)
-        {
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            Stream inputResponseStream = null;
-            string responseContent = "";
-
-            inputResponseStream = response.GetResponseStream();
-            using (StreamReader sr = new StreamReader(inputResponseStream))
-            {
-                responseContent = sr.ReadToEnd();
-            }
-
-            return responseContent;
-        }
-
-        /// <summary>
-        /// 取得時間戳記
-        /// </summary>
-        /// <returns></returns>
-        private string GetTimeStamp()
-        {
-            return DateTime.Now.Ticks.ToString();
-        }
-        /// <summary>
-        /// 休息一段時間避免被上櫃的網站ban
-        /// </summary>
-        private void Sleep()
-        {
-            Random r = new Random();
-            int rnd = 0;
-            do
-            {
-                rnd = r.Next(8000);
-            } while (rnd < 3500);
-            Thread.Sleep(rnd);
-        }
-
-        private string ParseADDateToRocString(DateTime date)
-        {
-            int year = date.Year;
-            int month = date.Month;
-            int day = date.Day;
-            return string.Format("{0}/{1}/{2}",
-                (year - 1911).ToString(),
-                month.ToString().PadLeft(2, '0'),
-                day.ToString().PadLeft(2, '0'));
-        }
-
-        protected long? ToLongQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return null;
-            }
-
-            if (data == "null")
-            {
-                return null;
-            }
-
-            data = data.Replace(",", "");
-            return Convert.ToInt64(data);
-        }
-
-        private int ToInt(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return 0;
-            }
-
-            data = data.Replace(",", "").Trim();
-            return Convert.ToInt32(data);
-        }
-
-        private decimal? ToDecimalQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            { return null; }
-
-            if (data == "---")
-            {
-                return null;
-            }
-
-            if (data == "--")
-            {
-                return null;
-            }
-
-            if (data == "-")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除權息")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除息")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "除權")
-            {
-                return null;
-            }
-
-            if (data.Trim() == "N/A")
-            {
-                return null;
-            }
-
-            string noCommaString = data.Replace(",", "");
-
-            decimal d = 0;
-            if (decimal.TryParse(noCommaString, out d))
-            {
-                return d;
-            }
-            else
-            {
-                return null;
-            }
-
-
-        }
-
-        private DateTime GetWeekMondayDate(DateTime dt)
-        {
-            switch (dt.DayOfWeek)
-            {
-                case DayOfWeek.Tuesday:
-                    return dt.AddDays(-1);
-                case DayOfWeek.Wednesday:
-                    return dt.AddDays(-2);
-                case DayOfWeek.Thursday:
-                    return dt.AddDays(-3);
-                case DayOfWeek.Friday:
-                    return dt.AddDays(-4);
-                case DayOfWeek.Saturday:
-                    return dt.AddDays(-5);
-                case DayOfWeek.Sunday:
-                    return dt.AddDays(-6);
-                default:
-                    return dt;
-            }
-        }
+        
     }
 }

@@ -81,7 +81,6 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<bfi82u_week> bfi82u_week { get; set; }
         public virtual DbSet<mi_qfiis> mi_qfiis { get; set; }
         public virtual DbSet<d_3itrade_hedge_daily> d_3itrade_hedge_daily { get; set; }
-        public virtual DbSet<d_dealtr_hedge_daily> d_dealtr_hedge_daily { get; set; }
         public virtual DbSet<d_margin_bal> d_margin_bal { get; set; }
         public virtual DbSet<d_stk_quote> d_stk_quote { get; set; }
         public virtual DbSet<d_index_summary> d_index_summary { get; set; }
@@ -145,5 +144,7 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<d_forgtr_monthly> d_forgtr_monthly { get; set; }
         public virtual DbSet<d_forgtr_weekly> d_forgtr_weekly { get; set; }
         public virtual DbSet<d_forgtr_yearly> d_forgtr_yearly { get; set; }
+        public virtual DbSet<d_dealtr_hedge_daily> d_dealtr_hedge_daily { get; set; }
+        public virtual DbSet<work_record> work_record { get; set; }
     }
 }

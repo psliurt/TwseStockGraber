@@ -544,7 +544,7 @@
           <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="stock_name" Type="varchar" MaxLength="64" />
-          <Property Name="buy_sell" Type="tinyint" Nullable="false" />
+          <Property Name="buy_sell" Type="smallint" Nullable="false" />
           <Property Name="day_order" Type="int" />
           <Property Name="self_buy_in" Type="int" />
           <Property Name="self_sell_out" Type="int" />
@@ -2225,6 +2225,21 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="work_record">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="graber_name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="graber_freq" Type="int" Nullable="false" />
+          <Property Name="work_data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="is_complete" Type="bit" />
+          <Property Name="start_time" Type="datetime" Precision="0" />
+          <Property Name="end_time" Type="datetime" Precision="0" />
+          <Property Name="note" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="TwStockDataNSModelStoreContainer">
           <EntitySet Name="bfi82u_daily" EntityType="Self.bfi82u_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="bfi82u_month" EntityType="Self.bfi82u_month" Schema="tw_stock_history_warehouse" store:Type="Tables" />
@@ -2346,6 +2361,7 @@
           <EntitySet Name="twtb4u" EntityType="Self.twtb4u" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="twtb4u_stat" EntityType="Self.twtb4u_stat" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="twtbau2" EntityType="Self.twtbau2" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="work_record" EntityType="Self.work_record" Schema="tw_stock_history_warehouse" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -2408,7 +2424,6 @@
           <EntitySet Name="bfi82u_week" EntityType="TwStockDataNSModel.bfi82u_week" />
           <EntitySet Name="mi_qfiis" EntityType="TwStockDataNSModel.mi_qfiis" />
           <EntitySet Name="d_3itrade_hedge_daily" EntityType="TwStockDataNSModel.d_3itrade_hedge_daily" />
-          <EntitySet Name="d_dealtr_hedge_daily" EntityType="TwStockDataNSModel.d_dealtr_hedge_daily" />
           <EntitySet Name="d_margin_bal" EntityType="TwStockDataNSModel.d_margin_bal" />
           <EntitySet Name="d_stk_quote" EntityType="TwStockDataNSModel.d_stk_quote" />
           <EntitySet Name="d_index_summary" EntityType="TwStockDataNSModel.d_index_summary" />
@@ -2472,6 +2487,8 @@
           <EntitySet Name="d_forgtr_monthly" EntityType="TwStockDataNSModel.d_forgtr_monthly" />
           <EntitySet Name="d_forgtr_weekly" EntityType="TwStockDataNSModel.d_forgtr_weekly" />
           <EntitySet Name="d_forgtr_yearly" EntityType="TwStockDataNSModel.d_forgtr_yearly" />
+          <EntitySet Name="d_dealtr_hedge_daily" EntityType="TwStockDataNSModel.d_dealtr_hedge_daily" />
+          <EntitySet Name="work_record" EntityType="TwStockDataNSModel.work_record" />
         </EntityContainer>
         <EntityType Name="bfi84u2">
           <Key>
@@ -3546,27 +3563,6 @@
           <Property Name="dealer_all_buy_in" Type="Int32" />
           <Property Name="dealer_all_sell_out" Type="Int32" />
           <Property Name="dealer_all_diff" Type="Int32" />
-          <Property Name="total_diff" Type="Int32" />
-          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="create_at" Type="DateTime" Nullable="false" />
-          <Property Name="update_at" Type="DateTime" Nullable="false" />
-        </EntityType>
-        <EntityType Name="d_dealtr_hedge_daily">
-          <Key>
-            <PropertyRef Name="Uid" />
-          </Key>
-          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="data_date" Type="DateTime" Nullable="false" />
-          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="buy_sell" Type="SByte" Nullable="false" />
-          <Property Name="day_order" Type="Int32" />
-          <Property Name="self_buy_in" Type="Int32" />
-          <Property Name="self_sell_out" Type="Int32" />
-          <Property Name="self_diff" Type="Int32" />
-          <Property Name="risk_buy_in" Type="Int32" />
-          <Property Name="risk_sell_out" Type="Int32" />
-          <Property Name="risk_diff" Type="Int32" />
           <Property Name="total_diff" Type="Int32" />
           <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="create_at" Type="DateTime" Nullable="false" />
@@ -4690,6 +4686,42 @@
           <Property Name="total_sell_out" Type="Int32" />
           <Property Name="total_diff" Type="Decimal" />
           <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_dealtr_hedge_daily">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="buy_sell" Type="Int16" Nullable="false" />
+          <Property Name="day_order" Type="Int32" />
+          <Property Name="self_buy_in" Type="Int32" />
+          <Property Name="self_sell_out" Type="Int32" />
+          <Property Name="self_diff" Type="Int32" />
+          <Property Name="risk_buy_in" Type="Int32" />
+          <Property Name="risk_sell_out" Type="Int32" />
+          <Property Name="risk_diff" Type="Int32" />
+          <Property Name="total_diff" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="work_record">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="graber_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="graber_freq" Type="Int32" Nullable="false" />
+          <Property Name="work_data_date" Type="DateTime" Nullable="false" />
+          <Property Name="is_complete" Type="Boolean" />
+          <Property Name="start_time" Type="DateTime" />
+          <Property Name="end_time" Type="DateTime" />
+          <Property Name="note" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="create_at" Type="DateTime" Nullable="false" />
           <Property Name="update_at" Type="DateTime" Nullable="false" />
         </EntityType>
@@ -5826,28 +5858,6 @@
                 <ScalarProperty Name="foreign_diff" ColumnName="foreign_diff" />
                 <ScalarProperty Name="foreign_sell_out" ColumnName="foreign_sell_out" />
                 <ScalarProperty Name="foreign_buy_in" ColumnName="foreign_buy_in" />
-                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
-                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
-                <ScalarProperty Name="data_date" ColumnName="data_date" />
-                <ScalarProperty Name="Uid" ColumnName="Uid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="d_dealtr_hedge_daily">
-            <EntityTypeMapping TypeName="TwStockDataNSModel.d_dealtr_hedge_daily">
-              <MappingFragment StoreEntitySet="d_dealtr_hedge_daily">
-                <ScalarProperty Name="update_at" ColumnName="update_at" />
-                <ScalarProperty Name="create_at" ColumnName="create_at" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="total_diff" ColumnName="total_diff" />
-                <ScalarProperty Name="risk_diff" ColumnName="risk_diff" />
-                <ScalarProperty Name="risk_sell_out" ColumnName="risk_sell_out" />
-                <ScalarProperty Name="risk_buy_in" ColumnName="risk_buy_in" />
-                <ScalarProperty Name="self_diff" ColumnName="self_diff" />
-                <ScalarProperty Name="self_sell_out" ColumnName="self_sell_out" />
-                <ScalarProperty Name="self_buy_in" ColumnName="self_buy_in" />
-                <ScalarProperty Name="day_order" ColumnName="day_order" />
-                <ScalarProperty Name="buy_sell" ColumnName="buy_sell" />
                 <ScalarProperty Name="stock_name" ColumnName="stock_name" />
                 <ScalarProperty Name="stock_no" ColumnName="stock_no" />
                 <ScalarProperty Name="data_date" ColumnName="data_date" />
@@ -7035,6 +7045,44 @@
                 <ScalarProperty Name="rank" ColumnName="rank" />
                 <ScalarProperty Name="buy_sell_type" ColumnName="buy_sell_type" />
                 <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_dealtr_hedge_daily">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_dealtr_hedge_daily">
+              <MappingFragment StoreEntitySet="d_dealtr_hedge_daily">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="total_diff" ColumnName="total_diff" />
+                <ScalarProperty Name="risk_diff" ColumnName="risk_diff" />
+                <ScalarProperty Name="risk_sell_out" ColumnName="risk_sell_out" />
+                <ScalarProperty Name="risk_buy_in" ColumnName="risk_buy_in" />
+                <ScalarProperty Name="self_diff" ColumnName="self_diff" />
+                <ScalarProperty Name="self_sell_out" ColumnName="self_sell_out" />
+                <ScalarProperty Name="self_buy_in" ColumnName="self_buy_in" />
+                <ScalarProperty Name="day_order" ColumnName="day_order" />
+                <ScalarProperty Name="buy_sell" ColumnName="buy_sell" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="work_record">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.work_record">
+              <MappingFragment StoreEntitySet="work_record">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="is_complete" ColumnName="is_complete" />
+                <ScalarProperty Name="work_data_date" ColumnName="work_data_date" />
+                <ScalarProperty Name="graber_freq" ColumnName="graber_freq" />
+                <ScalarProperty Name="graber_name" ColumnName="graber_name" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
               </MappingFragment>
             </EntityTypeMapping>

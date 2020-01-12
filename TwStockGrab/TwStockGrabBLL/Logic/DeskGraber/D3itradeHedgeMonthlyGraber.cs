@@ -12,29 +12,44 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
-    public class D3itradeHedgeMonthlyGraber
+    /// <summary>
+    /// 首頁 > 上櫃 > 三大法人 > 三大法人買賣明細資訊(月)
+    /// d_3itrade_hedge_monthly
+    /// 本資訊自民國96年4月20日起開始提供
+    /// 
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/3insti/daily_trade/3itrade_hedge.php?l=zh-tw
+    /// </summary>
+    public class D3itradeHedgeMonthlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 三大法人 > 三大法人買賣明細資訊(月)
-        /// d_3itrade_hedge_monthly
-        /// 本資訊自民國96年4月20日起開始提供
-        /// 
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/3insti/daily_trade/3itrade_hedge.php?l=zh-tw
-        /// </summary>
-        public void DoJob(DateTime dataDate)
+        public D3itradeHedgeMonthlyGraber() : base()
+        {
+            this._graberClassName = typeof(D3itradeHedgeMonthlyGraber).Name;
+            this._graberFrequency = 30;
+        }
+
+        
+        public override void DoJob(DateTime dataDate)
         {
             DateTime monthFirstDay = GetMonthFirstDay(dataDate);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(monthFirstDay, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(monthFirstDay);
             D3itradeHedgeMonthly_Rsp rsp = JsonConvert.DeserializeObject<D3itradeHedgeMonthly_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, monthFirstDay);
+                WriteEndRecord(record);
                 Sleep();
             }
         }
@@ -202,81 +217,6 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                 lang, stockSelectType, dataType, rocDate, paramUnderLine);
 
             return GetHttpResponse(url);
-        }
-
-        /// <summary>
-        /// 送出http GET 請求
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        protected string GetHttpResponse(string url)
-        {
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-            Stream inputResponseStream = null;
-            string responseContent = "";
-
-            inputResponseStream = response.GetResponseStream();
-            using (StreamReader sr = new StreamReader(inputResponseStream))
-            {
-                responseContent = sr.ReadToEnd();
-            }
-
-            return responseContent;
-        }
-
-        /// <summary>
-        /// 取得時間戳記
-        /// </summary>
-        /// <returns></returns>
-        private string GetTimeStamp()
-        {
-            return DateTime.Now.Ticks.ToString();
-        }
-        /// <summary>
-        /// 休息一段時間避免被上櫃的網站ban
-        /// </summary>
-        private void Sleep()
-        {
-            Random r = new Random();
-            int rnd = 0;
-            do
-            {
-                rnd = r.Next(7000);
-            } while (rnd < 3500);
-            Thread.Sleep(rnd);
-        }
-
-        private string ParseADDateToRocString(DateTime date)
-        {
-            int year = date.Year;
-            int month = date.Month;
-            int day = date.Day;
-            return string.Format("{0}/{1}/{2}",
-                (year - 1911).ToString(),
-                month.ToString().PadLeft(2, '0'),
-                day.ToString().PadLeft(2, '0'));
-        }
-
-        private int? ToIntQ(string data)
-        {
-            if (string.IsNullOrEmpty(data))
-            {
-                return null;
-            }
-
-            data = data.Replace(",", "");
-            return Convert.ToInt32(data);
-        }
-
-        private DateTime GetMonthFirstDay(DateTime dt)
-        {
-            return new DateTime(dt.Year, dt.Month, 1);
-        }
+        }        
     }
 }

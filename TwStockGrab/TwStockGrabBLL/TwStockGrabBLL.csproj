@@ -465,6 +465,9 @@
     <Compile Include="DAL\twtbau2.cs">
       <DependentUpon>TwStockDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\work_record.cs">
+      <DependentUpon>TwStockDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Filter\AfterMarket\AfterMarketFilter.cs" />
     <Compile Include="Filter\AfterMarket\FilterFactory.cs" />
     <Compile Include="Filter\AfterMarket\FilterLongStep1.cs" />
@@ -490,7 +493,6 @@
     <Compile Include="Logic\BfiauuYearlyGraber.cs" />
     <Compile Include="Logic\Bft41uGraber.cs" />
     <Compile Include="Logic\BwibbuDailyGraber.cs" />
-    <Compile Include="Logic\CabGraber.cs" />
     <Compile Include="Logic\DeskGraber\D3itradeHedgeDailyGraber.cs" />
     <Compile Include="Logic\DeskGraber\D3itradeHedgeMonthlyGraber.cs" />
     <Compile Include="Logic\DeskGraber\D3itradeHedgeWeeklyGraber.cs" />

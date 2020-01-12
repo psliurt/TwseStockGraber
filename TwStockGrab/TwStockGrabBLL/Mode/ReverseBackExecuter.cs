@@ -43,12 +43,30 @@ namespace TwStockGrabBLL.Mode
 
         public void Execute(DateParams dtParam, DGraber gbr)
         {
-            
+            DateTime from = dtParam.BackFromDate.Value.Date;
+
+            do
+            {
+                gbr.DoJob(from);
+                from = from.AddDays(-1);
+                Sleep();
+            } while (from >= _minDataDate);
         }
 
         public void Execute(DateParams dtParam, List<DGraber> gbrList)
         {
-            
+            DateTime from = dtParam.BackFromDate.Value.Date;
+
+
+            do
+            {
+                foreach (var gbr in gbrList)
+                {
+                    gbr.DoJob(from);
+                }
+                from = from.AddDays(-1);
+                Sleep();
+            } while (from >= _minDataDate);
         }
 
         private void Sleep()

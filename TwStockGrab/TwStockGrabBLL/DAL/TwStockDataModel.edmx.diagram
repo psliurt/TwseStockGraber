@@ -61,7 +61,6 @@
         <EntityTypeShape EntityType="TwStockDataNSModel.bfi82u_week" Width="1.5" PointX="13.75" PointY="23.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.mi_qfiis" Width="1.5" PointX="23.75" PointY="18.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_3itrade_hedge_daily" Width="1.5" PointX="19.375" PointY="23.75" />
-        <EntityTypeShape EntityType="TwStockDataNSModel.d_dealtr_hedge_daily" Width="1.5" PointX="0.75" PointY="24.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_margin_bal" Width="1.5" PointX="3.375" PointY="24.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_stk_quote" Width="1.5" PointX="21.375" PointY="24.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_index_summary" Width="1.5" PointX="23.375" PointY="24.75" />
@@ -125,6 +124,8 @@
         <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_monthly" Width="1.5" PointX="3.375" PointY="35.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_weekly" Width="1.5" PointX="15.375" PointY="35.75" />
         <EntityTypeShape EntityType="TwStockDataNSModel.d_forgtr_yearly" Width="1.5" PointX="35.375" PointY="16.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.d_dealtr_hedge_daily" Width="1.5" PointX="0.75" PointY="24.75" />
+        <EntityTypeShape EntityType="TwStockDataNSModel.work_record" Width="1.5" PointX="17.375" PointY="35.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
