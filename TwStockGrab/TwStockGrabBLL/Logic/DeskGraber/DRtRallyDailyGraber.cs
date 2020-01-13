@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 >歷史熱門資料 > 個股漲幅排行
+    /// d_rt_rally_daily
+    /// 本資訊自民國96年1月起開始提供 實際上由 2007/4/23  開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/historical/active_advanced/rt_rally.php?l=zh-tw
+    /// </summary>
     public class DRtRallyDailyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 >歷史熱門資料 > 個股漲幅排行
-        /// d_rt_rally_daily
-        /// 本資訊自民國96年1月起開始提供 實際上由 2007/4/23  開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/historical/active_advanced/rt_rally.php?l=zh-tw
-        /// </summary>
+        public DRtRallyDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DRtRallyDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(dataDate);
             DRtRallyDaily_Rsp rsp = JsonConvert.DeserializeObject<DRtRallyDaily_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

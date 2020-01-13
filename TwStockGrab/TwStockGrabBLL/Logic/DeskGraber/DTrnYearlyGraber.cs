@@ -12,28 +12,41 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 歷史熱門資料 > 個股週轉率排行(年)
+    /// d_trn_monthly
+    /// 本資訊自民國96年1月起開始提供 實際由2007/4/23開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/daily_turnover/trn.php?l=zh-tw
+    /// </summary>
     public class DTrnYearlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 歷史熱門資料 > 個股週轉率排行(年)
-        /// d_trn_monthly
-        /// 本資訊自民國96年1月起開始提供 實際由2007/4/23開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/daily_turnover/trn.php?l=zh-tw
-        /// </summary>
+        public DTrnYearlyGraber() : base()
+        {
+            this._graberClassName = typeof(DTrnYearlyGraber).Name;
+            this._graberFrequency = 365;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             DateTime yearDate = new DateTime(dataDate.Year, 1, 1);
+            work_record record = null;
+            if (GetOrCreateWorkRecord(yearDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(yearDate);
             DTrnYearly_Rsp rsp = JsonConvert.DeserializeObject<DTrnYearly_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, yearDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

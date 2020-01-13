@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 > 個股本益比、殖利率及股價淨值比(依日期查詢)
+    /// d_peratio_pera
+    /// 本資訊自民國96年1月起開始提供 2007/1/2開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/peratio_analysis/pera.php?l=zh-tw
+    /// </summary>
     public class DPeratioPeraGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 個股本益比、殖利率及股價淨值比(依日期查詢)
-        /// d_peratio_pera
-        /// 本資訊自民國96年1月起開始提供 2007/1/2開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/peratio_analysis/pera.php?l=zh-tw
-        /// </summary>
+        public DPeratioPeraGraber() : base()
+        {
+            this._graberClassName = typeof(DPeratioPeraGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
-            
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             DPeratioPera_Rsp rsp = JsonConvert.DeserializeObject<DPeratioPera_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
             

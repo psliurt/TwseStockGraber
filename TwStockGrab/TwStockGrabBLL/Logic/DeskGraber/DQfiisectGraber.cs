@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 三大法人 > 各類股僑外資及陸資持股比例表
+    /// d_qfiisect
+    /// 本資訊自民國96年1月起開始提供 實際由 2007/4/23 開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/3insti/qfii_sect/qfiisect.php?l=zh-tw
+    /// </summary>
     public class DQfiisectGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 三大法人 > 各類股僑外資及陸資持股比例表
-        /// d_qfiisect
-        /// 本資訊自民國96年1月起開始提供 實際由 2007/4/23 開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/3insti/qfii_sect/qfiisect.php?l=zh-tw
-        /// </summary>
+        public DQfiisectGraber() : base()
+        {
+            this._graberClassName = typeof(DQfiisectGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(dataDate);
             DQfiisect_Rsp rsp = JsonConvert.DeserializeObject<DQfiisect_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

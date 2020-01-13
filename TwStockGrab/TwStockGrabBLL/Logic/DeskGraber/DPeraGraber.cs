@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 歷史熱門資料 > 個股本益比排行
+    /// d_pera
+    /// 本資訊自民國96年1月起開始提供 從 2007/1/2開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/historical/pe_ratio_top10/pera.php?l=zh-tw
+    /// </summary>
     public class DPeraGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 歷史熱門資料 > 個股本益比排行
-        /// d_pera
-        /// 本資訊自民國96年1月起開始提供 從 2007/1/2開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/historical/pe_ratio_top10/pera.php?l=zh-tw
-        /// </summary>
+        public DPeraGraber() : base()
+        {
+            this._graberClassName = typeof(DPeraGraber).Name;
+            this._graberFrequency = 1;
+        }
+        
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(dataDate);
             DPera_Rsp rsp = JsonConvert.DeserializeObject<DPera_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

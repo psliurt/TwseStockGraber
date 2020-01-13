@@ -12,28 +12,41 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 >歷史熱門資料 > 個股漲幅排行
+    /// d_rt_rally_monthly
+    /// 本資訊自民國96年1月起開始提供 
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/historical/active_advanced/rt_rally.php?l=zh-tw
+    /// </summary>
     public class DRtRallyMonthlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 >歷史熱門資料 > 個股漲幅排行
-        /// d_rt_rally_monthly
-        /// 本資訊自民國96年1月起開始提供 
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/historical/active_advanced/rt_rally.php?l=zh-tw
-        /// </summary>
+        public DRtRallyMonthlyGraber() : base()
+        {
+            this._graberClassName = typeof(DRtRallyMonthlyGraber).Name;
+            this._graberFrequency = 30;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             DateTime monthDate = GetMonthFirstDay(dataDate);
+            work_record record = null;
+            if (GetOrCreateWorkRecord(monthDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(monthDate);
             DRtRallyMonthly_Rsp rsp = JsonConvert.DeserializeObject<DRtRallyMonthly_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, monthDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

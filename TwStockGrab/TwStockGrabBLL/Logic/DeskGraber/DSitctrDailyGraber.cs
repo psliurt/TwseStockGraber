@@ -12,17 +12,28 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 三大法人 > 投信買賣超彙總表
+    /// d_sitctr_daily
+    /// 本資訊自民國96年1月起開始提供 實際上由2009/2/2日開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/3insti/sitc_trading/sitctr.php?l=zh-tw
+    /// </summary>
     public class DSitctrDailyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 三大法人 > 投信買賣超彙總表
-        /// d_sitctr_daily
-        /// 本資訊自民國96年1月起開始提供 實際上由2009/2/2日開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/3insti/sitc_trading/sitctr.php?l=zh-tw
-        /// </summary>
+        public DSitctrDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DSitctrDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             List<string> typeList = new List<string>();
             typeList.Add("buy");
             typeList.Add("sell");
@@ -40,6 +51,8 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                     Sleep();
                 }
             }
+
+            WriteEndRecord(record);
         }
 
         private void SaveToDatabase(DSitctrDaily_Rsp rsp, DateTime dataDate, string t)

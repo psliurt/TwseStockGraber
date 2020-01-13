@@ -12,17 +12,29 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 三大法人 > 外資及陸資買賣超彙總表
+    /// d_forgtr_daily
+    /// 本資訊自民國96年1月起開始提供, 實際上由 2007/04/23開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/3insti/qfii_trading/forgtr.php?l=zh-tw
+    /// </summary>
     public class DForgtrDailyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 三大法人 > 外資及陸資買賣超彙總表
-        /// d_forgtr_daily
-        /// 本資訊自民國96年1月起開始提供, 實際上由 2007/04/23開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/3insti/qfii_trading/forgtr.php?l=zh-tw
-        /// </summary>
+        public DForgtrDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DForgtrDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             List<string> typeList = new List<string>();
             typeList.Add("buy");
             typeList.Add("sell");
@@ -40,6 +52,8 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                     Sleep();
                 }
             }
+
+            WriteEndRecord(record);
         }
 
         private void SaveToDatabase(DForgtrDaily_Rsp rsp, DateTime dataDate, string t)

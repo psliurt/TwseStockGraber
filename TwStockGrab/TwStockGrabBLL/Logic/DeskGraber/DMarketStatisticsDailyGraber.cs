@@ -12,26 +12,41 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計(日)
+    /// d_market_statistics_daily
+    /// 本資訊自民國98年1月起開始提供, 實際上由 2009/01/05開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/market_statistics/statistics.php?l=zh-tw
+    /// </summary>
     public class DMarketStatisticsDailyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計(日)
-        /// d_market_statistics_daily
-        /// 本資訊自民國98年1月起開始提供, 實際上由 2009/01/05開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/market_statistics/statistics.php?l=zh-tw
-        /// </summary>
+
+        public DMarketStatisticsDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DMarketStatisticsDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             DMarketStatisticsDaily_Rsp rsp = JsonConvert.DeserializeObject<DMarketStatisticsDaily_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.detail == null || rsp.detail.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

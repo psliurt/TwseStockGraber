@@ -12,18 +12,31 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 融資融券 > 融資融券增減排行表 (月)
+    /// d_margin_rank_monthly
+    /// 本資訊自民國96年1月起開始提供 實際由2007/4/1日那個月開始有資料
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/margin_trading/short_sell/margin_rank.php?l=zh-tw
+    /// * dataDate 請一律用每個月1號
+    /// </summary>
     public class DMarginRankMonthlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 融資融券 > 融資融券增減排行表 (月)
-        /// d_margin_rank_monthly
-        /// 本資訊自民國96年1月起開始提供 實際由2007/4/1日那個月開始有資料
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/margin_trading/short_sell/margin_rank.php?l=zh-tw
-        /// * dataDate 請一律用每個月1號
-        /// </summary>
+
+        public DMarginRankMonthlyGraber() : base()
+        {
+            this._graberClassName = typeof(DMarginRankMonthlyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             List<string> marginTypeList = new List<string>();
             marginTypeList.Add("MargGain"); //融資增加
             marginTypeList.Add("MargLose"); //融資減少
@@ -36,11 +49,13 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                 DMarginRankMonthly_Rsp rsp = JsonConvert.DeserializeObject<DMarginRankMonthly_Rsp>(responseContent);
                 if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
                 {
+                    WriteEndRecord(record);
                     Sleep();
                 }
                 else
                 {
                     SaveToDatabase(rsp, dataDate, marginType);
+                    WriteEndRecord(record);
                     Sleep();
                 }
             }

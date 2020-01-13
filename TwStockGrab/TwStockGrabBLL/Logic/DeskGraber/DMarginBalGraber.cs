@@ -39,6 +39,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             DMarginBal_Rsp rsp = JsonConvert.DeserializeObject<DMarginBal_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else

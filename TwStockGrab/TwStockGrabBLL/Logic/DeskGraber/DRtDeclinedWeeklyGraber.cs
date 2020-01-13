@@ -12,28 +12,43 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 歷史熱門資料 > 個股跌幅排行
+    /// d_rt_declined_weekly
+    /// 本資訊自民國96年1月起開始提供 實際上由   開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/historical/active_declined/rt_declined.php?l=zh-tw
+    /// </summary>
     public class DRtDeclinedWeeklyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 歷史熱門資料 > 個股跌幅排行
-        /// d_rt_declined_weekly
-        /// 本資訊自民國96年1月起開始提供 實際上由   開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/historical/active_declined/rt_declined.php?l=zh-tw
-        /// </summary>
+
+        public DRtDeclinedWeeklyGraber() : base()
+        {
+            this._graberClassName = typeof(DRtDeclinedWeeklyGraber).Name;
+            this._graberFrequency = 7;
+        }
+        
         public override void DoJob(DateTime dataDate)
         {
             DateTime weekDate = GetWeekMondayDate(dataDate);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(weekDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(weekDate);
             DRtDeclinedWeekly_Rsp rsp = JsonConvert.DeserializeObject<DRtDeclinedWeekly_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, weekDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

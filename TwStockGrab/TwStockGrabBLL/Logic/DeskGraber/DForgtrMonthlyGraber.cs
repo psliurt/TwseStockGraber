@@ -12,18 +12,30 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 三大法人 > 外資及陸資買賣超彙總表(月)
+    /// d_forgtr_monthly
+    /// 本資訊自民國96年1月起開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/3insti/qfii_trading/forgtr.php?l=zh-tw
+    /// </summary>
     public class DForgtrMonthlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 三大法人 > 外資及陸資買賣超彙總表(月)
-        /// d_forgtr_monthly
-        /// 本資訊自民國96年1月起開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/3insti/qfii_trading/forgtr.php?l=zh-tw
-        /// </summary>
+        public DForgtrMonthlyGraber() : base()
+        {
+            this._graberClassName = typeof(DForgtrMonthlyGraber).Name;
+            this._graberFrequency = 30;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             DateTime monthFirstDay = GetMonthFirstDay(dataDate);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(monthFirstDay, out record))
+            {
+                return;
+            }
 
             List<string> typeList = new List<string>();
             typeList.Add("buy");
@@ -42,6 +54,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                     Sleep();
                 }
             }
+            WriteEndRecord(record);
         }
 
         private void SaveToDatabase(DForgtrMonthly_Rsp rsp, DateTime dataDate, string t)

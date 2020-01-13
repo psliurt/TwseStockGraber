@@ -22,8 +22,20 @@ namespace TwStockGrabBLL.Logic.DeskGraber
     /// </summary>
     public class DDealtrHedgeDailyGraber : DGraber
     {
+        public DDealtrHedgeDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DDealtrHedgeDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             List<string> typeList = new List<string>();
             typeList.Add("buy");
             typeList.Add("sell");
@@ -40,7 +52,9 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                     SaveToDatabase(rsp, dataDate, t);
                     Sleep();
                 }
-            }            
+            }
+
+            WriteEndRecord(record);
         }
 
         private void SaveToDatabase(DDealtrHedgeDaily_Rsp rsp, DateTime dataDate, string t)

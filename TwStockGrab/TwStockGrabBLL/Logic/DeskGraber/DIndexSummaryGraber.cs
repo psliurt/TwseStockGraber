@@ -12,25 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 > 上櫃股價指數收盤行情
+    /// d_index_summary
+    /// 本資訊自民國105年01月起開始提供   由2016/01/04開始提供    
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/index_summary/summary.php?l=zh-tw
+    /// </summary>
     public class DIndexSummaryGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 上櫃股價指數收盤行情
-        /// d_index_summary
-        /// 本資訊自民國105年01月起開始提供   由2016/01/04開始提供    
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/index_summary/summary.php?l=zh-tw
-        /// </summary>
+
+        public DIndexSummaryGraber() : base()
+        {
+            this._graberClassName = typeof(DIndexSummaryGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             DIndexSummary_Rsp rsp = JsonConvert.DeserializeObject<DIndexSummary_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
+                WriteEndRecord(record);
                 SaveToDatabase(rsp, dataDate);
                 Sleep();
             }

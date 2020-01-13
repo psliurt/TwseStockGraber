@@ -12,28 +12,42 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 歷史熱門資料 > 個股成交量排行(年)
+    /// d_vol_rank_yearly
+    /// 本資訊自民國96年1月起開始提供 實際上由 2007/4/23開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/trading_volume/vol_rank.php?l=zh-tw
+    /// </summary>
     public class DVolRankYearlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 歷史熱門資料 > 個股成交量排行(年)
-        /// d_vol_rank_yearly
-        /// 本資訊自民國96年1月起開始提供 實際上由 2007/4/23開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/trading_volume/vol_rank.php?l=zh-tw
-        /// </summary>
+        public DVolRankYearlyGraber() : base()
+        {
+            this._graberClassName = typeof(DVolRankYearlyGraber).Name;
+            this._graberFrequency = 365;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             DateTime yearFirstDay = GetYearFirstDay(dataDate);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(yearFirstDay, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(yearFirstDay);
             DVolRankYearly_Rsp rsp = JsonConvert.DeserializeObject<DVolRankYearly_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, yearFirstDay);
+                WriteEndRecord(record);
                 Sleep();
             }
 

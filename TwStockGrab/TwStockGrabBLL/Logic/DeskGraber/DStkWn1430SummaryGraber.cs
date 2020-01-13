@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計
+    /// d_stk_wn1430_summary
+    /// 本資訊自民國96年7月起開始提供 2012/05/29開始有資料，這是把select type為OR的資料選項特別獨立出來，因為他的資料結構跟其他選項不同
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/otc_quotes_no1430/stk_wn1430.php?l=zh-tw
+    /// </summary>
     public class DStkWn1430SummaryGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 上櫃證券成交統計
-        /// d_stk_wn1430_summary
-        /// 本資訊自民國96年7月起開始提供 2012/05/29開始有資料，這是把select type為OR的資料選項特別獨立出來，因為他的資料結構跟其他選項不同
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/otc_quotes_no1430/stk_wn1430.php?l=zh-tw
-        /// </summary>
+        public DStkWn1430SummaryGraber() : base()
+        {
+            this._graberClassName = typeof(DStkWn1430SummaryGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
-            
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             DStkWn1430Summary_Rsp rsp = JsonConvert.DeserializeObject<DStkWn1430Summary_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

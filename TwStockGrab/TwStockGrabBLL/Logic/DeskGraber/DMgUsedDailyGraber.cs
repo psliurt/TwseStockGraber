@@ -12,17 +12,29 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 融資融券 > 融資融券使用率報表
+    /// d_mgused_daily
+    /// 本資訊自民國96年1月起開始提供 實際由2007/4/23開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/margin_trading/margin_used/mgused.php?l=zh-tw
+    /// </summary>
     public class DMgUsedDailyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 融資融券 > 融資融券使用率報表
-        /// d_mgused_daily
-        /// 本資訊自民國96年1月起開始提供 實際由2007/4/23開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/margin_trading/margin_used/mgused.php?l=zh-tw
-        /// </summary>
+        public DMgUsedDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DMgUsedDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
             List<string> sideList = new List<string>();
             sideList.Add("Marg"); //融資
             sideList.Add("Shrt"); //融券
@@ -33,14 +45,17 @@ namespace TwStockGrabBLL.Logic.DeskGraber
                 DMgUsedDaily_Rsp rsp = JsonConvert.DeserializeObject<DMgUsedDaily_Rsp>(responseContent);
                 if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
                 {
+                    
                     Sleep();
                 }
                 else
                 {
                     SaveToDatabase(rsp, dataDate, side);
+                    
                     Sleep();
                 }
-            }            
+            }
+            WriteEndRecord(record);
         }
 
         private void SaveToDatabase(DMgUsedDaily_Rsp rsp, DateTime dataDate, string marginType)

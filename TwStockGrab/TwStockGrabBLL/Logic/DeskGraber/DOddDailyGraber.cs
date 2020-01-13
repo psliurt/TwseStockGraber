@@ -12,26 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 鉅額交易 > 鉅額交易日成交量值統計
+    /// d_odd_daily
+    /// 本資訊自民國96年1月起開始提供 實際由 2007/4 月開始有資料
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/block_trade/daily_trade_sum/odd.php?l=zh-tw
+    /// </summary>
     public class DOddDailyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 鉅額交易 > 鉅額交易日成交量值統計
-        /// d_odd_daily
-        /// 本資訊自民國96年1月起開始提供 實際由 2007/4 月開始有資料
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/block_trade/daily_trade_sum/odd.php?l=zh-tw
-        /// </summary>
+        public DOddDailyGraber() : base()
+        {
+            this._graberClassName = typeof(DOddDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             DOddDaily_Rsp rsp = JsonConvert.DeserializeObject<DOddDaily_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

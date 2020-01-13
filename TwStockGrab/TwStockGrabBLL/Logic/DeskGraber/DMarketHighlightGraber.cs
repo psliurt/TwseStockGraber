@@ -12,26 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 > 上櫃股票市場現況
+    /// d_market_highlight
+    /// 本資訊自民國96年01月起開始提供  實際上從 2007/04/23開始有資料
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/market_highlight/highlight.php?l=zh-tw
+    /// </summary>
     public class DMarketHighlightGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 上櫃股票市場現況
-        /// d_market_highlight
-        /// 本資訊自民國96年01月起開始提供  實際上從 2007/04/23開始有資料
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/market_highlight/highlight.php?l=zh-tw
-        /// </summary>
+        public DMarketHighlightGraber() : base()
+        {
+            this._graberClassName = typeof(DMarketHighlightGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             DMarketHighlight_Rsp rsp = JsonConvert.DeserializeObject<DMarketHighlight_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

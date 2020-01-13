@@ -12,27 +12,38 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 > 當日融券賣出與借券賣出成交量值
+    /// d_shtsell
+    /// 本資訊自民國97年10月起開始提供 從2008/10/1提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/short/shtsell.php?l=zh-tw
+    /// </summary>
     public class DShtsellGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 > 當日融券賣出與借券賣出成交量值
-        /// d_shtsell
-        /// 本資訊自民國97年10月起開始提供 從2008/10/1提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/short/shtsell.php?l=zh-tw
-        /// </summary>
+        public DShtsellGraber() : base()
+        {
+            this._graberClassName = typeof(DShtsellGraber).Name;
+            this._graberFrequency = 1;
+        }
         public override void DoJob(DateTime dataDate)
         {
-            
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
             string responseContent = GetWebContent(dataDate);
             DShtsell_Rsp rsp = JsonConvert.DeserializeObject<DShtsell_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
             

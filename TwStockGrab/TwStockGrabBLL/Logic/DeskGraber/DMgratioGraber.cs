@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 融資融券 > 信用交易餘額概況表
+    /// d_mgratio
+    /// 本資訊自民國96年1月起開始提供  2007/5月實際有資料
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/margin_trading/marginspot/mgratio.php?l=zh-tw
+    /// </summary>
     public class DMgratioGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 融資融券 > 信用交易餘額概況表
-        /// d_mgratio
-        /// 本資訊自民國96年1月起開始提供  2007/5月實際有資料
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/margin_trading/marginspot/mgratio.php?l=zh-tw
-        /// </summary>
+        public DMgratioGraber() : base()
+        {
+            this._graberClassName = typeof(DMgratioGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(dataDate);
             DMgratio_Rsp rsp = JsonConvert.DeserializeObject<DMgratio_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

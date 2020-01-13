@@ -12,27 +12,40 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 融資融券 > 標借
+    /// d_lend
+    /// 本資訊自民國92年8月起開始提供 2007/1月開始有資料
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/margin_trading/lend/lend.php?l=zh-tw
+    /// </summary>
     public class DLendGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 融資融券 > 標借
-        /// d_lend
-        /// 本資訊自民國92年8月起開始提供 2007/1月開始有資料
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/margin_trading/lend/lend.php?l=zh-tw
-        /// </summary>
+        public DLendGraber() : base()
+        {
+            this._graberClassName = typeof(DLendGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(dataDate);
             DLend_Rsp rsp = JsonConvert.DeserializeObject<DLend_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 

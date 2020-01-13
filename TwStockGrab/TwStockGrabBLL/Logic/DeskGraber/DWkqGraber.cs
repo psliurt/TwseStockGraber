@@ -12,6 +12,13 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 歷史熱門資料 > 證券行情週報表
+    /// d_wkq
+    /// 本資訊自民國96年1月起開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/historical/weekly_report/wkq.php?l=zh-tw
+    /// </summary>
     public class DWkqGraber : DGraber
     {
         public DWkqGraber() : base()
@@ -19,14 +26,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             this._graberClassName = typeof(DWkqGraber).Name;
             this._graberFrequency = 7;
         }
-
-        /// <summary>
-        /// 首頁 > 上櫃 > 歷史熱門資料 > 證券行情週報表
-        /// d_wkq
-        /// 本資訊自民國96年1月起開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/historical/weekly_report/wkq.php?l=zh-tw
-        /// </summary>
+        
         public override void DoJob(DateTime dataDate)
         {
             DateTime weekFirstDay = GetWeekMondayDate(dataDate);
@@ -41,6 +41,7 @@ namespace TwStockGrabBLL.Logic.DeskGraber
             DWkq_Rsp rsp = JsonConvert.DeserializeObject<DWkq_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else

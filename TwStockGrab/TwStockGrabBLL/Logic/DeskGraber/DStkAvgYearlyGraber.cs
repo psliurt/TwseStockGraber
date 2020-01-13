@@ -12,28 +12,42 @@ using TwStockGrabBLL.Logic.Rsp.Json.Desk;
 
 namespace TwStockGrabBLL.Logic.DeskGraber
 {
+    /// <summary>
+    /// 首頁 > 上櫃 > 盤後資訊 >   歷史熱門資料 > 個股日均量排行
+    /// d_stk_avg_yearly
+    /// 本資訊自民國96年1月起開始提供
+    /// 網頁位置
+    /// https://www.tpex.org.tw/web/stock/aftertrading/trading_volumes_avg/stk_avg.php?l=zh-tw
+    /// </summary>
     public class DStkAvgYearlyGraber : DGraber
     {
-        /// <summary>
-        /// 首頁 > 上櫃 > 盤後資訊 >   歷史熱門資料 > 個股日均量排行
-        /// d_stk_avg_yearly
-        /// 本資訊自民國96年1月起開始提供
-        /// 網頁位置
-        /// https://www.tpex.org.tw/web/stock/aftertrading/trading_volumes_avg/stk_avg.php?l=zh-tw
-        /// </summary>
+        public DStkAvgYearlyGraber() : base()
+        {
+            this._graberClassName = typeof(DStkAvgYearlyGraber).Name;
+            this._graberFrequency = 365;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             DateTime yearDate = GetYearFirstDay(dataDate);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(yearDate, out record))
+            {
+                return;
+            }
 
             string responseContent = GetWebContent(yearDate);
             DStkAvgMonthly_Rsp rsp = JsonConvert.DeserializeObject<DStkAvgMonthly_Rsp>(responseContent);
             if (rsp.iTotalRecords == 0 || rsp.aaData == null || rsp.aaData.Count() == 0)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, yearDate);
+                WriteEndRecord(record);
                 Sleep();
             }
 
