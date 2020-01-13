@@ -19,7 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class StockFirstGraber : Graber
     {
-        
+        public StockFirstGraber() : base()
+        {
+            this._graberClassName = typeof(StockFirstGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {            
             string responseContent = GetWebContent(dataDate);

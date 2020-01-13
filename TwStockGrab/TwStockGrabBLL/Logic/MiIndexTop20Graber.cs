@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class MiIndexTop20Graber : Graber
     {
+        public MiIndexTop20Graber() : base()
+        {
+            this._graberClassName = typeof(MiIndexTop20Graber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             string responseContent = GetWebContent(dataDate);

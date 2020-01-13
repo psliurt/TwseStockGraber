@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class FmtqikGraber : Graber
     {
+        public FmtqikGraber() : base()
+        {
+            this._graberClassName = typeof(FmtqikGraber).Name;
+            this._graberFrequency = 7;
+        }
+
         /// <summary>
         /// 如果要抓資料這個可以每七天跑一次就好
         /// 每天跑則是抓完歷史資料後可以考慮的

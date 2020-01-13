@@ -20,6 +20,13 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class MiMarginGraber : Graber
     {
+
+        public MiMarginGraber() : base()
+        {
+            this._graberClassName = typeof(MiMarginGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             List<string> selectTypeList = new List<string>();

@@ -27,6 +27,8 @@ namespace TwStockGrabBLL.Logic
         public FmsrfkGraber() : base()
         {
             _stockBag = StockBag.GetInstance();
+            this._graberClassName = typeof(FmsrfkGraber).Name;
+            this._graberFrequency = 30;
         }
 
         public override void DoJob(DateTime dataDate)

@@ -2049,7 +2049,7 @@ namespace TwStockGrab
 
         private void _DMarginSblBtn_Click(object sender, EventArgs e)
         {
-            DMarginSblGraber g1 = new DMarginSblGraber();
+            DGraber g1 = new DMarginSblGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_margin_sbl Complete!");
@@ -2073,7 +2073,7 @@ namespace TwStockGrab
 
         private void _DBlockDayBtn_Click(object sender, EventArgs e)
         {
-            DBlockDayGraber g1 = new DBlockDayGraber();
+            DGraber g1 = new DBlockDayGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_block_day Complete!");
@@ -2081,7 +2081,7 @@ namespace TwStockGrab
 
         private void _DStkQuoteBtn_Click(object sender, EventArgs e)
         {
-            DStkQuoteGraber g1 = new DStkQuoteGraber();
+            DGraber g1 = new DStkQuoteGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_stk_quote Complete!");
@@ -2089,7 +2089,7 @@ namespace TwStockGrab
 
         private void _DIndexSummaryBtn_Click(object sender, EventArgs e)
         {
-            DIndexSummaryGraber g1 = new DIndexSummaryGraber();
+            DGraber g1 = new DIndexSummaryGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_index_summary Complete!");
@@ -2097,7 +2097,7 @@ namespace TwStockGrab
 
         private void _DMarketHighlightBtn_Click(object sender, EventArgs e)
         {
-            DMarketHighlightGraber g1 = new DMarketHighlightGraber();
+            DGraber g1 = new DMarketHighlightGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_market_highlight Complete!");
@@ -2105,7 +2105,7 @@ namespace TwStockGrab
 
         private void _DMarketStatisticsDailyBtn_Click(object sender, EventArgs e)
         {
-            DMarketStatisticsDailyGraber g1 = new DMarketStatisticsDailyGraber();
+            DGraber g1 = new DMarketStatisticsDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_market_statistics_daily Complete!");
@@ -2113,7 +2113,7 @@ namespace TwStockGrab
 
         private void _DStkWin1430Btn_Click(object sender, EventArgs e)
         {
-            DStkWn1430Graber g1 = new DStkWn1430Graber();
+            DGraber g1 = new DStkWn1430Graber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_stk_wn1430 Complete!");
@@ -2121,7 +2121,7 @@ namespace TwStockGrab
 
         private void _DShtsellBtn_Click(object sender, EventArgs e)
         {
-            DShtsellGraber g1 = new DShtsellGraber();
+            DGraber g1 = new DShtsellGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_shtsell Complete!");
@@ -2129,7 +2129,7 @@ namespace TwStockGrab
 
         private void _DRtBrkBtn_Click(object sender, EventArgs e)
         {
-            DRtBrkGraber g1 = new DRtBrkGraber();
+            DGraber g1 = new DRtBrkGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_rt_brk Complete!");
@@ -2137,7 +2137,7 @@ namespace TwStockGrab
 
         private void _DRtRallyDailyBtn_Click(object sender, EventArgs e)
         {
-            DRtRallyDailyGraber g1 = new DRtRallyDailyGraber();
+            DGraber g1 = new DRtRallyDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_rt_rally_daily Complete!");
@@ -2145,7 +2145,7 @@ namespace TwStockGrab
 
         private void _DMktBtn_Click(object sender, EventArgs e)
         {
-            DMktGraber g1 = new DMktGraber();
+            DGraber g1 = new DMktGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_mkt Complete!");
@@ -2173,7 +2173,7 @@ namespace TwStockGrab
 
         private void _DVolRankDailyBtn_Click(object sender, EventArgs e)
         {
-            DVolRankDailyGraber g1 = new DVolRankDailyGraber();
+            DGraber g1 = new DVolRankDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_vol_rank_daily Complete!");
@@ -2181,7 +2181,7 @@ namespace TwStockGrab
 
         private void _DAmtRankDailyBtn_Click(object sender, EventArgs e)
         {
-            DAmtRankDailyGraber g1 = new DAmtRankDailyGraber();
+            DGraber g1 = new DAmtRankDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_amt_rank_daily Complete!");
@@ -2189,7 +2189,7 @@ namespace TwStockGrab
 
         private void _DStkAvgDailyBtn_Click(object sender, EventArgs e)
         {
-            DStkAvgDailyGraber g1 = new DStkAvgDailyGraber();
+            DGraber g1 = new DStkAvgDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_stk_avg_daily Complete!");
@@ -2197,7 +2197,7 @@ namespace TwStockGrab
 
         private void _DAvgAmtDailyBtn_Click(object sender, EventArgs e)
         {
-            DAvgAmtDailyGraber g1 = new DAvgAmtDailyGraber();
+            DGraber g1 = new DAvgAmtDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_avg_amt_daily Complete!");
@@ -2205,7 +2205,7 @@ namespace TwStockGrab
 
         private void _DRtDeclinedDailyBtn_Click(object sender, EventArgs e)
         {
-            DRtDeclinedDailyGraber g1 = new DRtDeclinedDailyGraber();
+            DGraber g1 = new DRtDeclinedDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_rt_declined_daily Complete!");
@@ -2213,7 +2213,7 @@ namespace TwStockGrab
 
         private void _DSectrBtn_Click(object sender, EventArgs e)
         {
-            DSectrGraber g1 = new DSectrGraber();
+            DGraber g1 = new DSectrGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_sectr Complete!");
@@ -2221,7 +2221,7 @@ namespace TwStockGrab
 
         private void _DPeraBtn_Click(object sender, EventArgs e)
         {
-            DPeraGraber g1 = new DPeraGraber();
+            DGraber g1 = new DPeraGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_pera Complete!");
@@ -2229,7 +2229,7 @@ namespace TwStockGrab
 
         private void _D3itrdsumDailyBtn_Click(object sender, EventArgs e)
         {
-            D3itrdsumDailyGraber g1 = new D3itrdsumDailyGraber();
+            DGraber g1 = new D3itrdsumDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_3itrdsum_daily Complete!");
@@ -2237,7 +2237,7 @@ namespace TwStockGrab
 
         private void _D3itradeHedgeDailyBtn_Click(object sender, EventArgs e)
         {
-            D3itradeHedgeDailyGraber g1 = new D3itradeHedgeDailyGraber();
+            DGraber g1 = new D3itradeHedgeDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_3itrade_hedge_daily Complete!");
@@ -2245,7 +2245,7 @@ namespace TwStockGrab
 
         private void _DDealtrHedgeDailyBtn_Click(object sender, EventArgs e)
         {
-            DDealtrHedgeDailyGraber g1 = new DDealtrHedgeDailyGraber();
+            DGraber g1 = new DDealtrHedgeDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_dealtr_hedge_daily Complete!");
@@ -2253,7 +2253,7 @@ namespace TwStockGrab
 
         private void _DSitctrDailyBtn_Click(object sender, EventArgs e)
         {
-            DSitctrDailyGraber g1 = new DSitctrDailyGraber();
+            DGraber g1 = new DSitctrDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_sitctr_daily Complete!");
@@ -2261,7 +2261,7 @@ namespace TwStockGrab
 
         private void _DForgtrDailyBtn_Click(object sender, EventArgs e)
         {
-            DForgtrDailyGraber g1 = new DForgtrDailyGraber();
+            DGraber g1 = new DForgtrDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_forgtr_daily Complete!");
@@ -2269,7 +2269,7 @@ namespace TwStockGrab
 
         private void _DQfiiBtn_Click(object sender, EventArgs e)
         {
-            DQfiiGraber g1 = new DQfiiGraber();
+            DGraber g1 = new DQfiiGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_qfii Complete!");
@@ -2277,7 +2277,7 @@ namespace TwStockGrab
 
         private void _DQfiisectBtn_Click(object sender, EventArgs e)
         {
-            DQfiisectGraber g1 = new DQfiisectGraber();
+            DGraber g1 = new DQfiisectGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_qfiisect Complete!");
@@ -2285,7 +2285,7 @@ namespace TwStockGrab
 
         private void _DoddDailyBtn_Click(object sender, EventArgs e)
         {
-            DOddDailyGraber g1 = new DOddDailyGraber();
+            DGraber g1 = new DOddDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_odd_daily Complete!");
@@ -2293,7 +2293,7 @@ namespace TwStockGrab
 
         private void _DBlockMthMonthlyBtn_Click(object sender, EventArgs e)
         {
-            DBlockMthMonthlyGraber g1 = new DBlockMthMonthlyGraber();
+            DGraber g1 = new DBlockMthMonthlyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_block_mth_monthly Complete!");
@@ -2301,7 +2301,7 @@ namespace TwStockGrab
 
         private void _DBlockYrYearlyBtn_Click(object sender, EventArgs e)
         {
-            DBlockYrYearlyGraber g1 = new DBlockYrYearlyGraber();
+            DGraber g1 = new DBlockYrYearlyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_block_yr_yearly Complete!");
@@ -2309,7 +2309,7 @@ namespace TwStockGrab
 
         private void _DMarginRankDailyBtn_Click(object sender, EventArgs e)
         {
-            DMarginRankDailyGraber g1 = new DMarginRankDailyGraber();
+            DGraber g1 = new DMarginRankDailyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_margin_rank_daily Complete!");
@@ -2317,7 +2317,7 @@ namespace TwStockGrab
 
         private void _DMarginRankWeeklyBtn_Click(object sender, EventArgs e)
         {
-            DMarginRankWeeklyGraber g1 = new DMarginRankWeeklyGraber();
+            DGraber g1 = new DMarginRankWeeklyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_margin_rank_weekly Complete!");
@@ -2325,7 +2325,7 @@ namespace TwStockGrab
 
         private void _DMarginRankMonthlyBtn_Click(object sender, EventArgs e)
         {
-            DMarginRankMonthlyGraber g1 = new DMarginRankMonthlyGraber();
+            DGraber g1 = new DMarginRankMonthlyGraber();
             g1.DoJob(DataDatePicker.Value.Date);
 
             MessageBox.Show("d_margin_rank_monthly Complete!");

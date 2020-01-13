@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TwStockGrabBLL.DAL;
 
 namespace TwStockGrabBLL.Logic
 {
@@ -18,6 +19,9 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public abstract class Graber
     {
+        protected int _graberFrequency { get; set; }
+        protected string _graberClassName { get; set; }
+
         public Graber()
         {
 
@@ -28,7 +32,56 @@ namespace TwStockGrabBLL.Logic
         /// </summary>
         /// <param name="grabeDate">執行抓取資料的日期</param>
         public abstract void DoJob(DateTime grabeDate);
-        
+
+        protected bool GetOrCreateWorkRecord(DateTime dataDate, out work_record record)
+        {
+            bool complete = false;
+
+            using (TwStockDataContext context = new TwStockDataContext())
+            {
+                record = context.Set<work_record>().Where(x => x.graber_freq == this._graberFrequency && x.graber_name == this._graberClassName && x.work_data_date == dataDate).FirstOrDefault();
+                if (record == null)
+                {
+                    record = new work_record
+                    {
+                        create_at = DateTime.Now,
+                        update_at = DateTime.Now,
+                        is_complete = false,
+
+                        graber_freq = this._graberFrequency,
+                        graber_name = this._graberClassName,
+                        note = "",
+                        start_time = DateTime.Now,
+                        work_data_date = dataDate,
+                    };
+                    context.Set<work_record>().Add(record);
+
+                    context.SaveChanges();
+
+                    complete = false;
+                }
+                else
+                {
+                    complete = record.is_complete.Value;
+                }
+            }
+            return complete;
+        }
+
+        protected void WriteEndRecord(work_record record)
+        {
+            record.update_at = DateTime.Now;
+            record.end_time = DateTime.Now;
+            record.is_complete = true;
+
+            using (TwStockDataContext context = new TwStockDataContext())
+            {
+                context.Entry<work_record>(record).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
         /// <summary>
         /// 送出http GET 請求
         /// </summary>

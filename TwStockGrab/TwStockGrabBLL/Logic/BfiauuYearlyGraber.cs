@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class BfiauuYearlyGraber : Graber
     {
+        public BfiauuYearlyGraber() : base()
+        {
+            this._graberClassName = typeof(BfiauuYearlyGraber).Name;
+            this._graberFrequency = 365;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             string responseContent = GetWebContent(dataDate);

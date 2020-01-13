@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class T86Graber : Graber
     {
+        public T86Graber() : base()
+        {
+            this._graberClassName = typeof(T86Graber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             List<string> selectTypeList = new List<string>();

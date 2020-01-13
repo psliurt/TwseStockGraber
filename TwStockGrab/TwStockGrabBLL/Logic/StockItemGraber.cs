@@ -18,6 +18,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class StockItemGraber : Graber
     {
+        public StockItemGraber() : base()
+        {
+            this._graberClassName = typeof(StockItemGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             List<string> typeStringList = new List<string>();

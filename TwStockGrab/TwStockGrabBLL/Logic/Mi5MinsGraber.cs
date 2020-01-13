@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class Mi5MinsGraber : Graber
     {
+        public Mi5MinsGraber() : base()
+        {
+            this._graberClassName = typeof(Mi5MinsGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             string responseContent = GetWebContent(dataDate);

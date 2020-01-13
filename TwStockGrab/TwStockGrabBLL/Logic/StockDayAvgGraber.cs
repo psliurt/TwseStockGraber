@@ -23,6 +23,8 @@ namespace TwStockGrabBLL.Logic
         public StockDayAvgGraber() : base()
         {
             _stockBag = StockBag.GetInstance();
+            this._graberClassName = typeof(StockDayAvgGraber).Name;
+            this._graberFrequency = 1;
         }
 
         public override void DoJob(DateTime dataDate)

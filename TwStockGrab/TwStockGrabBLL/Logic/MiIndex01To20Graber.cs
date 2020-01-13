@@ -17,6 +17,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class MiIndex01To20Graber
     {
+        //public MiIndex01To20Graber() : base()
+        //{
+        //    this._graberClassName = typeof(MiIndex01To20Graber).Name;
+        //    this._graberFrequency = 1;
+        //}
+
         public void DoJob(DateTime dataDate)
         {
             List<string> typeList = new List<string>();

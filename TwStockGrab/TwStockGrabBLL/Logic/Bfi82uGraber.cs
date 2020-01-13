@@ -18,9 +18,16 @@ namespace TwStockGrabBLL.Logic
     /// bfi82u_week
     /// bfi82u_month
     /// 本資訊自民國93年4月7日起提供
+    /// TODO:這個抓取資料的類別，有三個不同的資料頻率 day, week, month
     /// </summary>
     public class Bfi82uGraber : Graber
     {
+        public Bfi82uGraber() : base()
+        {
+            this._graberClassName = typeof(Bfi82uGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
 

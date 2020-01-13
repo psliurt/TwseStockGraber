@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class MiQfiisSort20Graber : Graber
     {
+        public MiQfiisSort20Graber() : base()
+        {
+            this._graberClassName = typeof(MiQfiisSort20Graber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             string responseContent = GetWebContent(dataDate);

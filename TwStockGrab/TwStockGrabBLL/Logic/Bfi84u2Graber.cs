@@ -19,18 +19,32 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class Bfi84u2Graber : Graber
     {
+        public Bfi84u2Graber() : base()
+        {
+            this._graberClassName = typeof(Bfi84u2Graber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             BFI84U2_Rsp rsp = JsonConvert.DeserializeObject<BFI84U2_Rsp>(responseContent);
 
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

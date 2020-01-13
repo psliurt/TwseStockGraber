@@ -20,6 +20,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class TwtasuGraber : Graber
     {
+        public TwtasuGraber() : base()
+        {
+            this._graberClassName = typeof(TwtasuGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             string responseContent = GetWebContent(dataDate);

@@ -19,18 +19,32 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class BfiauuMonthlyGraber :Graber
     {
+        public BfiauuMonthlyGraber() : base()
+        {
+            this._graberClassName = typeof(BfiauuMonthlyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             BFIAUU_M_Rsp rsp = JsonConvert.DeserializeObject<BFIAUU_M_Rsp>(responseContent);
 
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

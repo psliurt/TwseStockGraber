@@ -19,6 +19,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class BwibbuDailyGraber : Graber
     {
+        public BwibbuDailyGraber() : base()
+        {
+            this._graberClassName = typeof(BwibbuDailyGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             List<string> selectTypeList = new List<string>();

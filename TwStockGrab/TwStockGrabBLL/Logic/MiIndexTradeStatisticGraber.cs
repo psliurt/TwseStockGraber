@@ -20,6 +20,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class MiIndexTradeStatisticGraber :Graber
     {
+        public MiIndexTradeStatisticGraber() : base()
+        {
+            this._graberClassName = typeof(MiIndexTradeStatisticGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             

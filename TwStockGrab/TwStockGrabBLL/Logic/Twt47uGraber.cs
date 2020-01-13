@@ -20,6 +20,12 @@ namespace TwStockGrabBLL.Logic
     /// </summary>
     public class Twt47uGraber : Graber
     {
+        public Twt47uGraber() : base()
+        {
+            this._graberClassName = typeof(Twt47uGraber).Name;
+            this._graberFrequency = 1;
+        }
+
         public override void DoJob(DateTime dataDate)
         {
             List<string> selectTypeList = new List<string>();

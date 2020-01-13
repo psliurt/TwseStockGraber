@@ -18,7 +18,12 @@ namespace TwStockGrabBLL.Logic
     /// 本資訊自民國94年04月04日起開始提供
     /// </summary>
     public class BfiauuSingleGraber : Graber
-    {      
+    {
+        public BfiauuSingleGraber() : base()
+        {
+            this._graberClassName = typeof(BfiauuSingleGraber).Name;
+            this._graberFrequency = 1;
+        }
 
         public override void DoJob(DateTime dataDate)
         {            
