@@ -35,11 +35,16 @@ namespace TwStockGrabBLL.Logic
 
         protected bool GetOrCreateWorkRecord(DateTime dataDate, out work_record record)
         {
+            return GetOrCreateWorkRecord(dataDate, "", out record);            
+        }
+
+        protected bool GetOrCreateWorkRecord(DateTime dataDate, string subType, out work_record record)
+        {
             bool complete = false;
 
             using (TwStockDataContext context = new TwStockDataContext())
             {
-                record = context.Set<work_record>().Where(x => x.graber_freq == this._graberFrequency && x.graber_name == this._graberClassName && x.work_data_date == dataDate).FirstOrDefault();
+                record = context.Set<work_record>().Where(x => x.graber_freq == this._graberFrequency && x.graber_name == this._graberClassName && x.work_data_date == dataDate && x.sub_type == subType).FirstOrDefault();
                 if (record == null)
                 {
                     record = new work_record
@@ -50,6 +55,7 @@ namespace TwStockGrabBLL.Logic
 
                         graber_freq = this._graberFrequency,
                         graber_name = this._graberClassName,
+                        sub_type = subType,
                         note = "",
                         start_time = DateTime.Now,
                         work_data_date = dataDate,

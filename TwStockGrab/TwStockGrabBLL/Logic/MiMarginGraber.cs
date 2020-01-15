@@ -17,6 +17,7 @@ namespace TwStockGrabBLL.Logic
     /// mi_margin
     /// mi_margin_stat
     /// 本資訊自民國90年01月01日起提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/MI_MARGN.html
     /// </summary>
     public class MiMarginGraber : Graber
     {
@@ -34,18 +35,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                MI_MARGN_Rsp rsp = JsonConvert.DeserializeObject<MI_MARGN_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    MI_MARGN_Rsp rsp = JsonConvert.DeserializeObject<MI_MARGN_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }        
 

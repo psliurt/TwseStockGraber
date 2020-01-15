@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->盤後資訊->個股日本益比、殖利率及股價淨值比（依日期查詢）
     /// bwibbu_daily
     /// 本資料自民國94年09月02日開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/BWIBBU_d.html
     /// </summary>
     public class BwibbuDailyGraber : Graber
     {
@@ -32,18 +33,26 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                BWIBBU_D_Rsp rsp = JsonConvert.DeserializeObject<BWIBBU_D_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    BWIBBU_D_Rsp rsp = JsonConvert.DeserializeObject<BWIBBU_D_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
                 }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+
+                
             }
         }
         

@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->升降幅度/首五日無漲跌幅->股價升降幅度
     /// twt84u
     /// 本資訊自民國94年12月19日起開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/TWT84U.html
     /// </summary>
     public class Twt84uGraber : Graber
     {
@@ -33,18 +34,25 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                TWT84U_Rsp rsp = JsonConvert.DeserializeObject<TWT84U_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    TWT84U_Rsp rsp = JsonConvert.DeserializeObject<TWT84U_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
                 }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+                
             }
         }        
 

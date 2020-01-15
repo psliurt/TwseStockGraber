@@ -81,7 +81,8 @@ namespace TwStockGrabBLL.Logic
     ///   6. 外資及陸資投資持股統計 XX    
     /// # 鉅額交易    
     ///   2. 個股單一證券鉅額交易日成交資訊 https://www.tpex.org.tw/web/stock/block_trade/daily_trade_infor/block_day_result.php?l=zh-tw&d=2018&stkno=&_=1571410305730    
-    ///   
+    /// # 歷史熱門資料
+    ///   1.個股日均值排行(月年)
     ///
     #endregion
 }

@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->三大法人->外資及陸資投資持股統計
     /// mi_qfiis
     /// 本資訊自民國93年2月11日起提供
+    /// https://www.twse.com.tw/zh/page/trading/fund/MI_QFIIS.html
     /// </summary>
     public class MiQfiisGraber :Graber
     {
@@ -32,21 +33,28 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string selectType in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, selectType);
-                MI_QFIIS_Rsp rsp = JsonConvert.DeserializeObject<MI_QFIIS_Rsp>(responseContent);
-                if (rsp.data == null)
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate,selectType, out record) ==false)
                 {
-                    Sleep();
-                }
-                else if (rsp.data.Count() == 0)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate);
-                    Sleep();
-                }
+                    string responseContent = GetWebContent(dataDate, selectType);
+                    MI_QFIIS_Rsp rsp = JsonConvert.DeserializeObject<MI_QFIIS_Rsp>(responseContent);
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else if (rsp.data.Count() == 0)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }        
 

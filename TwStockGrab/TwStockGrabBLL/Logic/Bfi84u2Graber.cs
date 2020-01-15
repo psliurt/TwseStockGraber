@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->融資融券與可借券賣出額度->停券歷史查詢
     /// bfi84u2
     /// 自99年11月8日起提供停資券原因
+    /// https://www.twse.com.tw/zh/page/trading/exchange/BFI84U2.html
     /// </summary>
     public class Bfi84u2Graber : Graber
     {

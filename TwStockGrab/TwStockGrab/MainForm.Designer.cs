@@ -112,6 +112,7 @@
             this.DeskSingleDataBtn = new System.Windows.Forms.Button();
             this.MarketSingleDataBtn = new System.Windows.Forms.Button();
             this.AfterMarketFilterPage = new System.Windows.Forms.TabPage();
+            this.ExportFilterResultBtn = new System.Windows.Forms.Button();
             this.OperationGrb = new System.Windows.Forms.GroupBox();
             this.NoneRdo = new System.Windows.Forms.RadioButton();
             this.UpdateRdo = new System.Windows.Forms.RadioButton();
@@ -134,7 +135,36 @@
             this.FilterParam1Txt = new System.Windows.Forms.TextBox();
             this.SaveFilterParamBtn = new System.Windows.Forms.Button();
             this.AfterMarketFilterBtn = new System.Windows.Forms.Button();
-            this.ExportFilterResultBtn = new System.Windows.Forms.Button();
+            this._DCeilOrdBtn = new System.Windows.Forms.Button();
+            this._DPeratioPeraBtn = new System.Windows.Forms.Button();
+            this._DTrnMonthlyBtn = new System.Windows.Forms.Button();
+            this._DTrnYearlyBtn = new System.Windows.Forms.Button();
+            this._DVolRankWeeklyBtn = new System.Windows.Forms.Button();
+            this._DVolRankMonthlyBtn = new System.Windows.Forms.Button();
+            this._DVolRankYearlyBtn = new System.Windows.Forms.Button();
+            this._DAmtRankMonthlyBtn = new System.Windows.Forms.Button();
+            this._DAmtRankYearlyBtn = new System.Windows.Forms.Button();
+            this._DStkAvgMonthlyBtn = new System.Windows.Forms.Button();
+            this._DStkAvgYearlyBtn = new System.Windows.Forms.Button();
+            this._DRtRallyWeeklyBtn = new System.Windows.Forms.Button();
+            this._DRtRallyMonthlyBtn = new System.Windows.Forms.Button();
+            this._DRtDeclinedWeeklyBtn = new System.Windows.Forms.Button();
+            this._DRtDeclinedMonthlyBtn = new System.Windows.Forms.Button();
+            this._DWkqBtn = new System.Windows.Forms.Button();
+            this._DLendBtn = new System.Windows.Forms.Button();
+            this._DMgratioBtn = new System.Windows.Forms.Button();
+            this._DMarginBalBtn = new System.Windows.Forms.Button();
+            this._DMgUsedDailyBtn = new System.Windows.Forms.Button();
+            this._DMgUsedWeeklyBtn = new System.Windows.Forms.Button();
+            this._DForgtrWeeklyBtn = new System.Windows.Forms.Button();
+            this._DForgtrMonthlyBtn = new System.Windows.Forms.Button();
+            this._DForgtrYearlyBtn = new System.Windows.Forms.Button();
+            this._D3itradeHedgeWeeklyBtn = new System.Windows.Forms.Button();
+            this._D3itradeHedgeMonthlyBtn = new System.Windows.Forms.Button();
+            this._D3itradeHedgeYearlyBtn = new System.Windows.Forms.Button();
+            this._D3itrdsumWeeklyBtn = new System.Windows.Forms.Button();
+            this._D3itrdsumMonthlyBtn = new System.Windows.Forms.Button();
+            this._D3itrdsumYearlyBtn = new System.Windows.Forms.Button();
             this.MainTabControl.SuspendLayout();
             this.SingleDayPage.SuspendLayout();
             this.DateOptionGbx.SuspendLayout();
@@ -145,7 +175,7 @@
             // 
             // TestBtn
             // 
-            this.TestBtn.Location = new System.Drawing.Point(666, 760);
+            this.TestBtn.Location = new System.Drawing.Point(886, 731);
             this.TestBtn.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.TestBtn.Name = "TestBtn";
             this.TestBtn.Size = new System.Drawing.Size(214, 23);
@@ -539,6 +569,36 @@
             // 
             // SingleDayPage
             // 
+            this.SingleDayPage.Controls.Add(this._D3itrdsumYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._D3itrdsumMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._D3itrdsumWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._D3itradeHedgeYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._D3itradeHedgeMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._D3itradeHedgeWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._DForgtrYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._DForgtrMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DForgtrWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._DMgUsedWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._DMgUsedDailyBtn);
+            this.SingleDayPage.Controls.Add(this._DMarginBalBtn);
+            this.SingleDayPage.Controls.Add(this._DMgratioBtn);
+            this.SingleDayPage.Controls.Add(this._DLendBtn);
+            this.SingleDayPage.Controls.Add(this._DWkqBtn);
+            this.SingleDayPage.Controls.Add(this._DRtDeclinedMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DRtDeclinedWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._DRtRallyMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DRtRallyWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._DStkAvgYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._DStkAvgMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DAmtRankYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._DAmtRankMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DVolRankYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._DVolRankMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DVolRankWeeklyBtn);
+            this.SingleDayPage.Controls.Add(this._DTrnYearlyBtn);
+            this.SingleDayPage.Controls.Add(this._DTrnMonthlyBtn);
+            this.SingleDayPage.Controls.Add(this._DPeratioPeraBtn);
+            this.SingleDayPage.Controls.Add(this._DCeilOrdBtn);
             this.SingleDayPage.Controls.Add(this._DMarginRankMonthlyBtn);
             this.SingleDayPage.Controls.Add(this._DMarginRankWeeklyBtn);
             this.SingleDayPage.Controls.Add(this._DMarginRankDailyBtn);
@@ -622,7 +682,7 @@
             // 
             // _DMarginRankMonthlyBtn
             // 
-            this._DMarginRankMonthlyBtn.Location = new System.Drawing.Point(666, 151);
+            this._DMarginRankMonthlyBtn.Location = new System.Drawing.Point(666, 586);
             this._DMarginRankMonthlyBtn.Name = "_DMarginRankMonthlyBtn";
             this._DMarginRankMonthlyBtn.Size = new System.Drawing.Size(214, 23);
             this._DMarginRankMonthlyBtn.TabIndex = 73;
@@ -632,7 +692,7 @@
             // 
             // _DMarginRankWeeklyBtn
             // 
-            this._DMarginRankWeeklyBtn.Location = new System.Drawing.Point(666, 122);
+            this._DMarginRankWeeklyBtn.Location = new System.Drawing.Point(666, 557);
             this._DMarginRankWeeklyBtn.Name = "_DMarginRankWeeklyBtn";
             this._DMarginRankWeeklyBtn.Size = new System.Drawing.Size(214, 23);
             this._DMarginRankWeeklyBtn.TabIndex = 72;
@@ -642,7 +702,7 @@
             // 
             // _DMarginRankDailyBtn
             // 
-            this._DMarginRankDailyBtn.Location = new System.Drawing.Point(666, 93);
+            this._DMarginRankDailyBtn.Location = new System.Drawing.Point(666, 528);
             this._DMarginRankDailyBtn.Name = "_DMarginRankDailyBtn";
             this._DMarginRankDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DMarginRankDailyBtn.TabIndex = 71;
@@ -652,7 +712,7 @@
             // 
             // _DBlockYrYearlyBtn
             // 
-            this._DBlockYrYearlyBtn.Location = new System.Drawing.Point(666, 673);
+            this._DBlockYrYearlyBtn.Location = new System.Drawing.Point(886, 644);
             this._DBlockYrYearlyBtn.Name = "_DBlockYrYearlyBtn";
             this._DBlockYrYearlyBtn.Size = new System.Drawing.Size(214, 23);
             this._DBlockYrYearlyBtn.TabIndex = 70;
@@ -662,7 +722,7 @@
             // 
             // _DBlockMthMonthlyBtn
             // 
-            this._DBlockMthMonthlyBtn.Location = new System.Drawing.Point(666, 644);
+            this._DBlockMthMonthlyBtn.Location = new System.Drawing.Point(886, 615);
             this._DBlockMthMonthlyBtn.Name = "_DBlockMthMonthlyBtn";
             this._DBlockMthMonthlyBtn.Size = new System.Drawing.Size(214, 23);
             this._DBlockMthMonthlyBtn.TabIndex = 69;
@@ -672,7 +732,7 @@
             // 
             // _DoddDailyBtn
             // 
-            this._DoddDailyBtn.Location = new System.Drawing.Point(666, 615);
+            this._DoddDailyBtn.Location = new System.Drawing.Point(886, 586);
             this._DoddDailyBtn.Name = "_DoddDailyBtn";
             this._DoddDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DoddDailyBtn.TabIndex = 68;
@@ -682,7 +742,7 @@
             // 
             // _DQfiisectBtn
             // 
-            this._DQfiisectBtn.Location = new System.Drawing.Point(666, 528);
+            this._DQfiisectBtn.Location = new System.Drawing.Point(886, 528);
             this._DQfiisectBtn.Name = "_DQfiisectBtn";
             this._DQfiisectBtn.Size = new System.Drawing.Size(214, 23);
             this._DQfiisectBtn.TabIndex = 67;
@@ -692,7 +752,7 @@
             // 
             // _DQfiiBtn
             // 
-            this._DQfiiBtn.Location = new System.Drawing.Point(666, 499);
+            this._DQfiiBtn.Location = new System.Drawing.Point(886, 499);
             this._DQfiiBtn.Name = "_DQfiiBtn";
             this._DQfiiBtn.Size = new System.Drawing.Size(214, 23);
             this._DQfiiBtn.TabIndex = 66;
@@ -702,7 +762,7 @@
             // 
             // _DForgtrDailyBtn
             // 
-            this._DForgtrDailyBtn.Location = new System.Drawing.Point(666, 470);
+            this._DForgtrDailyBtn.Location = new System.Drawing.Point(886, 383);
             this._DForgtrDailyBtn.Name = "_DForgtrDailyBtn";
             this._DForgtrDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DForgtrDailyBtn.TabIndex = 65;
@@ -712,7 +772,7 @@
             // 
             // _DSitctrDailyBtn
             // 
-            this._DSitctrDailyBtn.Location = new System.Drawing.Point(666, 441);
+            this._DSitctrDailyBtn.Location = new System.Drawing.Point(886, 354);
             this._DSitctrDailyBtn.Name = "_DSitctrDailyBtn";
             this._DSitctrDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DSitctrDailyBtn.TabIndex = 64;
@@ -722,7 +782,7 @@
             // 
             // _DDealtrHedgeDailyBtn
             // 
-            this._DDealtrHedgeDailyBtn.Location = new System.Drawing.Point(666, 412);
+            this._DDealtrHedgeDailyBtn.Location = new System.Drawing.Point(886, 325);
             this._DDealtrHedgeDailyBtn.Name = "_DDealtrHedgeDailyBtn";
             this._DDealtrHedgeDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DDealtrHedgeDailyBtn.TabIndex = 63;
@@ -732,7 +792,7 @@
             // 
             // _D3itradeHedgeDailyBtn
             // 
-            this._D3itradeHedgeDailyBtn.Location = new System.Drawing.Point(666, 383);
+            this._D3itradeHedgeDailyBtn.Location = new System.Drawing.Point(886, 209);
             this._D3itradeHedgeDailyBtn.Name = "_D3itradeHedgeDailyBtn";
             this._D3itradeHedgeDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._D3itradeHedgeDailyBtn.TabIndex = 62;
@@ -742,7 +802,7 @@
             // 
             // _D3itrdsumDailyBtn
             // 
-            this._D3itrdsumDailyBtn.Location = new System.Drawing.Point(666, 354);
+            this._D3itrdsumDailyBtn.Location = new System.Drawing.Point(666, 615);
             this._D3itrdsumDailyBtn.Name = "_D3itrdsumDailyBtn";
             this._D3itrdsumDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._D3itrdsumDailyBtn.TabIndex = 61;
@@ -752,7 +812,7 @@
             // 
             // _DPeraBtn
             // 
-            this._DPeraBtn.Location = new System.Drawing.Point(446, 702);
+            this._DPeraBtn.Location = new System.Drawing.Point(666, 296);
             this._DPeraBtn.Name = "_DPeraBtn";
             this._DPeraBtn.Size = new System.Drawing.Size(214, 23);
             this._DPeraBtn.TabIndex = 60;
@@ -762,7 +822,7 @@
             // 
             // _DSectrBtn
             // 
-            this._DSectrBtn.Location = new System.Drawing.Point(446, 673);
+            this._DSectrBtn.Location = new System.Drawing.Point(666, 267);
             this._DSectrBtn.Name = "_DSectrBtn";
             this._DSectrBtn.Size = new System.Drawing.Size(214, 23);
             this._DSectrBtn.TabIndex = 59;
@@ -772,7 +832,7 @@
             // 
             // _DRtDeclinedDailyBtn
             // 
-            this._DRtDeclinedDailyBtn.Location = new System.Drawing.Point(446, 644);
+            this._DRtDeclinedDailyBtn.Location = new System.Drawing.Point(666, 180);
             this._DRtDeclinedDailyBtn.Name = "_DRtDeclinedDailyBtn";
             this._DRtDeclinedDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DRtDeclinedDailyBtn.TabIndex = 58;
@@ -782,7 +842,7 @@
             // 
             // _DAvgAmtDailyBtn
             // 
-            this._DAvgAmtDailyBtn.Location = new System.Drawing.Point(446, 557);
+            this._DAvgAmtDailyBtn.Location = new System.Drawing.Point(446, 702);
             this._DAvgAmtDailyBtn.Name = "_DAvgAmtDailyBtn";
             this._DAvgAmtDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DAvgAmtDailyBtn.TabIndex = 57;
@@ -792,7 +852,7 @@
             // 
             // _DStkAvgDailyBtn
             // 
-            this._DStkAvgDailyBtn.Location = new System.Drawing.Point(446, 528);
+            this._DStkAvgDailyBtn.Location = new System.Drawing.Point(446, 615);
             this._DStkAvgDailyBtn.Name = "_DStkAvgDailyBtn";
             this._DStkAvgDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DStkAvgDailyBtn.TabIndex = 56;
@@ -802,7 +862,7 @@
             // 
             // _DAmtRankDailyBtn
             // 
-            this._DAmtRankDailyBtn.Location = new System.Drawing.Point(446, 499);
+            this._DAmtRankDailyBtn.Location = new System.Drawing.Point(446, 528);
             this._DAmtRankDailyBtn.Name = "_DAmtRankDailyBtn";
             this._DAmtRankDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DAmtRankDailyBtn.TabIndex = 55;
@@ -812,7 +872,7 @@
             // 
             // _DVolRankDailyBtn
             // 
-            this._DVolRankDailyBtn.Location = new System.Drawing.Point(446, 470);
+            this._DVolRankDailyBtn.Location = new System.Drawing.Point(446, 412);
             this._DVolRankDailyBtn.Name = "_DVolRankDailyBtn";
             this._DVolRankDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DVolRankDailyBtn.TabIndex = 54;
@@ -822,7 +882,7 @@
             // 
             // _DTrnDailyBtn
             // 
-            this._DTrnDailyBtn.Location = new System.Drawing.Point(446, 441);
+            this._DTrnDailyBtn.Location = new System.Drawing.Point(446, 325);
             this._DTrnDailyBtn.Name = "_DTrnDailyBtn";
             this._DTrnDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DTrnDailyBtn.TabIndex = 53;
@@ -832,7 +892,7 @@
             // 
             // _DMktBtn
             // 
-            this._DMktBtn.Location = new System.Drawing.Point(446, 412);
+            this._DMktBtn.Location = new System.Drawing.Point(446, 296);
             this._DMktBtn.Name = "_DMktBtn";
             this._DMktBtn.Size = new System.Drawing.Size(214, 23);
             this._DMktBtn.TabIndex = 52;
@@ -842,7 +902,7 @@
             // 
             // _DRtRallyDailyBtn
             // 
-            this._DRtRallyDailyBtn.Location = new System.Drawing.Point(446, 615);
+            this._DRtRallyDailyBtn.Location = new System.Drawing.Point(666, 93);
             this._DRtRallyDailyBtn.Name = "_DRtRallyDailyBtn";
             this._DRtRallyDailyBtn.Size = new System.Drawing.Size(214, 23);
             this._DRtRallyDailyBtn.TabIndex = 51;
@@ -852,7 +912,7 @@
             // 
             // _DRtBrkBtn
             // 
-            this._DRtBrkBtn.Location = new System.Drawing.Point(446, 586);
+            this._DRtBrkBtn.Location = new System.Drawing.Point(666, 64);
             this._DRtBrkBtn.Name = "_DRtBrkBtn";
             this._DRtBrkBtn.Size = new System.Drawing.Size(214, 23);
             this._DRtBrkBtn.TabIndex = 50;
@@ -862,7 +922,7 @@
             // 
             // _DShtsellBtn
             // 
-            this._DShtsellBtn.Location = new System.Drawing.Point(446, 296);
+            this._DShtsellBtn.Location = new System.Drawing.Point(446, 238);
             this._DShtsellBtn.Name = "_DShtsellBtn";
             this._DShtsellBtn.Size = new System.Drawing.Size(214, 23);
             this._DShtsellBtn.TabIndex = 49;
@@ -922,7 +982,7 @@
             // 
             // _DBlockDayBtn
             // 
-            this._DBlockDayBtn.Location = new System.Drawing.Point(666, 586);
+            this._DBlockDayBtn.Location = new System.Drawing.Point(886, 557);
             this._DBlockDayBtn.Name = "_DBlockDayBtn";
             this._DBlockDayBtn.Size = new System.Drawing.Size(214, 23);
             this._DBlockDayBtn.TabIndex = 43;
@@ -1024,7 +1084,7 @@
             // 
             // _DMarginSblBtn
             // 
-            this._DMarginSblBtn.Location = new System.Drawing.Point(666, 64);
+            this._DMarginSblBtn.Location = new System.Drawing.Point(666, 383);
             this._DMarginSblBtn.Name = "_DMarginSblBtn";
             this._DMarginSblBtn.Size = new System.Drawing.Size(214, 23);
             this._DMarginSblBtn.TabIndex = 41;
@@ -1034,7 +1094,7 @@
             // 
             // DeskSingleDataBtn
             // 
-            this.DeskSingleDataBtn.Location = new System.Drawing.Point(666, 731);
+            this.DeskSingleDataBtn.Location = new System.Drawing.Point(886, 702);
             this.DeskSingleDataBtn.Name = "DeskSingleDataBtn";
             this.DeskSingleDataBtn.Size = new System.Drawing.Size(214, 23);
             this.DeskSingleDataBtn.TabIndex = 40;
@@ -1044,7 +1104,7 @@
             // 
             // MarketSingleDataBtn
             // 
-            this.MarketSingleDataBtn.Location = new System.Drawing.Point(666, 702);
+            this.MarketSingleDataBtn.Location = new System.Drawing.Point(886, 673);
             this.MarketSingleDataBtn.Name = "MarketSingleDataBtn";
             this.MarketSingleDataBtn.Size = new System.Drawing.Size(214, 23);
             this.MarketSingleDataBtn.TabIndex = 39;
@@ -1080,6 +1140,16 @@
             this.AfterMarketFilterPage.TabIndex = 2;
             this.AfterMarketFilterPage.Text = "盤後";
             this.AfterMarketFilterPage.UseVisualStyleBackColor = true;
+            // 
+            // ExportFilterResultBtn
+            // 
+            this.ExportFilterResultBtn.Location = new System.Drawing.Point(4, 312);
+            this.ExportFilterResultBtn.Name = "ExportFilterResultBtn";
+            this.ExportFilterResultBtn.Size = new System.Drawing.Size(214, 23);
+            this.ExportFilterResultBtn.TabIndex = 24;
+            this.ExportFilterResultBtn.Text = "匯出選股資料";
+            this.ExportFilterResultBtn.UseVisualStyleBackColor = true;
+            this.ExportFilterResultBtn.Click += new System.EventHandler(this.ExportFilterResultBtn_Click);
             // 
             // OperationGrb
             // 
@@ -1268,15 +1338,305 @@
             this.AfterMarketFilterBtn.UseVisualStyleBackColor = true;
             this.AfterMarketFilterBtn.Click += new System.EventHandler(this.AfterMarketFilterBtn_Click);
             // 
-            // ExportFilterResultBtn
+            // _DCeilOrdBtn
             // 
-            this.ExportFilterResultBtn.Location = new System.Drawing.Point(4, 312);
-            this.ExportFilterResultBtn.Name = "ExportFilterResultBtn";
-            this.ExportFilterResultBtn.Size = new System.Drawing.Size(214, 23);
-            this.ExportFilterResultBtn.TabIndex = 24;
-            this.ExportFilterResultBtn.Text = "匯出選股資料";
-            this.ExportFilterResultBtn.UseVisualStyleBackColor = true;
-            this.ExportFilterResultBtn.Click += new System.EventHandler(this.ExportFilterResultBtn_Click);
+            this._DCeilOrdBtn.Location = new System.Drawing.Point(446, 209);
+            this._DCeilOrdBtn.Name = "_DCeilOrdBtn";
+            this._DCeilOrdBtn.Size = new System.Drawing.Size(214, 23);
+            this._DCeilOrdBtn.TabIndex = 74;
+            this._DCeilOrdBtn.Text = "漲跌停未成交資訊";
+            this._DCeilOrdBtn.UseVisualStyleBackColor = true;
+            this._DCeilOrdBtn.Click += new System.EventHandler(this._DCeilOrdBtn_Click);
+            // 
+            // _DPeratioPeraBtn
+            // 
+            this._DPeratioPeraBtn.Location = new System.Drawing.Point(446, 267);
+            this._DPeratioPeraBtn.Name = "_DPeratioPeraBtn";
+            this._DPeratioPeraBtn.Size = new System.Drawing.Size(214, 23);
+            this._DPeratioPeraBtn.TabIndex = 75;
+            this._DPeratioPeraBtn.Text = "個股本益比、殖利率依日期查詢";
+            this._DPeratioPeraBtn.UseVisualStyleBackColor = true;
+            this._DPeratioPeraBtn.Click += new System.EventHandler(this._DPeratioPeraBtn_Click);
+            // 
+            // _DTrnMonthlyBtn
+            // 
+            this._DTrnMonthlyBtn.Location = new System.Drawing.Point(446, 354);
+            this._DTrnMonthlyBtn.Name = "_DTrnMonthlyBtn";
+            this._DTrnMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DTrnMonthlyBtn.TabIndex = 76;
+            this._DTrnMonthlyBtn.Text = "個股週轉率排行(月)";
+            this._DTrnMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DTrnMonthlyBtn.Click += new System.EventHandler(this._DTrnMonthlyBtn_Click);
+            // 
+            // _DTrnYearlyBtn
+            // 
+            this._DTrnYearlyBtn.Location = new System.Drawing.Point(446, 383);
+            this._DTrnYearlyBtn.Name = "_DTrnYearlyBtn";
+            this._DTrnYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DTrnYearlyBtn.TabIndex = 77;
+            this._DTrnYearlyBtn.Text = "個股週轉率排行(年)";
+            this._DTrnYearlyBtn.UseVisualStyleBackColor = true;
+            this._DTrnYearlyBtn.Click += new System.EventHandler(this._DTrnYearlyBtn_Click);
+            // 
+            // _DVolRankWeeklyBtn
+            // 
+            this._DVolRankWeeklyBtn.Location = new System.Drawing.Point(446, 441);
+            this._DVolRankWeeklyBtn.Name = "_DVolRankWeeklyBtn";
+            this._DVolRankWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DVolRankWeeklyBtn.TabIndex = 78;
+            this._DVolRankWeeklyBtn.Text = "個股成交量排行(周)";
+            this._DVolRankWeeklyBtn.UseVisualStyleBackColor = true;
+            this._DVolRankWeeklyBtn.Click += new System.EventHandler(this._DVolRankWeeklyBtn_Click);
+            // 
+            // _DVolRankMonthlyBtn
+            // 
+            this._DVolRankMonthlyBtn.Location = new System.Drawing.Point(446, 470);
+            this._DVolRankMonthlyBtn.Name = "_DVolRankMonthlyBtn";
+            this._DVolRankMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DVolRankMonthlyBtn.TabIndex = 79;
+            this._DVolRankMonthlyBtn.Text = "個股成交量排行(月)";
+            this._DVolRankMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DVolRankMonthlyBtn.Click += new System.EventHandler(this._DVolRankMonthlyBtn_Click);
+            // 
+            // _DVolRankYearlyBtn
+            // 
+            this._DVolRankYearlyBtn.Location = new System.Drawing.Point(446, 499);
+            this._DVolRankYearlyBtn.Name = "_DVolRankYearlyBtn";
+            this._DVolRankYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DVolRankYearlyBtn.TabIndex = 80;
+            this._DVolRankYearlyBtn.Text = "個股成交量排行(年)";
+            this._DVolRankYearlyBtn.UseVisualStyleBackColor = true;
+            this._DVolRankYearlyBtn.Click += new System.EventHandler(this._DVolRankYearlyBtn_Click);
+            // 
+            // _DAmtRankMonthlyBtn
+            // 
+            this._DAmtRankMonthlyBtn.Location = new System.Drawing.Point(446, 557);
+            this._DAmtRankMonthlyBtn.Name = "_DAmtRankMonthlyBtn";
+            this._DAmtRankMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DAmtRankMonthlyBtn.TabIndex = 81;
+            this._DAmtRankMonthlyBtn.Text = "個股成交值排行(月)";
+            this._DAmtRankMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DAmtRankMonthlyBtn.Click += new System.EventHandler(this._DAmtRankMonthlyBtn_Click);
+            // 
+            // _DAmtRankYearlyBtn
+            // 
+            this._DAmtRankYearlyBtn.Location = new System.Drawing.Point(446, 586);
+            this._DAmtRankYearlyBtn.Name = "_DAmtRankYearlyBtn";
+            this._DAmtRankYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DAmtRankYearlyBtn.TabIndex = 82;
+            this._DAmtRankYearlyBtn.Text = "個股成交值排行(年)";
+            this._DAmtRankYearlyBtn.UseVisualStyleBackColor = true;
+            this._DAmtRankYearlyBtn.Click += new System.EventHandler(this._DAmtRankYearlyBtn_Click);
+            // 
+            // _DStkAvgMonthlyBtn
+            // 
+            this._DStkAvgMonthlyBtn.Location = new System.Drawing.Point(446, 644);
+            this._DStkAvgMonthlyBtn.Name = "_DStkAvgMonthlyBtn";
+            this._DStkAvgMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DStkAvgMonthlyBtn.TabIndex = 83;
+            this._DStkAvgMonthlyBtn.Text = "個股日均量排行(月)";
+            this._DStkAvgMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DStkAvgMonthlyBtn.Click += new System.EventHandler(this._DStkAvgMonthlyBtn_Click);
+            // 
+            // _DStkAvgYearlyBtn
+            // 
+            this._DStkAvgYearlyBtn.Location = new System.Drawing.Point(446, 673);
+            this._DStkAvgYearlyBtn.Name = "_DStkAvgYearlyBtn";
+            this._DStkAvgYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DStkAvgYearlyBtn.TabIndex = 84;
+            this._DStkAvgYearlyBtn.Text = "個股日均量排行(年)";
+            this._DStkAvgYearlyBtn.UseVisualStyleBackColor = true;
+            this._DStkAvgYearlyBtn.Click += new System.EventHandler(this._DStkAvgYearlyBtn_Click);
+            // 
+            // _DRtRallyWeeklyBtn
+            // 
+            this._DRtRallyWeeklyBtn.Location = new System.Drawing.Point(666, 122);
+            this._DRtRallyWeeklyBtn.Name = "_DRtRallyWeeklyBtn";
+            this._DRtRallyWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtRallyWeeklyBtn.TabIndex = 85;
+            this._DRtRallyWeeklyBtn.Text = "個股漲幅排行(周)";
+            this._DRtRallyWeeklyBtn.UseVisualStyleBackColor = true;
+            this._DRtRallyWeeklyBtn.Click += new System.EventHandler(this._DRtRallyWeeklyBtn_Click);
+            // 
+            // _DRtRallyMonthlyBtn
+            // 
+            this._DRtRallyMonthlyBtn.Location = new System.Drawing.Point(666, 151);
+            this._DRtRallyMonthlyBtn.Name = "_DRtRallyMonthlyBtn";
+            this._DRtRallyMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtRallyMonthlyBtn.TabIndex = 86;
+            this._DRtRallyMonthlyBtn.Text = "個股漲幅排行(月)";
+            this._DRtRallyMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DRtRallyMonthlyBtn.Click += new System.EventHandler(this._DRtRallyMonthlyBtn_Click);
+            // 
+            // _DRtDeclinedWeeklyBtn
+            // 
+            this._DRtDeclinedWeeklyBtn.Location = new System.Drawing.Point(666, 209);
+            this._DRtDeclinedWeeklyBtn.Name = "_DRtDeclinedWeeklyBtn";
+            this._DRtDeclinedWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtDeclinedWeeklyBtn.TabIndex = 87;
+            this._DRtDeclinedWeeklyBtn.Text = "個股跌幅排行(周)";
+            this._DRtDeclinedWeeklyBtn.UseVisualStyleBackColor = true;
+            this._DRtDeclinedWeeklyBtn.Click += new System.EventHandler(this._DRtDeclinedWeeklyBtn_Click);
+            // 
+            // _DRtDeclinedMonthlyBtn
+            // 
+            this._DRtDeclinedMonthlyBtn.Location = new System.Drawing.Point(666, 238);
+            this._DRtDeclinedMonthlyBtn.Name = "_DRtDeclinedMonthlyBtn";
+            this._DRtDeclinedMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DRtDeclinedMonthlyBtn.TabIndex = 88;
+            this._DRtDeclinedMonthlyBtn.Text = "個股跌幅排行(月)";
+            this._DRtDeclinedMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DRtDeclinedMonthlyBtn.Click += new System.EventHandler(this._DRtDeclinedMonthlyBtn_Click);
+            // 
+            // _DWkqBtn
+            // 
+            this._DWkqBtn.Location = new System.Drawing.Point(666, 325);
+            this._DWkqBtn.Name = "_DWkqBtn";
+            this._DWkqBtn.Size = new System.Drawing.Size(214, 23);
+            this._DWkqBtn.TabIndex = 89;
+            this._DWkqBtn.Text = "證券行情週報表";
+            this._DWkqBtn.UseVisualStyleBackColor = true;
+            this._DWkqBtn.Click += new System.EventHandler(this._DWkqBtn_Click);
+            // 
+            // _DLendBtn
+            // 
+            this._DLendBtn.Location = new System.Drawing.Point(666, 354);
+            this._DLendBtn.Name = "_DLendBtn";
+            this._DLendBtn.Size = new System.Drawing.Size(214, 23);
+            this._DLendBtn.TabIndex = 90;
+            this._DLendBtn.Text = "標借";
+            this._DLendBtn.UseVisualStyleBackColor = true;
+            this._DLendBtn.Click += new System.EventHandler(this._DLendBtn_Click);
+            // 
+            // _DMgratioBtn
+            // 
+            this._DMgratioBtn.Location = new System.Drawing.Point(666, 412);
+            this._DMgratioBtn.Name = "_DMgratioBtn";
+            this._DMgratioBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMgratioBtn.TabIndex = 91;
+            this._DMgratioBtn.Text = "信用交易餘額概況表";
+            this._DMgratioBtn.UseVisualStyleBackColor = true;
+            this._DMgratioBtn.Click += new System.EventHandler(this._DMgratioBtn_Click);
+            // 
+            // _DMarginBalBtn
+            // 
+            this._DMarginBalBtn.Location = new System.Drawing.Point(666, 441);
+            this._DMarginBalBtn.Name = "_DMarginBalBtn";
+            this._DMarginBalBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMarginBalBtn.TabIndex = 92;
+            this._DMarginBalBtn.Text = "融資融券餘額表";
+            this._DMarginBalBtn.UseVisualStyleBackColor = true;
+            this._DMarginBalBtn.Click += new System.EventHandler(this._DMarginBalBtn_Click);
+            // 
+            // _DMgUsedDailyBtn
+            // 
+            this._DMgUsedDailyBtn.Location = new System.Drawing.Point(666, 470);
+            this._DMgUsedDailyBtn.Name = "_DMgUsedDailyBtn";
+            this._DMgUsedDailyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMgUsedDailyBtn.TabIndex = 93;
+            this._DMgUsedDailyBtn.Text = "融資融券使用率報表(日)";
+            this._DMgUsedDailyBtn.UseVisualStyleBackColor = true;
+            this._DMgUsedDailyBtn.Click += new System.EventHandler(this._DMgUsedDailyBtn_Click);
+            // 
+            // _DMgUsedWeeklyBtn
+            // 
+            this._DMgUsedWeeklyBtn.Location = new System.Drawing.Point(666, 499);
+            this._DMgUsedWeeklyBtn.Name = "_DMgUsedWeeklyBtn";
+            this._DMgUsedWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DMgUsedWeeklyBtn.TabIndex = 94;
+            this._DMgUsedWeeklyBtn.Text = "融資融券使用率報表(周)";
+            this._DMgUsedWeeklyBtn.UseVisualStyleBackColor = true;
+            this._DMgUsedWeeklyBtn.Click += new System.EventHandler(this._DMgUsedWeeklyBtn_Click);
+            // 
+            // _DForgtrWeeklyBtn
+            // 
+            this._DForgtrWeeklyBtn.Location = new System.Drawing.Point(886, 412);
+            this._DForgtrWeeklyBtn.Name = "_DForgtrWeeklyBtn";
+            this._DForgtrWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DForgtrWeeklyBtn.TabIndex = 95;
+            this._DForgtrWeeklyBtn.Text = "外資及陸資買賣超彙總表(周)";
+            this._DForgtrWeeklyBtn.UseVisualStyleBackColor = true;
+            this._DForgtrWeeklyBtn.Click += new System.EventHandler(this._DForgtrWeeklyBtn_Click);
+            // 
+            // _DForgtrMonthlyBtn
+            // 
+            this._DForgtrMonthlyBtn.Location = new System.Drawing.Point(886, 441);
+            this._DForgtrMonthlyBtn.Name = "_DForgtrMonthlyBtn";
+            this._DForgtrMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DForgtrMonthlyBtn.TabIndex = 96;
+            this._DForgtrMonthlyBtn.Text = "外資及陸資買賣超彙總表(月)";
+            this._DForgtrMonthlyBtn.UseVisualStyleBackColor = true;
+            this._DForgtrMonthlyBtn.Click += new System.EventHandler(this._DForgtrMonthlyBtn_Click);
+            // 
+            // _DForgtrYearlyBtn
+            // 
+            this._DForgtrYearlyBtn.Location = new System.Drawing.Point(886, 470);
+            this._DForgtrYearlyBtn.Name = "_DForgtrYearlyBtn";
+            this._DForgtrYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._DForgtrYearlyBtn.TabIndex = 97;
+            this._DForgtrYearlyBtn.Text = "外資及陸資買賣超彙總表(年)";
+            this._DForgtrYearlyBtn.UseVisualStyleBackColor = true;
+            this._DForgtrYearlyBtn.Click += new System.EventHandler(this._DForgtrYearlyBtn_Click);
+            // 
+            // _D3itradeHedgeWeeklyBtn
+            // 
+            this._D3itradeHedgeWeeklyBtn.Location = new System.Drawing.Point(886, 238);
+            this._D3itradeHedgeWeeklyBtn.Name = "_D3itradeHedgeWeeklyBtn";
+            this._D3itradeHedgeWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itradeHedgeWeeklyBtn.TabIndex = 98;
+            this._D3itradeHedgeWeeklyBtn.Text = "三大法人買賣明細資訊(周)";
+            this._D3itradeHedgeWeeklyBtn.UseVisualStyleBackColor = true;
+            this._D3itradeHedgeWeeklyBtn.Click += new System.EventHandler(this._D3itradeHedgeWeeklyBtn_Click);
+            // 
+            // _D3itradeHedgeMonthlyBtn
+            // 
+            this._D3itradeHedgeMonthlyBtn.Location = new System.Drawing.Point(886, 267);
+            this._D3itradeHedgeMonthlyBtn.Name = "_D3itradeHedgeMonthlyBtn";
+            this._D3itradeHedgeMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itradeHedgeMonthlyBtn.TabIndex = 99;
+            this._D3itradeHedgeMonthlyBtn.Text = "三大法人買賣明細資訊(月)";
+            this._D3itradeHedgeMonthlyBtn.UseVisualStyleBackColor = true;
+            this._D3itradeHedgeMonthlyBtn.Click += new System.EventHandler(this._D3itradeHedgeMonthlyBtn_Click);
+            // 
+            // _D3itradeHedgeYearlyBtn
+            // 
+            this._D3itradeHedgeYearlyBtn.Location = new System.Drawing.Point(886, 296);
+            this._D3itradeHedgeYearlyBtn.Name = "_D3itradeHedgeYearlyBtn";
+            this._D3itradeHedgeYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itradeHedgeYearlyBtn.TabIndex = 100;
+            this._D3itradeHedgeYearlyBtn.Text = "三大法人買賣明細資訊(年)";
+            this._D3itradeHedgeYearlyBtn.UseVisualStyleBackColor = true;
+            this._D3itradeHedgeYearlyBtn.Click += new System.EventHandler(this._D3itradeHedgeYearlyBtn_Click);
+            // 
+            // _D3itrdsumWeeklyBtn
+            // 
+            this._D3itrdsumWeeklyBtn.Location = new System.Drawing.Point(666, 644);
+            this._D3itrdsumWeeklyBtn.Name = "_D3itrdsumWeeklyBtn";
+            this._D3itrdsumWeeklyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itrdsumWeeklyBtn.TabIndex = 101;
+            this._D3itrdsumWeeklyBtn.Text = "三大法人買賣金額彙總表(周)";
+            this._D3itrdsumWeeklyBtn.UseVisualStyleBackColor = true;
+            this._D3itrdsumWeeklyBtn.Click += new System.EventHandler(this._D3itrdsumWeeklyBtn_Click);
+            // 
+            // _D3itrdsumMonthlyBtn
+            // 
+            this._D3itrdsumMonthlyBtn.Location = new System.Drawing.Point(666, 673);
+            this._D3itrdsumMonthlyBtn.Name = "_D3itrdsumMonthlyBtn";
+            this._D3itrdsumMonthlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itrdsumMonthlyBtn.TabIndex = 102;
+            this._D3itrdsumMonthlyBtn.Text = "三大法人買賣金額彙總表(月)";
+            this._D3itrdsumMonthlyBtn.UseVisualStyleBackColor = true;
+            this._D3itrdsumMonthlyBtn.Click += new System.EventHandler(this._D3itrdsumMonthlyBtn_Click);
+            // 
+            // _D3itrdsumYearlyBtn
+            // 
+            this._D3itrdsumYearlyBtn.Location = new System.Drawing.Point(666, 702);
+            this._D3itrdsumYearlyBtn.Name = "_D3itrdsumYearlyBtn";
+            this._D3itrdsumYearlyBtn.Size = new System.Drawing.Size(214, 23);
+            this._D3itrdsumYearlyBtn.TabIndex = 103;
+            this._D3itrdsumYearlyBtn.Text = "三大法人買賣金額彙總表(年)";
+            this._D3itrdsumYearlyBtn.UseVisualStyleBackColor = true;
+            this._D3itrdsumYearlyBtn.Click += new System.EventHandler(this._D3itrdsumYearlyBtn_Click);
             // 
             // MainForm
             // 
@@ -1410,6 +1770,36 @@
         private System.Windows.Forms.Button _DMarginRankMonthlyBtn;
         private System.Windows.Forms.Button HolidayDataBtn;
         private System.Windows.Forms.Button ExportFilterResultBtn;
+        private System.Windows.Forms.Button _DCeilOrdBtn;
+        private System.Windows.Forms.Button _DPeratioPeraBtn;
+        private System.Windows.Forms.Button _DTrnMonthlyBtn;
+        private System.Windows.Forms.Button _DTrnYearlyBtn;
+        private System.Windows.Forms.Button _DVolRankWeeklyBtn;
+        private System.Windows.Forms.Button _DVolRankMonthlyBtn;
+        private System.Windows.Forms.Button _DVolRankYearlyBtn;
+        private System.Windows.Forms.Button _DAmtRankYearlyBtn;
+        private System.Windows.Forms.Button _DAmtRankMonthlyBtn;
+        private System.Windows.Forms.Button _DStkAvgYearlyBtn;
+        private System.Windows.Forms.Button _DStkAvgMonthlyBtn;
+        private System.Windows.Forms.Button _DRtRallyWeeklyBtn;
+        private System.Windows.Forms.Button _DRtRallyMonthlyBtn;
+        private System.Windows.Forms.Button _DRtDeclinedWeeklyBtn;
+        private System.Windows.Forms.Button _DRtDeclinedMonthlyBtn;
+        private System.Windows.Forms.Button _DWkqBtn;
+        private System.Windows.Forms.Button _DLendBtn;
+        private System.Windows.Forms.Button _DMgratioBtn;
+        private System.Windows.Forms.Button _DMarginBalBtn;
+        private System.Windows.Forms.Button _DMgUsedDailyBtn;
+        private System.Windows.Forms.Button _DMgUsedWeeklyBtn;
+        private System.Windows.Forms.Button _DForgtrYearlyBtn;
+        private System.Windows.Forms.Button _DForgtrMonthlyBtn;
+        private System.Windows.Forms.Button _DForgtrWeeklyBtn;
+        private System.Windows.Forms.Button _D3itradeHedgeYearlyBtn;
+        private System.Windows.Forms.Button _D3itradeHedgeMonthlyBtn;
+        private System.Windows.Forms.Button _D3itradeHedgeWeeklyBtn;
+        private System.Windows.Forms.Button _D3itrdsumYearlyBtn;
+        private System.Windows.Forms.Button _D3itrdsumMonthlyBtn;
+        private System.Windows.Forms.Button _D3itrdsumWeeklyBtn;
     }
 }
 

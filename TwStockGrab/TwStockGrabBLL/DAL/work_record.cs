@@ -18,6 +18,7 @@ namespace TwStockGrabBLL.DAL
         public string graber_name { get; set; }
         public int graber_freq { get; set; }
         public System.DateTime work_data_date { get; set; }
+        public string sub_type { get; set; }
         public Nullable<bool> is_complete { get; set; }
         public Nullable<System.DateTime> start_time { get; set; }
         public Nullable<System.DateTime> end_time { get; set; }

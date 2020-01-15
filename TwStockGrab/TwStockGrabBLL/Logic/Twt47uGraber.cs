@@ -17,6 +17,9 @@ namespace TwStockGrabBLL.Logic
     /// twt47u
     /// 本資訊自民國91年12月16日起提供
     /// 這個類別一天資料抓取的時間會稍微多一點
+    /// TODO:如果最近一個月的資料，每天都去抓，資料都會不同，所以需要用到update
+    /// TODO:這個類別的資料，日期可能可以考慮用每個月第一天
+    /// https://www.twse.com.tw/zh/page/trading/fund/TWT47U.html
     /// </summary>
     public class Twt47uGraber : Graber
     {
@@ -34,18 +37,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                TWT47U_Rsp rsp = JsonConvert.DeserializeObject<TWT47U_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    TWT47U_Rsp rsp = JsonConvert.DeserializeObject<TWT47U_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }
 

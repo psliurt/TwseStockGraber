@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->盤後資訊->每日第一上市外國股票成交量值
     /// stock_first
     /// 本資訊自民國93年2月11日起開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/STOCK_FIRST.html
     /// </summary>
     public class StockFirstGraber : Graber
     {
@@ -26,17 +27,25 @@ namespace TwStockGrabBLL.Logic
         }
 
         public override void DoJob(DateTime dataDate)
-        {            
+        {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             STOCK_FIRST_Rsp rsp = JsonConvert.DeserializeObject<STOCK_FIRST_Rsp>(responseContent);
 
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }            
         }       

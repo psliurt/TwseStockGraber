@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->融資融券與可借券賣出額度->融券借券賣出餘額
     /// twt93u
     /// 本資訊自民國94年7月1日起開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/TWT93U.html
     /// </summary>
     public class Twt93uGraber : Graber
     {
@@ -26,17 +27,25 @@ namespace TwStockGrabBLL.Logic
         }
 
         public override void DoJob(DateTime dataDate)
-        {        
+        {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             TWT93U_Rsp rsp = JsonConvert.DeserializeObject<TWT93U_Rsp>(responseContent);
 
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }        
         }

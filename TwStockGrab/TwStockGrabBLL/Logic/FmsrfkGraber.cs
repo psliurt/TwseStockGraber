@@ -17,6 +17,7 @@ namespace TwStockGrabBLL.Logic
     /// fmsrfk
     /// 本資訊自民國81年1月1日起開始提供
     /// 這個類別抓一天的資料要很久
+    /// https://www.twse.com.tw/zh/page/trading/exchange/FMSRFK.html
     /// </summary>
     public class FmsrfkGraber : Graber
     {
@@ -71,18 +72,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (stock_item stock in stockList)
             {
-                string responseContent = GetWebContent(dataDate, stock.stock_no);
-                FMSRFK_Rsp rsp = JsonConvert.DeserializeObject<FMSRFK_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, stock.stock_no, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, stock.stock_no);
+                    FMSRFK_Rsp rsp = JsonConvert.DeserializeObject<FMSRFK_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, stock.stock_no);
-                    Sleep();
-                }
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, stock.stock_no);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }        
 

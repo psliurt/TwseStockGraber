@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->三大法人->三大法人買賣超週報
     /// twt54u
     /// 本資訊自民國91年12月16日起提供
+    /// https://www.twse.com.tw/zh/page/trading/fund/TWT54U.html
     /// </summary>
     public class Twt54uGraber : Graber
     {
@@ -32,18 +33,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                TWT54U_Rsp rsp = JsonConvert.DeserializeObject<TWT54U_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    TWT54U_Rsp rsp = JsonConvert.DeserializeObject<TWT54U_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }        
 

@@ -16,6 +16,8 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->盤後資訊->每日成交量前20名證券
     /// mi_index_top20
     /// 本資訊自民國93年2月11日起開始提供
+    /// 網址
+    /// https://www.twse.com.tw/zh/page/trading/exchange/MI_INDEX20.html
     /// </summary>
     public class MiIndexTop20Graber : Graber
     {
@@ -27,15 +29,22 @@ namespace TwStockGrabBLL.Logic
 
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
             string responseContent = GetWebContent(dataDate);
             MI_INDEX_Top20_Rsp rsp = JsonConvert.DeserializeObject<MI_INDEX_Top20_Rsp>(responseContent);
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }

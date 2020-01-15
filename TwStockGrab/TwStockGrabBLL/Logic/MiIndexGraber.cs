@@ -13,17 +13,22 @@ using TwStockGrabBLL.Logic.Rsp.Json;
 namespace TwStockGrabBLL.Logic
 {
     /// <summary>
-    /// 交易資訊->盤後資訊->每日收盤行情->"全部"選項
-    /// mi_index_price_idx_twse
-    /// mi_index_price_idx_cross
-    /// mi_index_price_idx_twcomp
-    /// mi_index_return_idx_twse
-    /// mi_index_return_idx_cross
-    /// mi_index_return_idx_twcomp
-    /// mi_index_market_stat
-    /// mi_index_up_down_stat
-    /// mi_index_all
+    /// 交易資訊->盤後資訊->每日收盤行情->"全部"選項 
+    /// 
+    /// mi_index_price_idx_twse 價格指數(臺灣證券交易所) 
+    /// mi_index_price_idx_cross 價格指數(跨市場)
+    /// mi_index_price_idx_twcomp 價格指數(臺灣指數公司)
+    /// mi_index_return_idx_twse 報酬指數(臺灣證券交易所)
+    /// mi_index_return_idx_cross 報酬指數(跨市場)
+    /// mi_index_return_idx_twcomp 報酬指數(臺灣指數公司)
+    /// mi_index_market_stat 大盤統計資訊
+    /// mi_index_up_down_stat 漲跌證券數合計
+    /// mi_index_all 每日收盤行情(全部)
+    /// 
     /// 本資訊自民國93年2月11日起提供。
+    /// 
+    /// 網址
+    /// https://www.twse.com.tw/zh/page/trading/exchange/MI_INDEX.html
     /// </summary>
     public class MiIndexGraber :Graber
     {
@@ -36,20 +41,30 @@ namespace TwStockGrabBLL.Logic
         public override void DoJob(DateTime dataDate)
         {   
             string responseContent = GetWebContent(dataDate, "ALL");
+
             MI_INDEX_Rsp rsp = JsonConvert.DeserializeObject<MI_INDEX_Rsp>(responseContent);
+
             DateTime firstStyleDataStart = new DateTime(2004, 2, 11);
             DateTime secondStyleDataStart = new DateTime(2009, 1, 5);
             DateTime thirdStyleDataStart = new DateTime(2011, 8, 1);
+
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
 
             if (dataDate >= firstStyleDataStart && dataDate < secondStyleDataStart)
             {
                 if (rsp.data8 == null)
                 {
+                    WriteEndRecord(record);
                     Sleep();
                 }
                 else
                 {
                     SaveToDatabase(rsp, dataDate);
+                    WriteEndRecord(record);
                     Sleep();
                 }
             }
@@ -57,11 +72,13 @@ namespace TwStockGrabBLL.Logic
             {
                 if (rsp.data8 == null)
                 {
+                    WriteEndRecord(record);
                     Sleep();
                 }
                 else
                 {
                     SaveToDatabase(rsp, dataDate);
+                    WriteEndRecord(record);
                     Sleep();
                 }
             }
@@ -69,11 +86,13 @@ namespace TwStockGrabBLL.Logic
             {
                 if (rsp.data9 == null)
                 {
+                    WriteEndRecord(record);
                     Sleep();
                 }
                 else
                 {
                     SaveToDatabase(rsp, dataDate);
+                    WriteEndRecord(record);
                     Sleep();
                 }
             }
@@ -81,11 +100,13 @@ namespace TwStockGrabBLL.Logic
             {
                 if (rsp.data9 == null)
                 {
+                    WriteEndRecord(record);
                     Sleep();
                 }
                 else
                 {
                     SaveToDatabase(rsp, dataDate);
+                    WriteEndRecord(record);
                     Sleep();
                 }
             }            

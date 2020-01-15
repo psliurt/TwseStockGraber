@@ -2233,6 +2233,7 @@
           <Property Name="graber_name" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="graber_freq" Type="int" Nullable="false" />
           <Property Name="work_data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="sub_type" Type="varchar" MaxLength="64" />
           <Property Name="is_complete" Type="bit" />
           <Property Name="start_time" Type="datetime" Precision="0" />
           <Property Name="end_time" Type="datetime" Precision="0" />
@@ -4718,6 +4719,7 @@
           <Property Name="graber_name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="graber_freq" Type="Int32" Nullable="false" />
           <Property Name="work_data_date" Type="DateTime" Nullable="false" />
+          <Property Name="sub_type" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="is_complete" Type="Boolean" />
           <Property Name="start_time" Type="DateTime" />
           <Property Name="end_time" Type="DateTime" />
@@ -7080,6 +7082,7 @@
                 <ScalarProperty Name="end_time" ColumnName="end_time" />
                 <ScalarProperty Name="start_time" ColumnName="start_time" />
                 <ScalarProperty Name="is_complete" ColumnName="is_complete" />
+                <ScalarProperty Name="sub_type" ColumnName="sub_type" />
                 <ScalarProperty Name="work_data_date" ColumnName="work_data_date" />
                 <ScalarProperty Name="graber_freq" ColumnName="graber_freq" />
                 <ScalarProperty Name="graber_name" ColumnName="graber_name" />

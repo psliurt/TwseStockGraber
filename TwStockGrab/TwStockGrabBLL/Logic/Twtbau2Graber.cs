@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->當日沖銷交易標的->暫停先賣後買當日沖銷交易歷史查詢
     /// twtbau2
     /// 本資料自民國103年6月30日起提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/TWTBAU2.html
     /// </summary>
     public class Twtbau2Graber : Graber
     {
@@ -26,17 +27,25 @@ namespace TwStockGrabBLL.Logic
         }
 
         public override void DoJob(DateTime dataDate)
-        {        
+        {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             TWTBAU2_Rsp rsp = JsonConvert.DeserializeObject<TWTBAU2_Rsp>(responseContent);
 
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }            
         }        

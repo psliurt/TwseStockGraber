@@ -16,6 +16,8 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->融資融券與可借券賣出額度->借貸款項擔保品管制餘額
     /// twta1u
     /// 本資訊自民國95年10月2日起開始提供
+    /// 
+    /// https://www.twse.com.tw/zh/page/trading/exchange/TWTA1U.html
     /// </summary>
     public class Twta1uGraber : Graber
     {
@@ -37,18 +39,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                TWTA1U_Rsp rsp = JsonConvert.DeserializeObject<TWTA1U_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    TWTA1U_Rsp rsp = JsonConvert.DeserializeObject<TWTA1U_Rsp>(responseContent);
 
-                if (rsp.data == null || rsp.total == 0)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+                    if (rsp.data == null || rsp.total == 0)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }
 

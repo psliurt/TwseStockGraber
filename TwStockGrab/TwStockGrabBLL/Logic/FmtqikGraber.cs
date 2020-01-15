@@ -16,13 +16,15 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->盤後資訊->每日市場成交資訊
     /// fmtqik
     /// 本資訊自民國79年1月4日起開始提供
+    /// 網址
+    /// https://www.twse.com.tw/zh/page/trading/exchange/FMTQIK.html
     /// </summary>
     public class FmtqikGraber : Graber
     {
         public FmtqikGraber() : base()
         {
             this._graberClassName = typeof(FmtqikGraber).Name;
-            this._graberFrequency = 7;
+            this._graberFrequency = 1;
         }
 
         /// <summary>
@@ -32,15 +34,23 @@ namespace TwStockGrabBLL.Logic
         /// <param name="dataDate"></param>
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             FMTQIK_Rsp rsp = JsonConvert.DeserializeObject<FMTQIK_Rsp>(responseContent);
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }            
         }        
@@ -96,8 +106,6 @@ namespace TwStockGrabBLL.Logic
             string paramResponse = "json";
             string paramDate = GetyyyyMMddDateString(date);            
             string paramUnderLine = GetTimeStamp();
-
-
 
             string url = string.Format("https://www.twse.com.tw/exchangeReport/FMTQIK?response={0}&date={1}&_={2}",
                 paramResponse, paramDate, paramUnderLine);

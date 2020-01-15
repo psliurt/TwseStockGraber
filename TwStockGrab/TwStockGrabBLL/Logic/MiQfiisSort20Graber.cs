@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->三大法人->外資及陸資持股前20名彙總表
     /// mi_qfiis_sort_20
     /// 本資訊自民國93年02月11日起提供
+    /// https://www.twse.com.tw/zh/page/trading/fund/MI_QFIIS_sort_20.html
     /// </summary>
     public class MiQfiisSort20Graber : Graber
     {
@@ -27,15 +28,23 @@ namespace TwStockGrabBLL.Logic
 
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             MI_QFIIS_SORT_20_Rsp rsp = JsonConvert.DeserializeObject<MI_QFIIS_SORT_20_Rsp>(responseContent);
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }        

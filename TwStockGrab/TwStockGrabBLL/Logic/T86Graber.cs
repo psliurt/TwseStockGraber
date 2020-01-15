@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->三大法人->三大法人買賣超日報
     /// t86
     /// 本資訊自民國101年5月2日起提供
+    /// https://www.twse.com.tw/zh/page/trading/fund/T86.html
     /// </summary>
     public class T86Graber : Graber
     {
@@ -32,18 +33,26 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                T86_Rsp rsp = JsonConvert.DeserializeObject<T86_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    T86_Rsp rsp = JsonConvert.DeserializeObject<T86_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
                 }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }                
+
+                                
             }
         }
                 

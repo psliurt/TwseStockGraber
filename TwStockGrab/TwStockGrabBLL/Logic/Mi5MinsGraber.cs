@@ -16,6 +16,8 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊 > 盤後資訊 > 每5秒委託成交統計
     /// mi_5mins
     /// 本資訊自民國93年10月15日起開始提供
+    /// 這個類型的資料，資料量非常大
+    /// https://www.twse.com.tw/zh/page/trading/exchange/MI_5MINS.html
     /// </summary>
     public class Mi5MinsGraber : Graber
     {
@@ -27,15 +29,22 @@ namespace TwStockGrabBLL.Logic
 
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
             string responseContent = GetWebContent(dataDate);
             MI_5MINS_Rsp rsp = JsonConvert.DeserializeObject<MI_5MINS_Rsp>(responseContent);
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }        

@@ -17,6 +17,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->盤後資訊->當日融券賣出與借券賣出成交量值
     /// twtasu
     /// 本資訊自民國97年9月26日起開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/TWTASU.html
     /// </summary>
     public class TwtasuGraber : Graber
     {
@@ -28,15 +29,23 @@ namespace TwStockGrabBLL.Logic
 
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             TWTASU_Rsp rsp = JsonConvert.DeserializeObject<TWTASU_Rsp>(responseContent);
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
-            {
+            {                
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
             

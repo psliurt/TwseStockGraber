@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->融資融券與可借券賣出額度->平盤下得融(借)券賣出之證券名單
     /// twt92u
     /// 本資料自民國102年9月23日開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/TWT92U.html
     /// </summary>
     public class Twt92uGraber : Graber
     {
@@ -27,16 +28,24 @@ namespace TwStockGrabBLL.Logic
 
         public override void DoJob(DateTime dataDate)
         {
+            work_record record = null;
+            if (GetOrCreateWorkRecord(dataDate, out record))
+            {
+                return;
+            }
+
             string responseContent = GetWebContent(dataDate);
             TWT92U_Rsp rsp = JsonConvert.DeserializeObject<TWT92U_Rsp>(responseContent);
 
             if (rsp.data == null)
             {
+                WriteEndRecord(record);
                 Sleep();
             }
             else
             {
                 SaveToDatabase(rsp, dataDate);
+                WriteEndRecord(record);
                 Sleep();
             }
         }       

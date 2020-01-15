@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     /// 交易資訊->盤後資訊->盤後定價交易
     /// bft41u
     /// 本資訊自民國93年12月24日起提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/BFT41U.html
     /// </summary>
     public class Bft41uGraber  : Graber
     {
@@ -32,18 +33,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in selectTypeList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                BFT41U_Rsp rsp = JsonConvert.DeserializeObject<BFT41U_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    BFT41U_Rsp rsp = JsonConvert.DeserializeObject<BFT41U_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                
             }
         }
 

@@ -17,6 +17,7 @@ namespace TwStockGrabBLL.Logic
     /// stock_day
     /// 本資訊自民國99年1月4日起開始提供
     /// 這個graber抓一天的資料會花很多時間
+    /// https://www.twse.com.tw/zh/page/trading/exchange/STOCK_DAY.html
     /// </summary>
     public class StockDayGraber : Graber
     {
@@ -69,18 +70,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (stock_item stock in stockList)
             {
-                string responseContent = GetWebContent(dataDate, stock.stock_no);
-                STOCK_DAY_Rsp rsp = JsonConvert.DeserializeObject<STOCK_DAY_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, stock.stock_no, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, stock.stock_no);
+                    STOCK_DAY_Rsp rsp = JsonConvert.DeserializeObject<STOCK_DAY_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, stock.stock_no);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
                 }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, stock.stock_no);
-                    Sleep();
-                }                
             }
         }        
 

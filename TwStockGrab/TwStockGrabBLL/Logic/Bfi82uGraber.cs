@@ -38,18 +38,24 @@ namespace TwStockGrabBLL.Logic
 
             foreach (string type in typeStringList)
             {
-                string responseContent = GetWebContent(dataDate, type);
-                BFI82U_Rsp rsp = JsonConvert.DeserializeObject<BFI82U_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, type, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, type);
+                    BFI82U_Rsp rsp = JsonConvert.DeserializeObject<BFI82U_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
-                }
-                else
-                {
-                    SaveToDatabase(rsp, dataDate, type);
-                    Sleep();
-                }                
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, dataDate, type);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                }                                
             }            
         }
 

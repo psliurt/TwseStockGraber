@@ -18,13 +18,12 @@ namespace TwStockGrabBLL.Logic
     /// fmnptk_stat
     /// 本資訊自民國80年起提供
     /// 這類別抓一天的資料要花很多時間
+    /// https://www.twse.com.tw/zh/page/trading/exchange/FMNPTK.html
     /// </summary>
     public class FmnptkGraber : Graber
     {
         private StockBag _stockBag { get; set; }
-        /// <summary>
-        /// 交易資訊->盤後資訊->個股年成交資訊
-        /// </summary>
+       
         public FmnptkGraber() : base()
         {
             _stockBag = StockBag.GetInstance();
@@ -73,18 +72,26 @@ namespace TwStockGrabBLL.Logic
 
             foreach (stock_item stock in stockList)
             {
-                string responseContent = GetWebContent(dataDate, stock.stock_no);
-                FMNPTK_Rsp rsp = JsonConvert.DeserializeObject<FMNPTK_Rsp>(responseContent);
+                work_record record = null;
+                if (GetOrCreateWorkRecord(dataDate, stock.stock_no, out record) == false)
+                {
+                    string responseContent = GetWebContent(dataDate, stock.stock_no);
+                    FMNPTK_Rsp rsp = JsonConvert.DeserializeObject<FMNPTK_Rsp>(responseContent);
 
-                if (rsp.data == null)
-                {
-                    Sleep();
+                    if (rsp.data == null)
+                    {
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
+                    else
+                    {
+                        SaveToDatabase(rsp, stock.stock_no);
+                        WriteEndRecord(record);
+                        Sleep();
+                    }
                 }
-                else
-                {
-                    SaveToDatabase(rsp, stock.stock_no);
-                    Sleep();
-                }
+
+                
             }
         }
 

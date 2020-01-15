@@ -16,6 +16,7 @@ namespace TwStockGrabBLL.Logic
     ///  交易資訊->盤後資訊->各類指數日成交量值
     ///  bfiamu
     /// 本資訊自民國93年7月9日起開始提供
+    /// https://www.twse.com.tw/zh/page/trading/exchange/BFIAMU.html
     /// </summary>
     public class BfiamuGraber : Graber
     {
