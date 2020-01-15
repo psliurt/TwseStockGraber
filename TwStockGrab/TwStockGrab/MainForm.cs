@@ -1053,36 +1053,44 @@ namespace TwStockGrab
             //    Sleep();
             //} while (d61 <= DateTime.Today);
 
-            DForgtrWeeklyGraber g62 = new DForgtrWeeklyGraber();
-            DateTime d62 = new DateTime(2014, 1, 6);
-            do
-            {
-                g62.DoJob(d62);
-                d62 = d62.AddDays(7);
-                Sleep();
-            } while (d62 <= DateTime.Today);
+            //DForgtrWeeklyGraber g62 = new DForgtrWeeklyGraber();
+            //DateTime d62 = new DateTime(2014, 1, 6);
+            //do
+            //{
+            //    g62.DoJob(d62);
+            //    d62 = d62.AddDays(7);
+            //    Sleep();
+            //} while (d62 <= DateTime.Today);
 
 
-            DForgtrMonthlyGraber g63 = new DForgtrMonthlyGraber();
-            DateTime d63 = new DateTime(2007, 4, 1);
-            do
-            {
-                g63.DoJob(d63);
-                d63 = d63.AddMonths(1);
-                Sleep();
-            } while (d63 <= DateTime.Today);
+            //DForgtrMonthlyGraber g63 = new DForgtrMonthlyGraber();
+            //DateTime d63 = new DateTime(2007, 4, 1);
+            //do
+            //{
+            //    g63.DoJob(d63);
+            //    d63 = d63.AddMonths(1);
+            //    Sleep();
+            //} while (d63 <= DateTime.Today);
 
 
-            DForgtrYearlyGraber g64 = new DForgtrYearlyGraber();
-            DateTime d64 = new DateTime(2007, 1, 1);
-            do
-            {
-                g64.DoJob(d64);
-                d64 = d64.AddYears(1);
-                Sleep();
-            } while (d64 <= DateTime.Today);
+            //DForgtrYearlyGraber g64 = new DForgtrYearlyGraber();
+            //DateTime d64 = new DateTime(2007, 1, 1);
+            //do
+            //{
+            //    g64.DoJob(d64);
+            //    d64 = d64.AddYears(1);
+            //    Sleep();
+            //} while (d64 <= DateTime.Today);
 
-
+            DT13Sa150OtcGraber g65 = new DT13Sa150OtcGraber();
+            DateTime d65 = new DateTime(2020, 1, 13);
+            g65.DoJob(d65);
+            //do
+            //{
+            //    g65.DoJob(d65);
+            //    d65 = d65.AddYears(1);
+            //    Sleep();
+            //} while (d65 <= DateTime.Today);
 
             MessageBox.Show("OK");           
 

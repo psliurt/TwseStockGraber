@@ -1238,6 +1238,27 @@
           <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="d_t13sa150_otc">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_date" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="stock_no" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="stock_name" Type="varchar" MaxLength="64" />
+          <Property Name="issue_cnt" Type="bigint" />
+          <Property Name="remain_investable" Type="bigint" />
+          <Property Name="total_hold_cnt" Type="bigint" />
+          <Property Name="remain_invest_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="total_hold_percent" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="invest_ceil_limit" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="china_invest_ceil_limit" Type="decimal" Precision="20" Scale="3" />
+          <Property Name="change_reason" Type="varchar" MaxLength="256" />
+          <Property Name="last_comp_change" Type="datetime" Precision="0" />
+          <Property Name="title" Type="varchar" MaxLength="256" />
+          <Property Name="create_at" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="update_at" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
         <EntityType Name="d_trn_daily">
           <Key>
             <PropertyRef Name="Uid" />
@@ -2310,6 +2331,7 @@
           <EntitySet Name="d_stk_quote" EntityType="Self.d_stk_quote" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_stk_wn1430" EntityType="Self.d_stk_wn1430" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_stk_wn1430_summary" EntityType="Self.d_stk_wn1430_summary" Schema="tw_stock_history_warehouse" store:Type="Tables" />
+          <EntitySet Name="d_t13sa150_otc" EntityType="Self.d_t13sa150_otc" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_trn_daily" EntityType="Self.d_trn_daily" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_trn_monthly" EntityType="Self.d_trn_monthly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
           <EntitySet Name="d_trn_yearly" EntityType="Self.d_trn_yearly" Schema="tw_stock_history_warehouse" store:Type="Tables" />
@@ -2490,6 +2512,7 @@
           <EntitySet Name="d_forgtr_yearly" EntityType="TwStockDataNSModel.d_forgtr_yearly" />
           <EntitySet Name="d_dealtr_hedge_daily" EntityType="TwStockDataNSModel.d_dealtr_hedge_daily" />
           <EntitySet Name="work_record" EntityType="TwStockDataNSModel.work_record" />
+          <EntitySet Name="d_t13sa150_otc" EntityType="TwStockDataNSModel.d_t13sa150_otc" />
         </EntityContainer>
         <EntityType Name="bfi84u2">
           <Key>
@@ -4724,6 +4747,27 @@
           <Property Name="start_time" Type="DateTime" />
           <Property Name="end_time" Type="DateTime" />
           <Property Name="note" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="create_at" Type="DateTime" Nullable="false" />
+          <Property Name="update_at" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="d_t13sa150_otc">
+          <Key>
+            <PropertyRef Name="Uid" />
+          </Key>
+          <Property Name="Uid" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="data_date" Type="DateTime" Nullable="false" />
+          <Property Name="stock_no" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="stock_name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="issue_cnt" Type="Int64" />
+          <Property Name="remain_investable" Type="Int64" />
+          <Property Name="total_hold_cnt" Type="Int64" />
+          <Property Name="remain_invest_percent" Type="Decimal" />
+          <Property Name="total_hold_percent" Type="Decimal" />
+          <Property Name="invest_ceil_limit" Type="Decimal" />
+          <Property Name="china_invest_ceil_limit" Type="Decimal" />
+          <Property Name="change_reason" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="last_comp_change" Type="DateTime" />
+          <Property Name="title" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="create_at" Type="DateTime" Nullable="false" />
           <Property Name="update_at" Type="DateTime" Nullable="false" />
         </EntityType>
@@ -7086,6 +7130,28 @@
                 <ScalarProperty Name="work_data_date" ColumnName="work_data_date" />
                 <ScalarProperty Name="graber_freq" ColumnName="graber_freq" />
                 <ScalarProperty Name="graber_name" ColumnName="graber_name" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="d_t13sa150_otc">
+            <EntityTypeMapping TypeName="TwStockDataNSModel.d_t13sa150_otc">
+              <MappingFragment StoreEntitySet="d_t13sa150_otc">
+                <ScalarProperty Name="update_at" ColumnName="update_at" />
+                <ScalarProperty Name="create_at" ColumnName="create_at" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="last_comp_change" ColumnName="last_comp_change" />
+                <ScalarProperty Name="change_reason" ColumnName="change_reason" />
+                <ScalarProperty Name="china_invest_ceil_limit" ColumnName="china_invest_ceil_limit" />
+                <ScalarProperty Name="invest_ceil_limit" ColumnName="invest_ceil_limit" />
+                <ScalarProperty Name="total_hold_percent" ColumnName="total_hold_percent" />
+                <ScalarProperty Name="remain_invest_percent" ColumnName="remain_invest_percent" />
+                <ScalarProperty Name="total_hold_cnt" ColumnName="total_hold_cnt" />
+                <ScalarProperty Name="remain_investable" ColumnName="remain_investable" />
+                <ScalarProperty Name="issue_cnt" ColumnName="issue_cnt" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+                <ScalarProperty Name="stock_no" ColumnName="stock_no" />
+                <ScalarProperty Name="data_date" ColumnName="data_date" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
               </MappingFragment>
             </EntityTypeMapping>

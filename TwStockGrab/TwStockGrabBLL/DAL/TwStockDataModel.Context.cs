@@ -146,5 +146,6 @@ namespace TwStockGrabBLL.DAL
         public virtual DbSet<d_forgtr_yearly> d_forgtr_yearly { get; set; }
         public virtual DbSet<d_dealtr_hedge_daily> d_dealtr_hedge_daily { get; set; }
         public virtual DbSet<work_record> work_record { get; set; }
+        public virtual DbSet<d_t13sa150_otc> d_t13sa150_otc { get; set; }
     }
 }
