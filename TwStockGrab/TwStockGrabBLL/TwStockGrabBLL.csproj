@@ -651,6 +651,7 @@
     <Compile Include="Logic\Rsp\Json\Desk\DStkQuote_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DStkWn1430Summary_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DStkWn1430_Rsp.cs" />
+    <Compile Include="Logic\Rsp\Json\Desk\DT13Sa150Otc_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DTrnDaily_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DTrnMonthly_Rsp.cs" />
     <Compile Include="Logic\Rsp\Json\Desk\DTrnYearly_Rsp.cs" />

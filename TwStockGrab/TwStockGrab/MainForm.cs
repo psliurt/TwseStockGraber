@@ -1083,14 +1083,14 @@ namespace TwStockGrab
             //} while (d64 <= DateTime.Today);
 
             DT13Sa150OtcGraber g65 = new DT13Sa150OtcGraber();
-            DateTime d65 = new DateTime(2020, 1, 13);
-            g65.DoJob(d65);
-            //do
-            //{
-            //    g65.DoJob(d65);
-            //    d65 = d65.AddYears(1);
-            //    Sleep();
-            //} while (d65 <= DateTime.Today);
+            DateTime d65 = new DateTime(2020, 1, 3);
+
+            do
+            {
+                g65.DoJob(d65);
+                d65 = d65.AddDays(1);
+                Sleep();
+            } while (d65 <= DateTime.Today);
 
             MessageBox.Show("OK");           
 
